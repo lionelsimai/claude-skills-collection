@@ -53,11 +53,15 @@ Use only the API key. Do not ask for X login material, session exports, or accou
 Start with a small page so the report stays reviewable.
 
 ```bash
-curl -sS "https://xquik.com/api/v1/x/tweets/search?q=from:example%20launch&limit=20" \
-  -H "x-api-key: $XQUIK_API_KEY"
+curl --fail --silent --show-error --max-time 15 --get \
+  "https://xquik.com/api/v1/x/tweets/search" \
+  --data-urlencode "q=from:example launch" \
+  --data-urlencode "limit=20" \
+  -H "x-api-key: $XQUIK_API_KEY" \
+  -H "xquik-api-contract: 2026-04-29"
 ```
 
-If the API key is missing or the request is not authorized, stop and ask the user to fix Xquik access before claiming X coverage.
+Use `--data-urlencode` for every query instead of interpolating user text into a URL. If the API key is missing or the request is not authorized, stop and ask the user to fix Xquik access before claiming X coverage. Do not print the API key or include raw authentication errors in the report.
 
 ### Step 3: Normalize Returned Posts
 
