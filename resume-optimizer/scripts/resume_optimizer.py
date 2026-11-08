@@ -103,9 +103,53 @@ FORMAT_RED_FLAGS = [
 ]
 
 
+# Equivalent terms: a match on any member counts as a match for all.
+SYNONYM_GROUPS = [
+    {"javascript", "js"},
+    {"typescript", "ts"},
+    {"amazon web services", "aws"},
+    {"google cloud platform", "gcp"},
+    {"machine learning", "ml"},
+    {"artificial intelligence", "ai"},
+    {"user experience", "ux"},
+    {"search engine optimization", "seo"},
+    {"customer relationship management", "crm"},
+    {"microsoft excel", "excel"},
+    {"power bi", "powerbi"},
+    {"node.js", "nodejs", "node"},
+    {"bachelor's degree", "bachelors degree", "bachelor degree", "degree"},
+]
+
+SYNONYMS = {}
+for _group in SYNONYM_GROUPS:
+    for _term in _group:
+        SYNONYMS[_term] = _group
+
+
 def contains_keyword(text_lower, keyword):
-    pattern = r"\b" + re.escape(keyword).replace(r"\ ", r"[\s\-]") + r"\b"
-    return re.search(pattern, text_lower) is not None
+    variants = SYNONYMS.get(keyword, {keyword})
+    for variant in variants:
+        pattern = r"\b" + re.escape(variant).replace(r"\ ", r"[\s\-]") + r"\b"
+        if re.search(pattern, text_lower):
+            return True
+    return False
+
+
+def requirements_segment(job_text):
+    """Return the Requirements/Qualifications portion of a posting, if any."""
+    match = re.search(
+        r"(requirements|qualifications|what you.ll bring|must have|must-haves)",
+        job_text, re.IGNORECASE)
+    if not match:
+        return ""
+    tail = job_text[match.start():]
+    # Stop at the next obvious top-level section heading, if present.
+    stop = re.search(r"\n(about (the|us)|benefits|perks|how to apply|"
+                     r"application|equal opportunity)\b", tail[50:],
+                     re.IGNORECASE)
+    if stop:
+        tail = tail[:stop.start() + 50]
+    return tail
 
 
 def score_resume(resume_text, job_text, top=30):
@@ -118,6 +162,14 @@ def score_resume(resume_text, job_text, top=30):
             {"keyword": kw, "job_mentions": count})
 
     coverage = round(100 * len(matched) / len(keywords)) if keywords else 0
+
+    segment = requirements_segment(job_text)
+    must_keywords = extract_keywords(segment, top=15) if segment else []
+    must_missing = [{"keyword": kw, "job_mentions": count}
+                    for kw, count in must_keywords
+                    if not contains_keyword(resume_lower, kw)]
+    must_coverage = (round(100 * (len(must_keywords) - len(must_missing))
+                           / len(must_keywords)) if must_keywords else None)
 
     sections = {}
     for name, pattern in SECTION_PATTERNS.items():
@@ -139,7 +191,11 @@ def score_resume(resume_text, job_text, top=30):
         flags.append(f"Resume is long ({word_count} words) — most ATS/recruiter passes favour 400–800.")
 
     section_score = round(100 * sum(sections.values()) / len(sections))
-    overall = round(0.7 * coverage + 0.3 * section_score)
+    if must_coverage is None:
+        overall = round(0.7 * coverage + 0.3 * section_score)
+    else:
+        overall = round(0.5 * coverage + 0.2 * must_coverage
+                        + 0.3 * section_score)
 
     return {
         "overall_score": overall,
@@ -147,6 +203,8 @@ def score_resume(resume_text, job_text, top=30):
         "keywords_checked": len(keywords),
         "matched_keywords": matched,
         "missing_keywords": missing,
+        "must_have_coverage_pct": must_coverage,
+        "must_have_missing": must_missing,
         "sections": sections,
         "format_flags": flags,
         "word_count": word_count,
@@ -157,6 +215,11 @@ def print_score(result):
     print(f"Overall ATS readiness: {result['overall_score']}/100")
     print(f"Keyword coverage:      {result['keyword_coverage_pct']}% "
           f"({len(result['matched_keywords'])}/{result['keywords_checked']} keywords)")
+    if result["must_have_coverage_pct"] is not None:
+        print(f"Must-have coverage:    {result['must_have_coverage_pct']}% "
+              f"(from the posting's Requirements section)")
+        for item in result["must_have_missing"]:
+            print(f"  ! missing must-have: {item['keyword']}")
     print(f"Word count:            {result['word_count']}")
     print("\nSections found:")
     for name, found in result["sections"].items():

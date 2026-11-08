@@ -2,6 +2,7 @@
 name: resume-optimizer
 description: Tailor a resume to a specific job opening so it passes applicant tracking systems (ATS) and reads well to recruiters. Use when a user uploads a resume (PDF, DOCX, TXT or pasted text) and provides a job posting link or job description, and asks to polish, tailor, optimise or make the resume "AI ready" / "ATS ready" for that role or for online submission.
 license: MIT
+version: 1.1.0
 ---
 
 # Resume Optimizer
@@ -51,6 +52,9 @@ Collect both before you start. Ask for whichever is missing; do not guess.
 Write down, from the posting text only:
 
 - Role title and seniority level
+- **Must-haves vs nice-to-haves, split explicitly** — must-haves come
+  from the Requirements/Qualifications section; treat them as the
+  screening gate and track their coverage separately
 - The 10–20 hard skills, tools and methods the posting names
 - The responsibilities, in the posting's own verbs
 - Required qualifications (degree, years, certifications, languages)
@@ -118,17 +122,23 @@ Apply the formatting rules in `references/ats-playbook.md`:
 
 ### 8. Score again and deliver
 
-Re-run the scorer on the tailored resume. Deliver:
+Re-run the scorer on the tailored resume. Build the outputs from
+`templates/` (tailored-resume.md for the resume, delivery-report.md
+for the report). Deliver:
 
 1. The tailored resume (Markdown, plus PDF/DOCX if your environment
    can produce them).
-2. Before / after: ATS keyword score and what changed.
+2. Before / after: ATS keyword score, must-have coverage, and what
+   changed.
 3. The three-bucket gap list, with bucket 3 (genuine gaps) stated
    plainly so the user can decide — apply anyway, address in a cover
    note, or upskill first.
 4. A submission checklist: right file name, right format for the
-   portal, keywords in the online form fields matching the resume,
-   LinkedIn headline aligned with the target role.
+   portal, keywords in the online form fields matching the resume.
+5. A LinkedIn headline aligned with the target role, using only
+   claims the resume supports — recruiters cross-check the two.
+6. A 3-line recruiter note the user can paste with the application,
+   built only from facts already in the resume.
 
 ## Guardrails
 
@@ -157,5 +167,9 @@ Re-run the scorer on the tailored resume. Deliver:
   honestly.
 - `references/rewrite-rules.md` — summary and bullet rewrite formulas,
   action-verb bank, quantification rules.
+- `templates/` — the tailored-resume skeleton and the delivery-report
+  format every run produces.
+- `PROMPT.md` — the no-install version: one paste-ready prompt that
+  runs this same workflow in any AI chat.
 - `examples/` — a sample resume, a sample job description, the scorer's
   report on them, and a before/after bullet excerpt.

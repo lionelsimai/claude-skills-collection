@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this skill, please cite it as below."
+title: "Resume Optimizer — an open-source AI skill"
+abstract: >-
+  An agent skill that tailors a resume to a specific job opening:
+  ATS keyword scoring, an honest three-bucket gap analysis, and a
+  rewrite workflow that never fabricates experience or metrics.
+authors:
+  - family-names: "Sim"
+    given-names: "Lionel"
+    affiliation: "The AI Capitol"
+version: "1.1.0"
+date-released: "2026-11-08"
+license: MIT
+url: "https://github.com/lionelsimai/resume-optimizer"
+repository-code: "https://github.com/lionelsimai/resume-optimizer"
+keywords:
+  - resume
+  - ATS
+  - job application
+  - AI agent skill
+  - career

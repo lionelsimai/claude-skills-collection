@@ -56,8 +56,23 @@ def test_score_flags_thin_resume():
     assert any("short" in f for f in result["format_flags"])
 
 
+def test_synonyms_count_as_matches():
+    job = ("Frontend Developer. Requirements: JavaScript, Amazon Web "
+           "Services, Microsoft Excel. Build user interfaces.")
+    resume = ("Sam Koh\nsam@email.com\nSummary\nFrontend developer.\n"
+              "Experience\nDeveloper, WebCo, 2020 - Present\n"
+              "- Built UI in JS, deployed on AWS, tracked data in Excel\n"
+              "Education\nBSc, 2019\nSkills\nJS, AWS, Excel")
+    result = score_resume(resume, job)
+    missing = {m["keyword"] for m in result["missing_keywords"]}
+    assert "javascript" not in missing
+    assert result["must_have_coverage_pct"] is not None
+    assert result["must_have_coverage_pct"] >= 50
+
+
 if __name__ == "__main__":
     test_keywords_surface_job_terms()
     test_score_finds_sections_and_coverage()
     test_score_flags_thin_resume()
+    test_synonyms_count_as_matches()
     print("All tests passed.")

@@ -40,14 +40,34 @@ standard `SKILL.md` format, and works with any agent runtime that reads
 skill folders.
 
 ```bash
-git clone https://github.com/lionelsimai/claude-skills-collection.git
-cp -r claude-skills-collection/resume-optimizer ~/.claude/skills/
+git clone https://github.com/lionelsimai/resume-optimizer.git
+cp -r resume-optimizer ~/.claude/skills/
 ```
+
+Also published in the
+[claude-skills-collection](https://github.com/lionelsimai/claude-skills-collection/tree/main/resume-optimizer)
+under the same MIT licence.
 
 Then ask your agent:
 
 > Here is my resume and the link to the job I want. Optimise my resume
 > for this opening.
+
+## No agent? Use the prompt
+
+[PROMPT.md](PROMPT.md) is the same workflow as one paste-ready prompt —
+copy it into ChatGPT, Claude or Gemini, add your resume and the job
+description, and it runs the full process: score, honest gap list,
+rewrite, before/after.
+
+## Cite or adapt this
+
+- **Cite it:** this repo carries a `CITATION.cff`, so GitHub shows a
+  "Cite this repository" option on the repo page (About panel).
+- **Adapt it:** fork it, change the references and scorer synonyms for
+  your industry, and ship your version. The MIT licence allows use,
+  copying, modification and even commercial use — the one condition is
+  keeping the copyright and licence notice with it.
 
 ## Try the scorer without an agent
 
@@ -70,12 +90,16 @@ python3 tests/test_resume_optimizer.py
 | Path | What it is |
 |---|---|
 | `SKILL.md` | The skill itself: workflow, guardrails, delivery format |
-| `scripts/resume_optimizer.py` | Keyword extraction + ATS scoring (stdlib only) |
+| `PROMPT.md` | The no-install version: one paste-ready prompt for any AI chat |
+| `scripts/resume_optimizer.py` | Keyword extraction + ATS scoring with synonym and must-have awareness (stdlib only) |
 | `references/ats-playbook.md` | How ATS parsers work and the formatting rules that survive them |
 | `references/keyword-method.md` | Extracting and placing keywords honestly — the three buckets |
 | `references/rewrite-rules.md` | Summary and bullet formulas, action-verb bank, quantification rules |
+| `templates/` | Tailored-resume skeleton + delivery-report format |
 | `examples/` | Sample resume, sample job post, scorer report, before/after excerpt |
 | `tests/` | Tests for the scorer |
+| `CITATION.cff` | Formal citation metadata for the repo |
+| `CHANGELOG.md` | What changed, version by version |
 
 ## Prefer a website instead?
 
