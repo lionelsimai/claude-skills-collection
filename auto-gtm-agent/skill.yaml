@@ -1,0 +1,5 @@
+name: "local_auto_gtm_agent"
+title: "Auto-GTM Agent"
+description: "Run a human-approved outbound GTM pipeline: learn an offer, score leads against an ICP, draft personal emails, triage replies and learn which segments to scale or pause."
+category: "Work and knowledge"
+include_in_prompt: true

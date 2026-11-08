@@ -1,0 +1,46 @@
+# Auto-GTM Agent — configured instance for The AI Capitol (Lionel Sim)
+# Proof points are an ALLOW-LIST. The agent may only use claims listed here.
+# Do not add a number here unless it is verified and Lionel approved it for outreach.
+sender_name: "Lionel Sim"
+sender_title: "Founder"
+sender_company: "The AI Capitol"
+presentation_url: "https://www.theaicapitol.com/presentation"
+booking_url: ""  # ACTION: Lionel to supply his booking link. Hot replies escalate until this is set.
+banned_words: ["beachhead"]
+allowed_proof:
+  - "We run OpenBuilder, a community of 8,000+ builders in Singapore, through partner rooms and events."
+cost_per_email_usd: 0.04
+scale_below_cost_per_hot_usd: 10.0
+pause_above_cost_per_hot_usd: 15.0
+pause_min_sent: 250
+segments:
+  - id: "a_ai_vendors_apac"
+    name: "AI vendors expanding in APAC/SEA (recommended first)"
+    roles: ["Head of Partnerships", "Head of GTM", "Ecosystem", "Developer Relations", "Country Manager", "VP Sales", "Head of APAC"]
+    company_keywords: ["ai", "artificial intelligence", "model", "voice", "agent", "infrastructure", "llm"]
+    regions: ["Singapore", "APAC", "SEA", "Southeast Asia"]
+    min_employees: 50
+    max_employees: 5000
+    offer: "an annual ecosystem partner slot (Partner S$24,000 / Anchor S$48,000), or a single S$6,000 partner room to start"
+    angle: "We put AI vendors in front of builders and enterprise buyers, then turn that room into ongoing pipeline."
+    subject: "{company} x OpenBuilder in Singapore"
+  - id: "b_finance_sg"
+    name: "Finance enterprises in Singapore"
+    roles: ["Chief AI Officer", "Head of AI", "Head of Innovation", "CTO", "Chief Technology Officer", "Head of Digital"]
+    company_keywords: ["bank", "insurance", "fintech", "asset management", "capital"]
+    regions: ["Singapore"]
+    min_employees: 200
+    max_employees: 100000
+    offer: "a governed AI agent programme for revenue teams, or a corporate Academy cohort"
+    angle: "The focus is governed human-agent revenue systems with measured outcomes, not demos."
+    subject: "AI agents for revenue teams at {company}"
+  - id: "c_video_ai"
+    name: "Video and creative AI vendors"
+    roles: ["Marketing Lead", "Community Lead", "Partnerships", "Head of Growth", "APAC Marketing"]
+    company_keywords: ["video", "creative", "avatar", "media", "generation"]
+    regions: ["Singapore", "APAC", "SEA", "Southeast Asia"]
+    min_employees: 20
+    max_employees: 5000
+    offer: "a single S$6,000 partner room to start, with an annual partner slot if the room works"
+    angle: "One room proves the audience first. No long commitment up front."
+    subject: "{company} x OpenBuilder in Singapore"

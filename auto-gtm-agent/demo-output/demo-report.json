@@ -1,0 +1,152 @@
+{
+  "config": "/home/hatch/workspace/auto-gtm-agent/config/the-ai-capitol.yaml",
+  "problems": [
+    "row 6: invalid email 'sara.lim@bad-email' dropped",
+    "row 8: duplicate maya.chen@example-voiceai.com"
+  ],
+  "scores": [
+    {
+      "segment_id": "a_ai_vendors_apac",
+      "fit": 100,
+      "reasons": [
+        "role match: Head of Partnerships APAC",
+        "company/industry match: ai, voice",
+        "region match: Singapore",
+        "size in range: 420",
+        "has a checkable personal signal"
+      ],
+      "tier": "A",
+      "email": "maya.chen@example-voiceai.com",
+      "company": "VoiceBridge AI"
+    },
+    {
+      "segment_id": "b_finance_sg",
+      "fit": 100,
+      "reasons": [
+        "role match: Chief AI Officer",
+        "company/industry match: bank",
+        "region match: Singapore",
+        "size in range: 8000",
+        "has a checkable personal signal"
+      ],
+      "tier": "A",
+      "email": "daniel.okafor@example-bank.sg",
+      "company": "Example Bank Singapore"
+    },
+    {
+      "segment_id": "c_video_ai",
+      "fit": 100,
+      "reasons": [
+        "role match: APAC Marketing Lead",
+        "company/industry match: video, generation",
+        "region match: Singapore",
+        "size in range: 180",
+        "has a checkable personal signal"
+      ],
+      "tier": "A",
+      "email": "priya.raman@example-videoai.com",
+      "company": "ClipForge"
+    },
+    {
+      "segment_id": "a_ai_vendors_apac",
+      "fit": 10,
+      "reasons": [
+        "size in range: 60"
+      ],
+      "tier": "C",
+      "email": "tom.becker@example-tools.com",
+      "company": "ToolBox GmbH"
+    },
+    {
+      "segment_id": "a_ai_vendors_apac",
+      "fit": 100,
+      "reasons": [
+        "role match: Head of GTM APAC",
+        "company/industry match: model, llm",
+        "region match: Singapore",
+        "size in range: 1200",
+        "has a checkable personal signal"
+      ],
+      "tier": "A",
+      "email": "ken.watanabe@example-modelco.com",
+      "company": "ModelCo"
+    }
+  ],
+  "drafts": [
+    {
+      "email": "maya.chen@example-voiceai.com",
+      "company": "VoiceBridge AI",
+      "segment_id": "a_ai_vendors_apac",
+      "subject": "VoiceBridge AI x OpenBuilder in Singapore",
+      "body": "Hi Maya,\n\nSaw VoiceBridge AI just opened its Singapore office last month. Most teams I talk to are under pressure to show real outcomes from AI, not just pilots.\n\nI run The AI Capitol. We run OpenBuilder, a community of 8,000+ builders in Singapore, through partner rooms and events. We put AI vendors in front of builders and enterprise buyers, then turn that room into ongoing pipeline.\n\nOpen to a 20-minute look at whether an annual ecosystem partner slot (Partner S$24,000 / Anchor S$48,000), or a single S$6,000 partner room to start makes sense for VoiceBridge AI?\n\nLionel Sim\nFounder, The AI Capitol\nhttps://www.theaicapitol.com/presentation",
+      "status": "draft_needs_approval"
+    },
+    {
+      "email": "daniel.okafor@example-bank.sg",
+      "company": "Example Bank Singapore",
+      "segment_id": "b_finance_sg",
+      "subject": "AI agents for revenue teams at Example Bank Singapore",
+      "body": "Hi Daniel,\n\nSaw Example Bank Singapore announced a new AI transformation programme this quarter. Most teams I talk to are under pressure to show real outcomes from AI, not just pilots.\n\nI run The AI Capitol. We run OpenBuilder, a community of 8,000+ builders in Singapore, through partner rooms and events. The focus is governed human-agent revenue systems with measured outcomes, not demos.\n\nOpen to a 20-minute look at whether a governed AI agent programme for revenue teams, or a corporate Academy cohort makes sense for Example Bank Singapore?\n\nLionel Sim\nFounder, The AI Capitol\nhttps://www.theaicapitol.com/presentation",
+      "status": "draft_needs_approval"
+    },
+    {
+      "email": "priya.raman@example-videoai.com",
+      "company": "ClipForge",
+      "segment_id": "c_video_ai",
+      "subject": "ClipForge x OpenBuilder in Singapore",
+      "body": "Hi Priya,\n\nSaw ClipForge launched its avatar product for APAC creators last week. Most teams I talk to are under pressure to show real outcomes from AI, not just pilots.\n\nI run The AI Capitol. We run OpenBuilder, a community of 8,000+ builders in Singapore, through partner rooms and events. One room proves the audience first. No long commitment up front.\n\nOpen to a 20-minute look at whether a single S$6,000 partner room to start, with an annual partner slot if the room works makes sense for ClipForge?\n\nLionel Sim\nFounder, The AI Capitol\nhttps://www.theaicapitol.com/presentation",
+      "status": "draft_needs_approval"
+    },
+    {
+      "email": "ken.watanabe@example-modelco.com",
+      "company": "ModelCo",
+      "segment_id": "a_ai_vendors_apac",
+      "subject": "ModelCo x OpenBuilder in Singapore",
+      "body": "Hi Ken,\n\nSaw ModelCo announced APAC expansion at its developer day. Most teams I talk to are under pressure to show real outcomes from AI, not just pilots.\n\nI run The AI Capitol. We run OpenBuilder, a community of 8,000+ builders in Singapore, through partner rooms and events. We put AI vendors in front of builders and enterprise buyers, then turn that room into ongoing pipeline.\n\nOpen to a 20-minute look at whether an annual ecosystem partner slot (Partner S$24,000 / Anchor S$48,000), or a single S$6,000 partner room to start makes sense for ModelCo?\n\nLionel Sim\nFounder, The AI Capitol\nhttps://www.theaicapitol.com/presentation",
+      "status": "draft_needs_approval"
+    }
+  ],
+  "triage_examples": {
+    "pricing": {
+      "class": "hot",
+      "action": "ask_human_for_booking_link"
+    },
+    "contract": {
+      "class": "hot_escalate",
+      "action": "forward_to_human_draft_only_do_not_auto_send"
+    },
+    "negative": {
+      "class": "negative",
+      "action": "suppress_contact_no_followup"
+    }
+  },
+  "learning_demo (illustrative sample numbers, not real results)": [
+    {
+      "segment_id": "a_ai_vendors_apac",
+      "sent": 300,
+      "hot_leads": 34,
+      "spend_usd": 12.0,
+      "cost_per_hot_usd": 0.35,
+      "hot_rate": 0.1133,
+      "verdict": "scale"
+    },
+    {
+      "segment_id": "b_finance_sg",
+      "sent": 280,
+      "hot_leads": 2,
+      "spend_usd": 11.2,
+      "cost_per_hot_usd": 5.6,
+      "hot_rate": 0.0071,
+      "verdict": "pause"
+    },
+    {
+      "segment_id": "c_video_ai",
+      "sent": 120,
+      "hot_leads": 9,
+      "spend_usd": 4.8,
+      "cost_per_hot_usd": 0.53,
+      "hot_rate": 0.075,
+      "verdict": "scale"
+    }
+  ]
+}

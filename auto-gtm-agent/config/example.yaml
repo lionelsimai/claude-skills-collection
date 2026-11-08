@@ -1,0 +1,25 @@
+# Generic example config. Copy this, replace every value with your own,
+# and keep allowed_proof to claims you can verify.
+sender_name: "Alex Founder"
+sender_title: "Founder"
+sender_company: "ExampleCo"
+presentation_url: "https://example.com/deck"
+booking_url: "https://example.com/book"
+banned_words: []
+allowed_proof:
+  - "We serve 120 paying customers in this segment."
+cost_per_email_usd: 0.04
+scale_below_cost_per_hot_usd: 10.0
+pause_above_cost_per_hot_usd: 15.0
+pause_min_sent: 250
+segments:
+  - id: "core"
+    name: "Core ICP"
+    roles: ["Head of Sales", "VP Growth", "Founder"]
+    company_keywords: ["saas", "software"]
+    regions: ["Singapore", "APAC"]
+    min_employees: 20
+    max_employees: 2000
+    offer: "a 20-minute working session"
+    angle: "We start with one workflow and measure the result before expanding."
+    subject: "{company} x {sender_company}"

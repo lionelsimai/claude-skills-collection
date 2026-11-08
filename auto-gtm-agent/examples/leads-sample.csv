@@ -1,0 +1,8 @@
+first_name,last_name,email,title,company,region,employees,industry,signal
+Maya,Chen,maya.chen@example-voiceai.com,Head of Partnerships APAC,VoiceBridge AI,Singapore,420,voice ai,"Saw VoiceBridge AI just opened its Singapore office last month."
+Daniel,Okafor,daniel.okafor@example-bank.sg,Chief AI Officer,Example Bank Singapore,Singapore,8000,bank,"Saw Example Bank Singapore announced a new AI transformation programme this quarter."
+Priya,Raman,priya.raman@example-videoai.com,APAC Marketing Lead,ClipForge,Singapore,180,video generation,"Saw ClipForge launched its avatar product for APAC creators last week."
+Tom,Becker,tom.becker@example-tools.com,Office Manager,ToolBox GmbH,Berlin,60,software,""
+Sara,Lim,sara.lim@bad-email,Head of GTM APAC,AgentStack APAC,APAC,900,agent infrastructure,"Saw AgentStack APAC is hiring its first Singapore partnerships lead."
+Ken,Watanabe,ken.watanabe@example-modelco.com,Head of GTM APAC,ModelCo,Singapore,1200,llm model provider,"Saw ModelCo announced APAC expansion at its developer day."
+Maya,Chen,maya.chen@example-voiceai.com,Head of Partnerships APAC,VoiceBridge AI,Singapore,420,voice ai,"Duplicate row on purpose, to show dedupe."
