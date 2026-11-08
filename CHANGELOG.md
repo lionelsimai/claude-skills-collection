@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.0.0 — 2026-11-09
+
+- **10,598 skills**: +5,430 new profession skills across 181 new categories (healthcare specialties, legal practice areas, engineering disciplines, trades, hospitality, logistics, aviation, maritime, agriculture, energy, finance, real estate, care work, media, science and more), taking the collection past 10,000 skills.
+- Every new skill deduped against all existing slugs (0 collisions) and validated for frontmatter compliance (100%).
+- 122 plugins unchanged (120-plugin GTM + Community suite, Auto-GTM Agent, Resume Optimizer v2).
+
 ## 2.0.0 — 2026-11-09
 
 The collection grows from a skill library into a validated skill +

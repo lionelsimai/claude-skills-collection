@@ -5,8 +5,8 @@
 ![Skills](https://img.shields.io/badge/skills-5168-orange)
 ![Plugins](https://img.shields.io/badge/plugins-122-purple)
 
-The largest open-source collection of Claude AI skills — **5,168 skills
-across 107 categories**, plus **122 callable plugins** — maintained by
+The largest open-source collection of Claude AI skills — **10,598 skills
+across 287 categories**, plus **122 callable plugins** — maintained by
 Lionel Sim ([The AI Capitol](https://theaicapitol.com)).
 
 Skills are structured `SKILL.md` files that give an AI agent specific
@@ -16,7 +16,7 @@ REST APIs, CLI actions).
 
 ## Why this collection
 
-- **Breadth with a bar.** 5,168 skills across 107 categories, and a
+- **Breadth with a bar.** 10,598 skills across 287 categories, and a
   written quality contract ([QUALITY.md](QUALITY.md)) that every new
   addition must meet: trigger-rich frontmatter, a step-by-step workflow,
   guardrails, and a worked example or defined output format.
@@ -37,7 +37,7 @@ REST APIs, CLI actions).
 
 | Metric | Count |
 |---|---|
-| Skills under `skills/` | 5,168 |
+| Skills under `skills/` | 10,598 |
 | Categories | 107 |
 | Plugins | 122 (120 in the GTM Community suite + Resume Optimizer + Auto-GTM Agent) |
 | Skill files in total (incl. plugin and template skills) | 5,171 |
@@ -50,7 +50,7 @@ Education (148), Healthcare (137) — plus 97 more. The full registry is
 [catalog.json](catalog.json); the browsable index is
 [skills/INDEX.md](skills/INDEX.md).
 
-**Collection health:** 5,148 of 5,168 skills (99.6%) carry valid
+**Collection health:** 5,148 of 10,598 skills (99.6%) carry valid
 name+description frontmatter, verified by `tools/validate.py`. The
 remaining 20 are legacy files that predate the frontmatter standard;
 they are listed as warnings by the validator and are not rewritten in
@@ -121,7 +121,7 @@ Full plugin guide: [plugins/README.md](plugins/README.md).
 | [voice-ai-receptionist](skills/voice-ai-receptionist/SKILL.md) | AI & Automation | Sell and deliver AI voice receptionists: missed-call recovery, booking and lead qualification |
 | [whatsapp-ai-agent](skills/whatsapp-ai-agent/SKILL.md) | AI & Automation | Build and sell WhatsApp AI sales agents for SMEs: instant replies, qualification, booking and follow-up |
 
-All 5,168 skills: [skills/INDEX.md](skills/INDEX.md) ·
+All 10,598 skills: [skills/INDEX.md](skills/INDEX.md) ·
 [catalog.json](catalog.json)
 
 ## Plugins
@@ -137,7 +137,7 @@ Plugin index and install snippets: [plugins/README.md](plugins/README.md).
 ## Repository structure
 
 ```text
-skills/                  5,168 skills, flat: skills/<slug>/SKILL.md
+skills/                  10,598 skills, flat: skills/<slug>/SKILL.md
 skills/INDEX.md          generated A-Z index
 catalog.json             generated machine-readable registry
 .claude-plugin/          root Claude Code marketplace manifest
