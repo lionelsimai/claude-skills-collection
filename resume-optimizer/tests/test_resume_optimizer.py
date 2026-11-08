@@ -70,9 +70,59 @@ def test_synonyms_count_as_matches():
     assert result["must_have_coverage_pct"] >= 50
 
 
+def test_no_substring_false_positives():
+    # "excellence" must not surface "excel"; "seasoned" must not surface "seo".
+    job = ("Operations Lead. We value operational excellence and a seasoned "
+           "team. Lead regional operations across markets.")
+    kws = dict(extract_keywords(job, top=30))
+    assert "excel" not in kws
+    resume = "Sam\nsam@x.com\nSummary\nOps lead.\nExperience\nLed operations.\nEducation\nBSc\nSkills\nOperations"
+    result = score_resume(resume, job)
+    missing = {m["keyword"] for m in result["missing_keywords"]}
+    assert "excel" not in missing
+
+
+def test_punctuation_tokens_normalised():
+    # "functions." and "anz." in a posting are the words functions / anz,
+    # not separate keywords, and must match a resume that uses them plainly.
+    job = ("Strategy Lead for SEA & ANZ. Build scalable processes across "
+           "business lines and functions. Drive execution across ANZ.")
+    kws = dict(extract_keywords(job, top=30))
+    assert "functions." not in kws and "anz." not in kws
+    resume = ("Sam\nsam@x.com\nSummary\nStrategy lead.\nExperience\n"
+              "Built processes across functions in ANZ.\nEducation\nBSc\n"
+              "Skills\nStrategy, functions")
+    result = score_resume(resume, job)
+    missing = {m["keyword"] for m in result["missing_keywords"]}
+    assert "functions" not in missing and "anz" not in missing
+
+
+def test_plural_variants_match():
+    job = ("Operations Manager. Requirements: operations, reporting "
+           "frameworks, stakeholder management. Operations operations.")
+    resume = ("Sam\nsam@x.com\nSummary\nManager.\nExperience\n"
+              "Owned operation and a reporting framework.\nEducation\nBSc\n"
+              "Skills\nOperation, reporting framework")
+    result = score_resume(resume, job)
+    missing = {m["keyword"] for m in result["missing_keywords"]}
+    assert "operations" not in missing
+
+
+def test_bigram_components_suppressed():
+    job = ("Lead for South East Asia. Grow South East Asia markets. "
+           "South East Asia is the priority region.")
+    kws = dict(extract_keywords(job, top=30))
+    if "south east" in kws:
+        assert "south" not in kws and "east" not in kws
+
+
 if __name__ == "__main__":
     test_keywords_surface_job_terms()
     test_score_finds_sections_and_coverage()
     test_score_flags_thin_resume()
     test_synonyms_count_as_matches()
+    test_no_substring_false_positives()
+    test_punctuation_tokens_normalised()
+    test_plural_variants_match()
+    test_bigram_components_suppressed()
     print("All tests passed.")

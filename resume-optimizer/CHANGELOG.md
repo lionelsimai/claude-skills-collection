@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.3.0 — 2026-11-08
+
+- Scorer correctness fixes, each found by running the tool on a real
+  application and each now covered by a regression test:
+  - Phrase matching is word-boundary aware — "excel" no longer matches
+    inside "excellence", "seo" no longer matches inside "seasoned".
+  - Tokeniser strips sentence punctuation — "functions." and "anz."
+    are the words functions / anz, not phantom keywords that get
+    reported missing when they are present.
+  - Plural variants match both ways ("operations" <-> "operation").
+  - Generic JD filler ("key", "own", boilerplate) added to the
+    stopword list so it stops crowding real skills out of the top 30.
+  - Single words that only appear inside a kept multi-word keyword
+    ("south" / "east" next to "south east") are suppressed.
+- Added `templates/cover-note.md` — the SKILL.md workflow already told
+  users to address genuine gaps in a cover note; it now ships the
+  template for it.
+- Added CI (`.github/workflows/tests.yml`): the test suite on
+  Python 3.9-3.12, a scorer smoke test, and a sync check between the
+  root skill files and the `skills/resume-optimizer/` plugin copy.
+- Added `CONTRIBUTING.md` stating the contribution bar.
+- Test suite doubled (4 -> 8 tests).
+
 ## 1.2.0 — 2026-11-08
 
 - Distribution: the repo is now also a Claude Code plugin marketplace

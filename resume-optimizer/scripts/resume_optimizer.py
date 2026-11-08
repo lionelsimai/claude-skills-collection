@@ -34,6 +34,12 @@ STOPWORDS = {
     "plus", "etc", "day", "new", "all", "other", "more", "about", "into",
     "over", "per", "such", "than", "then", "them", "they", "have", "has",
     "had", "can", "should", "must", "also", "well", "able", "drive",
+    # Generic JD filler and boilerplate that carries no skill signal —
+    # without these, words like "key" crowd real skills out of the top 30.
+    "key", "own", "ensuring", "ensure", "responsible", "duties",
+    "equal", "employer", "opportunity", "discriminate", "discrimination",
+    "accommodation", "accommodations", "benefits", "perks", "salary",
+    "apply", "application", "applications", "hiring", "recruitment",
 }
 
 # Multi-word terms worth more than single words when scoring.
@@ -54,7 +60,11 @@ PHRASE_PATTERNS = [
 
 
 def tokenize(text):
-    return re.findall(r"[a-zA-Z][a-zA-Z0-9+#.\-]*", text.lower())
+    tokens = re.findall(r"[a-zA-Z][a-zA-Z0-9+#.\-]*", text.lower())
+    # Strip sentence punctuation stuck to a token ("functions." -> "functions",
+    # "anz." -> "anz") so the same word is never counted twice under two
+    # spellings, and never reported missing when it is present.
+    return [t.strip(".-") for t in tokens if t.strip(".-")]
 
 
 def extract_keywords(job_text, top=30):
@@ -63,7 +73,10 @@ def extract_keywords(job_text, top=30):
     counts = Counter()
 
     for pattern in PHRASE_PATTERNS:
-        hits = re.findall(pattern, lower)
+        # Word-boundary matching: without it "excel" matches inside
+        # "excellence" and "seo" inside longer words, inventing keywords
+        # the posting never named.
+        hits = re.findall(r"(?<!\w)(?:" + pattern + r")(?!\w)", lower)
         if hits:
             counts[re.sub(r"[- ]", " ", hits[0])] += len(hits) * 2
 
@@ -81,7 +94,22 @@ def extract_keywords(job_text, top=30):
             counts[f"{a} {b}"] += 1
 
     ranked = [(kw, c) for kw, c in counts.most_common(top * 2) if c >= 2]
-    return ranked[:top]
+    ranked = ranked[:top]
+
+    # Suppress single words that only appear as part of a kept multi-word
+    # keyword ("south" / "east" next to "south east"): they add no signal
+    # of their own and crowd real skills out of the list.
+    multi = {kw: c for kw, c in ranked if " " in kw}
+    if multi:
+        kept = []
+        for kw, c in ranked:
+            if " " not in kw and any(
+                    kw in phrase.split() and c <= pcount
+                    for phrase, pcount in multi.items()):
+                continue
+            kept.append((kw, c))
+        ranked = kept
+    return ranked
 
 
 # --------------------------------------------------------------------------
@@ -126,9 +154,24 @@ for _group in SYNONYM_GROUPS:
         SYNONYMS[_term] = _group
 
 
+def _variants(keyword):
+    """The keyword plus its synonym group and simple plural forms, so
+    'operations' in the posting matches 'operation' in a resume (and
+    the reverse) instead of being reported missing."""
+    base = SYNONYMS.get(keyword, {keyword})
+    out = set()
+    for term in base:
+        out.add(term)
+        last = term.split()[-1]
+        if len(last) > 3 and last.endswith("s") and not last.endswith("ss"):
+            out.add(term[:-1])
+        elif not last.endswith("s"):
+            out.add(term + "s")
+    return out
+
+
 def contains_keyword(text_lower, keyword):
-    variants = SYNONYMS.get(keyword, {keyword})
-    for variant in variants:
+    for variant in _variants(keyword):
         pattern = r"\b" + re.escape(variant).replace(r"\ ", r"[\s\-]") + r"\b"
         if re.search(pattern, text_lower):
             return True

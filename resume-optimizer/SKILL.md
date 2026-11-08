@@ -2,7 +2,7 @@
 name: resume-optimizer
 description: Tailor a resume to a specific job opening so it passes applicant tracking systems (ATS) and reads well to recruiters. Use when a user uploads a resume (PDF, DOCX, TXT or pasted text) and provides a job posting link or job description, and asks to polish, tailor, optimise or make the resume "AI ready" / "ATS ready" for that role or for online submission.
 license: MIT
-version: 1.2.0
+version: 1.3.0
 ---
 
 # Resume Optimizer
@@ -124,6 +124,7 @@ Apply the formatting rules in `references/ats-playbook.md`:
 
 Re-run the scorer on the tailored resume. Build the outputs from
 `templates/` (tailored-resume.md for the resume, delivery-report.md
+   for the report, cover-note.md when Bucket 3 gaps are worth addressing
 for the report). Deliver:
 
 1. The tailored resume (Markdown, plus PDF/DOCX if your environment
@@ -167,7 +168,8 @@ for the report). Deliver:
   honestly.
 - `references/rewrite-rules.md` — summary and bullet rewrite formulas,
   action-verb bank, quantification rules.
-- `templates/` — the tailored-resume skeleton and the delivery-report
+- `templates/` — the tailored-resume skeleton, the delivery-report
+  format, and a cover-note template for addressing genuine gaps honestly
   format every run produces.
 - `PROMPT.md` — the no-install version: one paste-ready prompt that
   runs this same workflow in any AI chat.
