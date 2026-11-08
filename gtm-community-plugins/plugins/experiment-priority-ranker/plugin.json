@@ -1,0 +1,84 @@
+{
+  "name": "experiment-priority-ranker",
+  "display_name": "Experiment Priority Ranker",
+  "description": "Rank GTM experiments by impact, confidence and effort (ICE-style).",
+  "category": "Analytics & Learning",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "experiment_priority_ranker",
+      "description": "Rank GTM experiments by impact, confidence and effort (ICE-style).",
+      "kind": "prioritize",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "sample_input": {
+        "items": [
+          {
+            "name": "Example 1",
+            "impact": 8,
+            "effort": 2
+          },
+          {
+            "name": "Example 2",
+            "impact": 7,
+            "effort": 3
+          },
+          {
+            "name": "Example 3",
+            "impact": 6,
+            "effort": 4
+          }
+        ]
+      },
+      "output": {
+        "plugin": "experiment-priority-ranker",
+        "tool": "experiment_priority_ranker",
+        "kind": "prioritize",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "prioritize",
+    "config": {
+      "items": [
+        "expected impact",
+        "confidence",
+        "effort",
+        "learning value",
+        "speed to result"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "analytics & learning",
+    "gtm",
+    "prioritize"
+  ]
+}

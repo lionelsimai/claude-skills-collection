@@ -1,0 +1,78 @@
+{
+  "name": "campaign-metrics-reporter",
+  "display_name": "Campaign Metrics Reporter",
+  "description": "Report campaign funnel maths from supplied counts.",
+  "category": "Analytics & Learning",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "campaign_metrics_reporter",
+      "description": "Report campaign funnel maths from supplied counts.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "sent": 100,
+          "opened": 90,
+          "replied": 80,
+          "meetings": 70,
+          "cost_per_meeting": 60
+        }
+      },
+      "output": {
+        "plugin": "campaign-metrics-reporter",
+        "tool": "campaign_metrics_reporter",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "sent",
+        "opened",
+        "replied",
+        "meetings",
+        "cost per meeting"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "analytics & learning",
+    "gtm",
+    "analyze"
+  ]
+}

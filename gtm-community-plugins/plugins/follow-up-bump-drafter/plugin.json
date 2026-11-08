@@ -1,0 +1,69 @@
+{
+  "name": "follow-up-bump-drafter",
+  "display_name": "Follow-up Bump Drafter",
+  "description": "Draft a short follow-up bump from supplied facts only. Draft only.",
+  "category": "Outreach & Sequences",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "follow_up_bump_drafter",
+      "description": "Draft a short follow-up bump from supplied facts only. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: thread_reference, new_value_point, choice_question, easy_opt_out"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "thread_reference": "[supplied: thread reference]",
+          "new_value_point": "[supplied: new value point]",
+          "choice_question": "[supplied: choice question]"
+        }
+      },
+      "output": {
+        "plugin": "follow-up-bump-drafter",
+        "tool": "follow_up_bump_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "thread reference",
+        "new value point",
+        "choice question",
+        "easy opt out"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "outreach & sequences",
+    "gtm",
+    "template"
+  ]
+}

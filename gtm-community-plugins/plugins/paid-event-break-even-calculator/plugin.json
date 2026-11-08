@@ -1,0 +1,77 @@
+{
+  "name": "paid-event-break-even-calculator",
+  "display_name": "Paid Event Break-even Calculator",
+  "description": "Calculate break-even ticket sales from supplied costs and price.",
+  "category": "Monetisation",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "paid_event_break_even_calculator",
+      "description": "Calculate break-even ticket sales from supplied costs and price.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "venue_cost": 2000,
+          "food_cost": 1500,
+          "other_costs": 500,
+          "ticket_price": 50
+        }
+      },
+      "output": {
+        "plugin": "paid-event-break-even-calculator",
+        "tool": "paid_event_break_even_calculator",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "venue cost",
+        "food cost",
+        "other costs",
+        "ticket price",
+        "break-even tickets"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "monetisation",
+    "community",
+    "analyze"
+  ]
+}

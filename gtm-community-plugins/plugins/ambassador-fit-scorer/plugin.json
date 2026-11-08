@@ -1,0 +1,72 @@
+{
+  "name": "ambassador-fit-scorer",
+  "display_name": "Ambassador Fit Scorer",
+  "description": "Score an ambassador candidate from supplied contributions.",
+  "category": "Ambassadors",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "ambassador_fit_scorer",
+      "description": "Score an ambassador candidate from supplied contributions.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: community_tenure, contribution_history, reach, reputation, availability"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "community_tenure": 70,
+          "contribution_history": 70,
+          "reach": 70,
+          "reputation": 70,
+          "availability": 70
+        }
+      },
+      "output": {
+        "plugin": "ambassador-fit-scorer",
+        "tool": "ambassador_fit_scorer",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "community tenure",
+        "contribution history",
+        "reach",
+        "reputation",
+        "availability"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "ambassadors",
+    "community",
+    "score"
+  ]
+}

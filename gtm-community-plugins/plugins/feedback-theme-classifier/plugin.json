@@ -1,0 +1,66 @@
+{
+  "name": "feedback-theme-classifier",
+  "display_name": "Feedback Theme Classifier",
+  "description": "Classify member feedback into a theme.",
+  "category": "Feedback & NPS",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "feedback_theme_classifier",
+      "description": "Classify member feedback into a theme.",
+      "kind": "classify",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "This is about content quality and needs review."
+      },
+      "output": {
+        "plugin": "feedback-theme-classifier",
+        "tool": "feedback_theme_classifier",
+        "kind": "classify",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "classify",
+    "config": {
+      "items": [
+        "content quality",
+        "networking",
+        "logistics",
+        "speakers",
+        "food and venue",
+        "other"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "feedback & nps",
+    "community",
+    "classify"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "name": "rsvp-conversion-reporter",
+  "display_name": "RSVP Conversion Reporter",
+  "description": "Report RSVP to attendance conversion from supplied counts.",
+  "category": "Events",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "rsvp_conversion_reporter",
+      "description": "Report RSVP to attendance conversion from supplied counts.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "registrations": 100,
+          "check_ins": 90,
+          "show_rate": 80,
+          "waitlist": 70,
+          "no_shows": 60
+        }
+      },
+      "output": {
+        "plugin": "rsvp-conversion-reporter",
+        "tool": "rsvp_conversion_reporter",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "registrations",
+        "check-ins",
+        "show rate",
+        "waitlist",
+        "no-shows"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "events",
+    "community",
+    "analyze"
+  ]
+}

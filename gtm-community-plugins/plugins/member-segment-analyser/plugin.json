@@ -1,0 +1,65 @@
+{
+  "name": "member-segment-analyser",
+  "display_name": "Member Segment Analyser",
+  "description": "Classify a member segment from a supplied activity description.",
+  "category": "Community Analytics",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "member_segment_analyser",
+      "description": "Classify a member segment from a supplied activity description.",
+      "kind": "classify",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "This is about power user and needs review."
+      },
+      "output": {
+        "plugin": "member-segment-analyser",
+        "tool": "member_segment_analyser",
+        "kind": "classify",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "classify",
+    "config": {
+      "items": [
+        "power user",
+        "regular",
+        "occasional",
+        "lurker",
+        "at risk"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "community analytics",
+    "community",
+    "classify"
+  ]
+}

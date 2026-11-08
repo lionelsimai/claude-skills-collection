@@ -1,0 +1,78 @@
+{
+  "name": "sponsor-satisfaction-reporter",
+  "display_name": "Sponsor Satisfaction Reporter",
+  "description": "Report sponsor satisfaction from supplied survey counts.",
+  "category": "Speakers & Sponsors",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "sponsor_satisfaction_reporter",
+      "description": "Report sponsor satisfaction from supplied survey counts.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "sponsors_surveyed": 100,
+          "satisfied": 90,
+          "neutral": 80,
+          "dissatisfied": 70,
+          "renewal_intent": 60
+        }
+      },
+      "output": {
+        "plugin": "sponsor-satisfaction-reporter",
+        "tool": "sponsor_satisfaction_reporter",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "sponsors surveyed",
+        "satisfied",
+        "neutral",
+        "dissatisfied",
+        "renewal intent"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "speakers & sponsors",
+    "community",
+    "analyze"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "content-performance-scorer",
+  "display_name": "Content Performance Scorer",
+  "description": "Score a community post's performance from supplied metrics.",
+  "category": "Community Analytics",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "content_performance_scorer",
+      "description": "Score a community post's performance from supplied metrics.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: views, reactions, comments, shares, saves"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "views": 70,
+          "reactions": 70,
+          "comments": 70,
+          "shares": 70,
+          "saves": 70
+        }
+      },
+      "output": {
+        "plugin": "content-performance-scorer",
+        "tool": "content_performance_scorer",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "views",
+        "reactions",
+        "comments",
+        "shares",
+        "saves"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "community analytics",
+    "community",
+    "score"
+  ]
+}

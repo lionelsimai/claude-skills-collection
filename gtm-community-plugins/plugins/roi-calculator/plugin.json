@@ -1,0 +1,78 @@
+{
+  "name": "roi-calculator",
+  "display_name": "ROI Calculator",
+  "description": "Calculate ROI and payback from supplied numbers only.",
+  "category": "Proposals & Pricing",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "roi_calculator",
+      "description": "Calculate ROI and payback from supplied numbers only.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "current_cost": 100,
+          "time_saved_per_week": 90,
+          "hourly_rate": 80,
+          "tool_cost": 70,
+          "payback_weeks": 60
+        }
+      },
+      "output": {
+        "plugin": "roi-calculator",
+        "tool": "roi_calculator",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "current cost",
+        "time saved per week",
+        "hourly rate",
+        "tool cost",
+        "payback weeks"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "proposals & pricing",
+    "gtm",
+    "analyze"
+  ]
+}

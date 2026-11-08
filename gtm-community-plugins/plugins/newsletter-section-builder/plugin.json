@@ -1,0 +1,70 @@
+{
+  "name": "newsletter-section-builder",
+  "display_name": "Newsletter Section Builder",
+  "description": "Build a newsletter section from supplied facts only. Draft only.",
+  "category": "Content & Thought Leadership",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "newsletter_section_builder",
+      "description": "Build a newsletter section from supplied facts only. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: headline, what_happened, why_it_matters, what_to_do, link"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "headline": "[supplied: headline]",
+          "what_happened": "[supplied: what happened]",
+          "why_it_matters": "[supplied: why it matters]"
+        }
+      },
+      "output": {
+        "plugin": "newsletter-section-builder",
+        "tool": "newsletter_section_builder",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "headline",
+        "what happened",
+        "why it matters",
+        "what to do",
+        "link"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "content & thought leadership",
+    "gtm",
+    "template"
+  ]
+}

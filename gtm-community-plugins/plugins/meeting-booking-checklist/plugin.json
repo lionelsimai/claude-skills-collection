@@ -1,0 +1,72 @@
+{
+  "name": "meeting-booking-checklist",
+  "display_name": "Meeting Booking Checklist",
+  "description": "Check a meeting booking flow before the invite goes out.",
+  "category": "Reply & Meeting",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "meeting_booking_checklist",
+      "description": "Check a meeting booking flow before the invite goes out.",
+      "kind": "checklist",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Completed items from: two time options, timezone stated, calendar invite, agenda line, reminder set"
+          }
+        },
+        "required": [
+          "completed"
+        ]
+      },
+      "sample_input": {
+        "completed": [
+          "two time options",
+          "timezone stated"
+        ]
+      },
+      "output": {
+        "plugin": "meeting-booking-checklist",
+        "tool": "meeting_booking_checklist",
+        "kind": "checklist",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "checklist",
+    "config": {
+      "items": [
+        "two time options",
+        "timezone stated",
+        "calendar invite",
+        "agenda line",
+        "reminder set"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "reply & meeting",
+    "gtm",
+    "checklist"
+  ]
+}

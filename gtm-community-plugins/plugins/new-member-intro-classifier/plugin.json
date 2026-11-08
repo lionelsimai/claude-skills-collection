@@ -1,0 +1,67 @@
+{
+  "name": "new-member-intro-classifier",
+  "display_name": "New Member Intro Classifier",
+  "description": "Classify a member introduction by member type for routing to relevant channels.",
+  "category": "Member Onboarding",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "new_member_intro_classifier",
+      "description": "Classify a member introduction by member type for routing to relevant channels.",
+      "kind": "classify",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "This is about builder and needs review."
+      },
+      "output": {
+        "plugin": "new-member-intro-classifier",
+        "tool": "new_member_intro_classifier",
+        "kind": "classify",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "classify",
+    "config": {
+      "items": [
+        "builder",
+        "founder",
+        "operator",
+        "student",
+        "job seeker",
+        "investor",
+        "other"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "member onboarding",
+    "community",
+    "classify"
+  ]
+}

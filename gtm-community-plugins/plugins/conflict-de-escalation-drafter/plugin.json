@@ -1,0 +1,69 @@
+{
+  "name": "conflict-de-escalation-drafter",
+  "display_name": "Conflict De-escalation Drafter",
+  "description": "Draft a de-escalation reply. Draft only, human moderator sends.",
+  "category": "Moderation & Safety",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "conflict_de_escalation_drafter",
+      "description": "Draft a de-escalation reply. Draft only, human moderator sends.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: calm_opening, shared_ground, rule_reminder, private_follow-up_offer"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "calm_opening": "[supplied: calm opening]",
+          "shared_ground": "[supplied: shared ground]",
+          "rule_reminder": "[supplied: rule reminder]"
+        }
+      },
+      "output": {
+        "plugin": "conflict-de-escalation-drafter",
+        "tool": "conflict_de_escalation_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "calm opening",
+        "shared ground",
+        "rule reminder",
+        "private follow-up offer"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "moderation & safety",
+    "community",
+    "template"
+  ]
+}

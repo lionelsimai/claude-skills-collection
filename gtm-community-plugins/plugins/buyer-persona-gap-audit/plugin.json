@@ -1,0 +1,66 @@
+{
+  "name": "buyer-persona-gap-audit",
+  "display_name": "Buyer Persona Gap Audit",
+  "description": "Audit a persona document for the elements a GTM team actually needs.",
+  "category": "ICP & Market Research",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "buyer_persona_gap_audit",
+      "description": "Audit a persona document for the elements a GTM team actually needs.",
+      "kind": "audit",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "job title pain points buying triggers are covered in this document."
+      },
+      "output": {
+        "plugin": "buyer-persona-gap-audit",
+        "tool": "buyer_persona_gap_audit",
+        "kind": "audit",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "audit",
+    "config": {
+      "items": [
+        "job title",
+        "pain points",
+        "buying triggers",
+        "objections",
+        "preferred channels",
+        "decision role"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "icp & market research",
+    "gtm",
+    "audit"
+  ]
+}

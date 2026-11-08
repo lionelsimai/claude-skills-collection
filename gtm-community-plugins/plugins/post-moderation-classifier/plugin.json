@@ -1,0 +1,66 @@
+{
+  "name": "post-moderation-classifier",
+  "display_name": "Post Moderation Classifier",
+  "description": "Classify a community post for moderation routing. Flags only, never auto-removes.",
+  "category": "Moderation & Safety",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "post_moderation_classifier",
+      "description": "Classify a community post for moderation routing. Flags only, never auto-removes.",
+      "kind": "classify",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "This is about welcome and needs review."
+      },
+      "output": {
+        "plugin": "post-moderation-classifier",
+        "tool": "post_moderation_classifier",
+        "kind": "classify",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "classify",
+    "config": {
+      "items": [
+        "welcome",
+        "self promotion",
+        "spam",
+        "abuse",
+        "off topic",
+        "needs help"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "moderation & safety",
+    "community",
+    "classify"
+  ]
+}

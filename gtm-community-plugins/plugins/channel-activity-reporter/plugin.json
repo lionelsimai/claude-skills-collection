@@ -1,0 +1,78 @@
+{
+  "name": "channel-activity-reporter",
+  "display_name": "Channel Activity Reporter",
+  "description": "Report channel activity and unanswered-post risk from supplied counts.",
+  "category": "Engagement",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "channel_activity_reporter",
+      "description": "Report channel activity and unanswered-post risk from supplied counts.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "posts": 100,
+          "replies": 90,
+          "unique_contributors": 80,
+          "unanswered_posts": 70,
+          "response_time_hours": 60
+        }
+      },
+      "output": {
+        "plugin": "channel-activity-reporter",
+        "tool": "channel_activity_reporter",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "posts",
+        "replies",
+        "unique contributors",
+        "unanswered posts",
+        "response time hours"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "engagement",
+    "community",
+    "analyze"
+  ]
+}

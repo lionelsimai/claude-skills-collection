@@ -1,0 +1,72 @@
+{
+  "name": "subject-line-scorer",
+  "display_name": "Subject Line Scorer",
+  "description": "Score a subject line before it is used. Spam-trigger risk is scored inversely.",
+  "category": "Outreach & Sequences",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "subject_line_scorer",
+      "description": "Score a subject line before it is used. Spam-trigger risk is scored inversely.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: length, personalisation, specificity, curiosity, spam_trigger_risk"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "length": 70,
+          "personalisation": 70,
+          "specificity": 70,
+          "curiosity": 70,
+          "spam_trigger_risk": 70
+        }
+      },
+      "output": {
+        "plugin": "subject-line-scorer",
+        "tool": "subject_line_scorer",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "length",
+        "personalisation",
+        "specificity",
+        "curiosity",
+        "spam trigger risk"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "outreach & sequences",
+    "gtm",
+    "score"
+  ]
+}

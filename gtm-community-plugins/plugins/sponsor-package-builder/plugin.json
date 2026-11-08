@@ -1,0 +1,70 @@
+{
+  "name": "sponsor-package-builder",
+  "display_name": "Sponsor Package Builder",
+  "description": "Build a sponsor package from supplied audience facts and deliverables only.",
+  "category": "Monetisation",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "sponsor_package_builder",
+      "description": "Build a sponsor package from supplied audience facts and deliverables only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: audience_supplied_by_user, deliverables, term, investment, reporting"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "audience_supplied_by_user": "[supplied: audience supplied by user]",
+          "deliverables": "[supplied: deliverables]",
+          "term": "[supplied: term]"
+        }
+      },
+      "output": {
+        "plugin": "sponsor-package-builder",
+        "tool": "sponsor_package_builder",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "audience supplied by user",
+        "deliverables",
+        "term",
+        "investment",
+        "reporting"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "monetisation",
+    "community",
+    "template"
+  ]
+}

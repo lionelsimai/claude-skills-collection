@@ -1,0 +1,65 @@
+{
+  "name": "survey-design-audit",
+  "display_name": "Survey Design Audit",
+  "description": "Audit a survey design before sending.",
+  "category": "Feedback & NPS",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "survey_design_audit",
+      "description": "Audit a survey design before sending.",
+      "kind": "audit",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "one clear goal five questions or fewer rating scale are covered in this document."
+      },
+      "output": {
+        "plugin": "survey-design-audit",
+        "tool": "survey_design_audit",
+        "kind": "audit",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "audit",
+    "config": {
+      "items": [
+        "one clear goal",
+        "five questions or fewer",
+        "rating scale",
+        "open text option",
+        "thank you note"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "feedback & nps",
+    "community",
+    "audit"
+  ]
+}

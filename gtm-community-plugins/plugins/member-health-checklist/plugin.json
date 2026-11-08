@@ -1,0 +1,72 @@
+{
+  "name": "member-health-checklist",
+  "display_name": "Member Health Checklist",
+  "description": "Check member health signals for a cohort review.",
+  "category": "Retention & Churn",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "member_health_checklist",
+      "description": "Check member health signals for a cohort review.",
+      "kind": "checklist",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Completed items from: logged in recently, attended event, posted or replied, used a resource, gave feedback"
+          }
+        },
+        "required": [
+          "completed"
+        ]
+      },
+      "sample_input": {
+        "completed": [
+          "logged in recently",
+          "attended event"
+        ]
+      },
+      "output": {
+        "plugin": "member-health-checklist",
+        "tool": "member_health_checklist",
+        "kind": "checklist",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "checklist",
+    "config": {
+      "items": [
+        "logged in recently",
+        "attended event",
+        "posted or replied",
+        "used a resource",
+        "gave feedback"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "retention & churn",
+    "community",
+    "checklist"
+  ]
+}

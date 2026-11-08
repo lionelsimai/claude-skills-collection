@@ -1,0 +1,72 @@
+{
+  "name": "content-idea-scorer",
+  "display_name": "Content Idea Scorer",
+  "description": "Score a content idea before production time is spent.",
+  "category": "Content & Thought Leadership",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "content_idea_scorer",
+      "description": "Score a content idea before production time is spent.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: audience_relevance, originality, proof_available, effort_to_produce, distribution_fit"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "audience_relevance": 70,
+          "originality": 70,
+          "proof_available": 70,
+          "effort_to_produce": 70,
+          "distribution_fit": 70
+        }
+      },
+      "output": {
+        "plugin": "content-idea-scorer",
+        "tool": "content_idea_scorer",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "audience relevance",
+        "originality",
+        "proof available",
+        "effort to produce",
+        "distribution fit"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "content & thought leadership",
+    "gtm",
+    "score"
+  ]
+}

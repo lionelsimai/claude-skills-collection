@@ -1,0 +1,65 @@
+{
+  "name": "benchmark-gap-audit",
+  "display_name": "Benchmark Gap Audit",
+  "description": "Audit which benchmark metrics are tracked versus missing.",
+  "category": "Community Analytics",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "benchmark_gap_audit",
+      "description": "Audit which benchmark metrics are tracked versus missing.",
+      "kind": "audit",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "active rate response time event show rate are covered in this document."
+      },
+      "output": {
+        "plugin": "benchmark-gap-audit",
+        "tool": "benchmark_gap_audit",
+        "kind": "audit",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "audit",
+    "config": {
+      "items": [
+        "active rate",
+        "response time",
+        "event show rate",
+        "nps",
+        "retention rate"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "community analytics",
+    "community",
+    "audit"
+  ]
+}

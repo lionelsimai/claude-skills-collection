@@ -1,0 +1,72 @@
+{
+  "name": "sponsor-deliverable-tracker",
+  "display_name": "Sponsor Deliverable Tracker",
+  "description": "Track sponsor deliverables promised versus delivered.",
+  "category": "Sponsors & Partners",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "sponsor_deliverable_tracker",
+      "description": "Track sponsor deliverables promised versus delivered.",
+      "kind": "checklist",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Completed items from: logo placed, speaking slot, lead list shared, social post, post-event report"
+          }
+        },
+        "required": [
+          "completed"
+        ]
+      },
+      "sample_input": {
+        "completed": [
+          "logo placed",
+          "speaking slot"
+        ]
+      },
+      "output": {
+        "plugin": "sponsor-deliverable-tracker",
+        "tool": "sponsor_deliverable_tracker",
+        "kind": "checklist",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "checklist",
+    "config": {
+      "items": [
+        "logo placed",
+        "speaking slot",
+        "lead list shared",
+        "social post",
+        "post-event report"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "sponsors & partners",
+    "gtm",
+    "checklist"
+  ]
+}

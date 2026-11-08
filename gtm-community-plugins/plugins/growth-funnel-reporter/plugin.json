@@ -1,0 +1,78 @@
+{
+  "name": "growth-funnel-reporter",
+  "display_name": "Growth Funnel Reporter",
+  "description": "Report community growth funnel conversion from supplied counts.",
+  "category": "Community Analytics",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "growth_funnel_reporter",
+      "description": "Report community growth funnel conversion from supplied counts.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "invites": 100,
+          "signups": 90,
+          "activated": 80,
+          "engaged": 70,
+          "retained": 60
+        }
+      },
+      "output": {
+        "plugin": "growth-funnel-reporter",
+        "tool": "growth_funnel_reporter",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "invites",
+        "signups",
+        "activated",
+        "engaged",
+        "retained"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "community analytics",
+    "community",
+    "analyze"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "code-of-conduct-audit",
+  "display_name": "Code of Conduct Audit",
+  "description": "Audit a code of conduct for essential safety elements.",
+  "category": "Moderation & Safety",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "code_of_conduct_audit",
+      "description": "Audit a code of conduct for essential safety elements.",
+      "kind": "audit",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "expected behaviour unacceptable behaviour reporting route are covered in this document."
+      },
+      "output": {
+        "plugin": "code-of-conduct-audit",
+        "tool": "code_of_conduct_audit",
+        "kind": "audit",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "audit",
+    "config": {
+      "items": [
+        "expected behaviour",
+        "unacceptable behaviour",
+        "reporting route",
+        "consequences",
+        "appeals process"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "moderation & safety",
+    "community",
+    "audit"
+  ]
+}

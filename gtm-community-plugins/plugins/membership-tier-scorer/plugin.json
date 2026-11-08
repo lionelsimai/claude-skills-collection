@@ -1,0 +1,72 @@
+{
+  "name": "membership-tier-scorer",
+  "display_name": "Membership Tier Scorer",
+  "description": "Score a paid membership tier design. Sponsors pay first in Lionel's model, member paywalls need explicit review.",
+  "category": "Monetisation",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "membership_tier_scorer",
+      "description": "Score a paid membership tier design. Sponsors pay first in Lionel's model, member paywalls need explicit review.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: value_delivered, price_fit, exclusivity, delivery_cost, support_load"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "value_delivered": 70,
+          "price_fit": 70,
+          "exclusivity": 70,
+          "delivery_cost": 70,
+          "support_load": 70
+        }
+      },
+      "output": {
+        "plugin": "membership-tier-scorer",
+        "tool": "membership_tier_scorer",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "value delivered",
+        "price fit",
+        "exclusivity",
+        "delivery cost",
+        "support load"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "monetisation",
+    "community",
+    "score"
+  ]
+}

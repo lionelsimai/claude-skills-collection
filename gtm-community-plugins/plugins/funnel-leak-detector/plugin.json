@@ -1,0 +1,72 @@
+{
+  "name": "funnel-leak-detector",
+  "display_name": "Funnel Leak Detector",
+  "description": "Identify the weakest funnel stage from supplied completion items.",
+  "category": "Analytics & Learning",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "funnel_leak_detector",
+      "description": "Identify the weakest funnel stage from supplied completion items.",
+      "kind": "checklist",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Completed items from: visit to signup, signup to reply, reply to meeting, meeting to proposal, proposal to close"
+          }
+        },
+        "required": [
+          "completed"
+        ]
+      },
+      "sample_input": {
+        "completed": [
+          "visit to signup",
+          "signup to reply"
+        ]
+      },
+      "output": {
+        "plugin": "funnel-leak-detector",
+        "tool": "funnel_leak_detector",
+        "kind": "checklist",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "checklist",
+    "config": {
+      "items": [
+        "visit to signup",
+        "signup to reply",
+        "reply to meeting",
+        "meeting to proposal",
+        "proposal to close"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "analytics & learning",
+    "gtm",
+    "checklist"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "churn-risk-scorer",
+  "display_name": "Churn Risk Scorer",
+  "description": "Score member churn risk from supplied activity signals. Higher inactivity means higher risk.",
+  "category": "Retention & Churn",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "churn_risk_scorer",
+      "description": "Score member churn risk from supplied activity signals. Higher inactivity means higher risk.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: days_inactive, event_absence, post_decline, support_issues, tenure"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "days_inactive": 70,
+          "event_absence": 70,
+          "post_decline": 70,
+          "support_issues": 70,
+          "tenure": 70
+        }
+      },
+      "output": {
+        "plugin": "churn-risk-scorer",
+        "tool": "churn_risk_scorer",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "days inactive",
+        "event absence",
+        "post decline",
+        "support issues",
+        "tenure"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "retention & churn",
+    "community",
+    "score"
+  ]
+}

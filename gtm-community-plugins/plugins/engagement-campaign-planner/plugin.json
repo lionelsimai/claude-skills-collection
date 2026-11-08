@@ -1,0 +1,69 @@
+{
+  "name": "engagement-campaign-planner",
+  "display_name": "Engagement Campaign Planner",
+  "description": "Plan a four-week engagement campaign.",
+  "category": "Engagement",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "engagement_campaign_planner",
+      "description": "Plan a four-week engagement campaign.",
+      "kind": "plan",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "goal": {
+            "type": "string"
+          },
+          "timeframe_days": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "goal"
+        ]
+      },
+      "sample_input": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+      },
+      "output": {
+        "plugin": "engagement-campaign-planner",
+        "tool": "engagement_campaign_planner",
+        "kind": "plan",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "plan",
+    "config": {
+      "items": [
+        "pick theme",
+        "week 1 prompt",
+        "week 2 challenge",
+        "week 3 spotlight",
+        "week 4 event tie-in"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "engagement",
+    "community",
+    "plan"
+  ]
+}

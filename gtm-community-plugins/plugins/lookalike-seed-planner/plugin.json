@@ -1,0 +1,69 @@
+{
+  "name": "lookalike-seed-planner",
+  "display_name": "Lookalike Seed Planner",
+  "description": "Plan a lookalike list build from your best supplied accounts.",
+  "category": "Lead Generation",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "lookalike_seed_planner",
+      "description": "Plan a lookalike list build from your best supplied accounts.",
+      "kind": "plan",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "goal": {
+            "type": "string"
+          },
+          "timeframe_days": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "goal"
+        ]
+      },
+      "sample_input": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+      },
+      "output": {
+        "plugin": "lookalike-seed-planner",
+        "tool": "lookalike_seed_planner",
+        "kind": "plan",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "plan",
+    "config": {
+      "items": [
+        "select seed accounts",
+        "extract shared traits",
+        "exclude existing customers",
+        "build search criteria",
+        "validate sample size"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "lead generation",
+    "gtm",
+    "plan"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "gtm-community-plugins": {
+      "command": "python3",
+      "args": [
+        "mcp_server.py"
+      ]
+    }
+  }
+}

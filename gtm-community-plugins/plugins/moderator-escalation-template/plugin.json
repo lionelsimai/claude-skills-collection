@@ -1,0 +1,70 @@
+{
+  "name": "moderator-escalation-template",
+  "display_name": "Moderator Escalation Template",
+  "description": "Render a moderation escalation record from supplied evidence only.",
+  "category": "Moderation & Safety",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "moderator_escalation_template",
+      "description": "Render a moderation escalation record from supplied evidence only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: incident_summary, evidence_supplied_by_moderator, rule_reference, action_taken, appeal_note"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "incident_summary": "[supplied: incident summary]",
+          "evidence_supplied_by_moderator": "[supplied: evidence supplied by moderator]",
+          "rule_reference": "[supplied: rule reference]"
+        }
+      },
+      "output": {
+        "plugin": "moderator-escalation-template",
+        "tool": "moderator_escalation_template",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "incident summary",
+        "evidence supplied by moderator",
+        "rule reference",
+        "action taken",
+        "appeal note"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "moderation & safety",
+    "community",
+    "template"
+  ]
+}

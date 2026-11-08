@@ -1,0 +1,69 @@
+{
+  "name": "partner-tier-designer",
+  "display_name": "Partner Tier Designer",
+  "description": "Design a partner tier ladder from a stated goal and supplied deliverables.",
+  "category": "Sponsors & Partners",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "partner_tier_designer",
+      "description": "Design a partner tier ladder from a stated goal and supplied deliverables.",
+      "kind": "plan",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "goal": {
+            "type": "string"
+          },
+          "timeframe_days": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "goal"
+        ]
+      },
+      "sample_input": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+      },
+      "output": {
+        "plugin": "partner-tier-designer",
+        "tool": "partner_tier_designer",
+        "kind": "plan",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "plan",
+    "config": {
+      "items": [
+        "define entry tier",
+        "define annual tier",
+        "price the gap",
+        "list deliverables per tier",
+        "set upgrade trigger"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "sponsors & partners",
+    "gtm",
+    "plan"
+  ]
+}

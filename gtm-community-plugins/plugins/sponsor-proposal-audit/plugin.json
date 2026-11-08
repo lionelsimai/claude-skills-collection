@@ -1,0 +1,66 @@
+{
+  "name": "sponsor-proposal-audit",
+  "display_name": "Sponsor Proposal Audit",
+  "description": "Audit a sponsor proposal for missing commercial elements. Audience numbers must be supplied, never invented.",
+  "category": "Sponsors & Partners",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "sponsor_proposal_audit",
+      "description": "Audit a sponsor proposal for missing commercial elements. Audience numbers must be supplied, never invented.",
+      "kind": "audit",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "audience evidence deliverables pricing are covered in this document."
+      },
+      "output": {
+        "plugin": "sponsor-proposal-audit",
+        "tool": "sponsor_proposal_audit",
+        "kind": "audit",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "audit",
+    "config": {
+      "items": [
+        "audience evidence",
+        "deliverables",
+        "pricing",
+        "dates",
+        "terms",
+        "call to action"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "sponsors & partners",
+    "gtm",
+    "audit"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "name": "revenue-mix-reporter",
+  "display_name": "Revenue Mix Reporter",
+  "description": "Report revenue mix percentages from supplied amounts.",
+  "category": "Monetisation",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "revenue_mix_reporter",
+      "description": "Report revenue mix percentages from supplied amounts.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "amounts": {
+          "sponsorship": 1000,
+          "tickets": 2000,
+          "memberships": 3000,
+          "workshops": 4000,
+          "other_revenue": 5000
+        }
+      },
+      "output": {
+        "plugin": "revenue-mix-reporter",
+        "tool": "revenue_mix_reporter",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "sponsorship",
+        "tickets",
+        "memberships",
+        "workshops",
+        "other revenue"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "monetisation",
+    "community",
+    "analyze"
+  ]
+}

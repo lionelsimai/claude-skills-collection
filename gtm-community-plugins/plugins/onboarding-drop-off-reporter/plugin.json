@@ -1,0 +1,78 @@
+{
+  "name": "onboarding-drop-off-reporter",
+  "display_name": "Onboarding Drop-off Reporter",
+  "description": "Report onboarding funnel drop-off from supplied counts.",
+  "category": "Member Onboarding",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "onboarding_drop_off_reporter",
+      "description": "Report onboarding funnel drop-off from supplied counts.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "joined": 100,
+          "profile_completed": 90,
+          "introduced": 80,
+          "attended_first_event": 70,
+          "active_at_day_30": 60
+        }
+      },
+      "output": {
+        "plugin": "onboarding-drop-off-reporter",
+        "tool": "onboarding_drop_off_reporter",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "joined",
+        "profile completed",
+        "introduced",
+        "attended first event",
+        "active at day 30"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "member onboarding",
+    "community",
+    "analyze"
+  ]
+}

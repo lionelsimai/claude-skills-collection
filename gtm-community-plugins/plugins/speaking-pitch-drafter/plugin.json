@@ -1,0 +1,70 @@
+{
+  "name": "speaking-pitch-drafter",
+  "display_name": "Speaking Pitch Drafter",
+  "description": "Draft a speaking pitch from supplied bio and topic only. Draft only.",
+  "category": "Content & Thought Leadership",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "speaking_pitch_drafter",
+      "description": "Draft a speaking pitch from supplied bio and topic only. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: event_fit, topic, three_takeaways, speaker_bio_supplied_by_user, format"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "event_fit": "[supplied: event fit]",
+          "topic": "[supplied: topic]",
+          "three_takeaways": "[supplied: three takeaways]"
+        }
+      },
+      "output": {
+        "plugin": "speaking-pitch-drafter",
+        "tool": "speaking_pitch_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "event fit",
+        "topic",
+        "three takeaways",
+        "speaker bio supplied by user",
+        "format"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "content & thought leadership",
+    "gtm",
+    "template"
+  ]
+}

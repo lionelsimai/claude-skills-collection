@@ -1,0 +1,72 @@
+{
+  "name": "ab-test-verdict-tool",
+  "display_name": "A/B Test Verdict Tool",
+  "description": "Score whether an A/B test result is strong enough to act on, from supplied data.",
+  "category": "Analytics & Learning",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "ab_test_verdict_tool",
+      "description": "Score whether an A/B test result is strong enough to act on, from supplied data.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: sample_size, conversion_lift, consistency, effort, downside_risk"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "sample_size": 70,
+          "conversion_lift": 70,
+          "consistency": 70,
+          "effort": 70,
+          "downside_risk": 70
+        }
+      },
+      "output": {
+        "plugin": "ab-test-verdict-tool",
+        "tool": "ab_test_verdict_tool",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "sample size",
+        "conversion lift",
+        "consistency",
+        "effort",
+        "downside risk"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "analytics & learning",
+    "gtm",
+    "score"
+  ]
+}

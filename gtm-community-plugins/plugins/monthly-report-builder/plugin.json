@@ -1,0 +1,70 @@
+{
+  "name": "monthly-report-builder",
+  "display_name": "Monthly Report Builder",
+  "description": "Build a monthly community report from supplied metrics only.",
+  "category": "Community Analytics",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "monthly_report_builder",
+      "description": "Build a monthly community report from supplied metrics only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: headline_metric, growth, engagement_highlight_supplied_by_user, challenges, next_month_priority"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "headline_metric": "[supplied: headline metric]",
+          "growth": "[supplied: growth]",
+          "engagement_highlight_supplied_by_user": "[supplied: engagement highlight supplied by user]"
+        }
+      },
+      "output": {
+        "plugin": "monthly-report-builder",
+        "tool": "monthly_report_builder",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "headline metric",
+        "growth",
+        "engagement highlight supplied by user",
+        "challenges",
+        "next month priority"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "community analytics",
+    "community",
+    "template"
+  ]
+}

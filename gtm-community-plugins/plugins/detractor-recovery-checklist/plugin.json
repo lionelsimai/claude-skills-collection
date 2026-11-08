@@ -1,0 +1,72 @@
+{
+  "name": "detractor-recovery-checklist",
+  "display_name": "Detractor Recovery Checklist",
+  "description": "Check detractor recovery steps are complete.",
+  "category": "Feedback & NPS",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "detractor_recovery_checklist",
+      "description": "Check detractor recovery steps are complete.",
+      "kind": "checklist",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Completed items from: acknowledge within 48h, understand issue, offer fix, follow up, log learning"
+          }
+        },
+        "required": [
+          "completed"
+        ]
+      },
+      "sample_input": {
+        "completed": [
+          "acknowledge within 48h",
+          "understand issue"
+        ]
+      },
+      "output": {
+        "plugin": "detractor-recovery-checklist",
+        "tool": "detractor_recovery_checklist",
+        "kind": "checklist",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "checklist",
+    "config": {
+      "items": [
+        "acknowledge within 48h",
+        "understand issue",
+        "offer fix",
+        "follow up",
+        "log learning"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "feedback & nps",
+    "community",
+    "checklist"
+  ]
+}

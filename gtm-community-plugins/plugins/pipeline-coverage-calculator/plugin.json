@@ -1,0 +1,78 @@
+{
+  "name": "pipeline-coverage-calculator",
+  "display_name": "Pipeline Coverage Calculator",
+  "description": "Calculate pipeline coverage from supplied pipeline and target.",
+  "category": "Pipeline & CRM",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "pipeline_coverage_calculator",
+      "description": "Calculate pipeline coverage from supplied pipeline and target.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "open_pipeline": 100,
+          "target": 90,
+          "coverage_ratio": 80,
+          "weighted_pipeline": 70,
+          "gap": 60
+        }
+      },
+      "output": {
+        "plugin": "pipeline-coverage-calculator",
+        "tool": "pipeline_coverage_calculator",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "open pipeline",
+        "target",
+        "coverage ratio",
+        "weighted pipeline",
+        "gap"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "pipeline & crm",
+    "gtm",
+    "analyze"
+  ]
+}

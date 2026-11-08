@@ -1,0 +1,69 @@
+{
+  "name": "objection-response-drafter",
+  "display_name": "Objection Response Drafter",
+  "description": "Draft an objection reply from supplied evidence only. Draft only, human approval required.",
+  "category": "Reply & Meeting",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "objection_response_drafter",
+      "description": "Draft an objection reply from supplied evidence only. Draft only, human approval required.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: acknowledge_objection, supplied_evidence, reframe, low-risk_next_step"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "acknowledge_objection": "[supplied: acknowledge objection]",
+          "supplied_evidence": "[supplied: supplied evidence]",
+          "reframe": "[supplied: reframe]"
+        }
+      },
+      "output": {
+        "plugin": "objection-response-drafter",
+        "tool": "objection_response_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "acknowledge objection",
+        "supplied evidence",
+        "reframe",
+        "low-risk next step"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "reply & meeting",
+    "gtm",
+    "template"
+  ]
+}

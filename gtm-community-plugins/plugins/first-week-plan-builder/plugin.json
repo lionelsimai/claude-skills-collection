@@ -1,0 +1,69 @@
+{
+  "name": "first-week-plan-builder",
+  "display_name": "First-week Plan Builder",
+  "description": "Build a first-week plan for a new member cohort.",
+  "category": "Member Onboarding",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "first_week_plan_builder",
+      "description": "Build a first-week plan for a new member cohort.",
+      "kind": "plan",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "goal": {
+            "type": "string"
+          },
+          "timeframe_days": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "goal"
+        ]
+      },
+      "sample_input": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+      },
+      "output": {
+        "plugin": "first-week-plan-builder",
+        "tool": "first_week_plan_builder",
+        "kind": "plan",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "plan",
+    "config": {
+      "items": [
+        "day 1 welcome",
+        "day 2 resource",
+        "day 3 intro prompt",
+        "day 5 event invite",
+        "day 7 check-in"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "member onboarding",
+    "community",
+    "plan"
+  ]
+}

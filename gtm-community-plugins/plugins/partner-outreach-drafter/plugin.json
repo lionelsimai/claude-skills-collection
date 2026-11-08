@@ -1,0 +1,69 @@
+{
+  "name": "partner-outreach-drafter",
+  "display_name": "Partner Outreach Drafter",
+  "description": "Draft partner outreach from supplied audience facts only. Draft only.",
+  "category": "Sponsors & Partners",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "partner_outreach_drafter",
+      "description": "Draft partner outreach from supplied audience facts only. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: shared_audience, entry_offer, proof_supplied_by_user, meeting_ask"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "shared_audience": "[supplied: shared audience]",
+          "entry_offer": "[supplied: entry offer]",
+          "proof_supplied_by_user": "[supplied: proof supplied by user]"
+        }
+      },
+      "output": {
+        "plugin": "partner-outreach-drafter",
+        "tool": "partner_outreach_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "shared audience",
+        "entry offer",
+        "proof supplied by user",
+        "meeting ask"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "sponsors & partners",
+    "gtm",
+    "template"
+  ]
+}

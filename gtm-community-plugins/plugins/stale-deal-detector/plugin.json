@@ -1,0 +1,72 @@
+{
+  "name": "stale-deal-detector",
+  "display_name": "Stale Deal Detector",
+  "description": "Flag stale deals from a supplied checklist of deal hygiene items.",
+  "category": "Pipeline & CRM",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "stale_deal_detector",
+      "description": "Flag stale deals from a supplied checklist of deal hygiene items.",
+      "kind": "checklist",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Completed items from: last activity date, next step, stage age, owner assigned, close date updated"
+          }
+        },
+        "required": [
+          "completed"
+        ]
+      },
+      "sample_input": {
+        "completed": [
+          "last activity date",
+          "next step"
+        ]
+      },
+      "output": {
+        "plugin": "stale-deal-detector",
+        "tool": "stale_deal_detector",
+        "kind": "checklist",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "checklist",
+    "config": {
+      "items": [
+        "last activity date",
+        "next step",
+        "stage age",
+        "owner assigned",
+        "close date updated"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "pipeline & crm",
+    "gtm",
+    "checklist"
+  ]
+}

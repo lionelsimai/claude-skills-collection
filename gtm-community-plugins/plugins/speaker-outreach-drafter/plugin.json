@@ -1,0 +1,70 @@
+{
+  "name": "speaker-outreach-drafter",
+  "display_name": "Speaker Outreach Drafter",
+  "description": "Draft speaker outreach from supplied event facts. Draft only.",
+  "category": "Speakers & Sponsors",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "speaker_outreach_drafter",
+      "description": "Draft speaker outreach from supplied event facts. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: event_context, audience_supplied_by_user, topic_fit, logistics, next_step"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "event_context": "[supplied: event context]",
+          "audience_supplied_by_user": "[supplied: audience supplied by user]",
+          "topic_fit": "[supplied: topic fit]"
+        }
+      },
+      "output": {
+        "plugin": "speaker-outreach-drafter",
+        "tool": "speaker_outreach_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "event context",
+        "audience supplied by user",
+        "topic fit",
+        "logistics",
+        "next step"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "speakers & sponsors",
+    "community",
+    "template"
+  ]
+}

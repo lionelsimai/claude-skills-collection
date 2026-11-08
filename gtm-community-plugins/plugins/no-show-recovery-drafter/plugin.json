@@ -1,0 +1,69 @@
+{
+  "name": "no-show-recovery-drafter",
+  "display_name": "No-show Recovery Drafter",
+  "description": "Draft a no-show recovery message from supplied facts. Draft only.",
+  "category": "Reply & Meeting",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "no_show_recovery_drafter",
+      "description": "Draft a no-show recovery message from supplied facts. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: grace_opening, no_blame, two_new_options, value_recap"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "grace_opening": "[supplied: grace opening]",
+          "no_blame": "[supplied: no blame]",
+          "two_new_options": "[supplied: two new options]"
+        }
+      },
+      "output": {
+        "plugin": "no-show-recovery-drafter",
+        "tool": "no_show_recovery_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "grace opening",
+        "no blame",
+        "two new options",
+        "value recap"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "reply & meeting",
+    "gtm",
+    "template"
+  ]
+}

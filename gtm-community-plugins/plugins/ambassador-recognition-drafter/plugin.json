@@ -1,0 +1,69 @@
+{
+  "name": "ambassador-recognition-drafter",
+  "display_name": "Ambassador Recognition Drafter",
+  "description": "Draft ambassador recognition from supplied facts. Draft only.",
+  "category": "Ambassadors",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "ambassador_recognition_drafter",
+      "description": "Draft ambassador recognition from supplied facts. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: name_supplied_by_user, specific_contribution, impact_supplied_by_user, public_thank_you"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "name_supplied_by_user": "[supplied: name supplied by user]",
+          "specific_contribution": "[supplied: specific contribution]",
+          "impact_supplied_by_user": "[supplied: impact supplied by user]"
+        }
+      },
+      "output": {
+        "plugin": "ambassador-recognition-drafter",
+        "tool": "ambassador_recognition_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "name supplied by user",
+        "specific contribution",
+        "impact supplied by user",
+        "public thank you"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "ambassadors",
+    "community",
+    "template"
+  ]
+}

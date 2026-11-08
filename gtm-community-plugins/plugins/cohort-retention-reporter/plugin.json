@@ -1,0 +1,78 @@
+{
+  "name": "cohort-retention-reporter",
+  "display_name": "Cohort Retention Reporter",
+  "description": "Report cohort retention from supplied counts.",
+  "category": "Retention & Churn",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "cohort_retention_reporter",
+      "description": "Report cohort retention from supplied counts.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "month_0_members": 100,
+          "month_1_retained": 90,
+          "month_3_retained": 80,
+          "month_6_retained": 70,
+          "retention_curve": 60
+        }
+      },
+      "output": {
+        "plugin": "cohort-retention-reporter",
+        "tool": "cohort_retention_reporter",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "month 0 members",
+        "month 1 retained",
+        "month 3 retained",
+        "month 6 retained",
+        "retention curve"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "retention & churn",
+    "community",
+    "analyze"
+  ]
+}

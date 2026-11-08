@@ -1,0 +1,72 @@
+{
+  "name": "intent-signal-scorer",
+  "display_name": "Intent Signal Scorer",
+  "description": "Score buying intent from supplied behavioural signals.",
+  "category": "Lead Scoring & Enrichment",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "intent_signal_scorer",
+      "description": "Score buying intent from supplied behavioural signals.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: pricing_page_visits, comparison_searches, repeat_visits, content_depth, recency"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "pricing_page_visits": 70,
+          "comparison_searches": 70,
+          "repeat_visits": 70,
+          "content_depth": 70,
+          "recency": 70
+        }
+      },
+      "output": {
+        "plugin": "intent-signal-scorer",
+        "tool": "intent_signal_scorer",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "pricing page visits",
+        "comparison searches",
+        "repeat visits",
+        "content depth",
+        "recency"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "lead scoring & enrichment",
+    "gtm",
+    "score"
+  ]
+}

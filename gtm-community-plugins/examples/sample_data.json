@@ -1,0 +1,49 @@
+{
+  "note": "Fictional sample data only. No real people, clients or metrics.",
+  "samples": {
+    "icp_fit_scorer": {
+      "metrics": {
+        "company_size_fit": 70,
+        "industry_match": 70,
+        "geography_fit": 70,
+        "technology_fit": 70,
+        "buying_signal_strength": 70
+      }
+    },
+    "reply_intent_classifier": {
+      "text": "This is about interested and needs review."
+    },
+    "sponsor_fit_scorer": {
+      "metrics": {
+        "audience_match": 70,
+        "brand_alignment": 70,
+        "budget_fit": 70,
+        "category_exclusivity": 70,
+        "activation_interest": 70
+      }
+    },
+    "nps_calculator": {
+      "counts": {
+        "promoters": 60,
+        "passives": 25,
+        "detractors": 15,
+        "total_responses": 100
+      }
+    },
+    "churn_risk_scorer": {
+      "metrics": {
+        "days_inactive": 70,
+        "event_absence": 70,
+        "post_decline": 70,
+        "support_issues": 70,
+        "tenure": 70
+      }
+    },
+    "event_run_sheet_checklist": {
+      "completed": [
+        "venue confirmed",
+        "speakers confirmed"
+      ]
+    }
+  }
+}

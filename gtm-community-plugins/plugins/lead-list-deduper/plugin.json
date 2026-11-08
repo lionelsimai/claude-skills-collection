@@ -1,0 +1,78 @@
+{
+  "name": "lead-list-deduper",
+  "display_name": "Lead List Deduper",
+  "description": "Dedupe a supplied lead list by email and report list hygiene stats.",
+  "category": "Lead Generation",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "lead_list_deduper",
+      "description": "Dedupe a supplied lead list by email and report list hygiene stats.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "total_records": 100,
+          "unique_records": 90,
+          "duplicate_records": 80,
+          "duplicate_rate": 70,
+          "domains_represented": 60
+        }
+      },
+      "output": {
+        "plugin": "lead-list-deduper",
+        "tool": "lead_list_deduper",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "total records",
+        "unique records",
+        "duplicate records",
+        "duplicate rate",
+        "domains represented"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "lead generation",
+    "gtm",
+    "analyze"
+  ]
+}

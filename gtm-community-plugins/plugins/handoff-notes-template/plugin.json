@@ -1,0 +1,70 @@
+{
+  "name": "handoff-notes-template",
+  "display_name": "Handoff Notes Template",
+  "description": "Render a sales handoff note from supplied facts only.",
+  "category": "Pipeline & CRM",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "handoff_notes_template",
+      "description": "Render a sales handoff note from supplied facts only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: deal_context, key_contacts, commitments_made, risks, immediate_next_step"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "deal_context": "[supplied: deal context]",
+          "key_contacts": "[supplied: key contacts]",
+          "commitments_made": "[supplied: commitments made]"
+        }
+      },
+      "output": {
+        "plugin": "handoff-notes-template",
+        "tool": "handoff_notes_template",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "deal context",
+        "key contacts",
+        "commitments made",
+        "risks",
+        "immediate next step"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "pipeline & crm",
+    "gtm",
+    "template"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "name": "tam-sam-som-calculator",
+  "display_name": "TAM SAM SOM Calculator",
+  "description": "Calculate TAM, SAM and SOM from supplied account counts and values only.",
+  "category": "ICP & Market Research",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "tam_sam_som_calculator",
+      "description": "Calculate TAM, SAM and SOM from supplied account counts and values only.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "total_accounts": 100,
+          "serviceable_accounts": 90,
+          "obtainable_accounts": 80,
+          "average_contract_value": 70,
+          "win_rate": 60
+        }
+      },
+      "output": {
+        "plugin": "tam-sam-som-calculator",
+        "tool": "tam_sam_som_calculator",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "total accounts",
+        "serviceable accounts",
+        "obtainable accounts",
+        "average contract value",
+        "win rate"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "icp & market research",
+    "gtm",
+    "analyze"
+  ]
+}

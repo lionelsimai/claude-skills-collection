@@ -1,0 +1,2061 @@
+{
+  "name": "gtm-community-plugins",
+  "version": "1.0.0",
+  "author": "Lionel Sim",
+  "license": "MIT",
+  "count": 120,
+  "plugins": [
+    {
+      "slug": "icp-fit-scorer",
+      "name": "ICP Fit Scorer",
+      "domain": "GTM",
+      "category": "ICP & Market Research",
+      "kind": "score",
+      "tool": "icp_fit_scorer",
+      "description": "Score an account against your ideal customer profile on five weighted criteria.",
+      "items": [
+        "company size fit",
+        "industry match",
+        "geography fit",
+        "technology fit",
+        "buying signal strength"
+      ],
+      "path": "plugins/icp-fit-scorer"
+    },
+    {
+      "slug": "account-segmentation-planner",
+      "name": "Account Segmentation Planner",
+      "domain": "GTM",
+      "category": "ICP & Market Research",
+      "kind": "plan",
+      "tool": "account_segmentation_planner",
+      "description": "Build a tiered account segmentation plan from a stated goal.",
+      "items": [
+        "define segment criteria",
+        "rank accounts by fit",
+        "assign segment tiers",
+        "name segment owners",
+        "set review cadence"
+      ],
+      "path": "plugins/account-segmentation-planner"
+    },
+    {
+      "slug": "competitor-teardown-checklist",
+      "name": "Competitor Teardown Checklist",
+      "domain": "GTM",
+      "category": "ICP & Market Research",
+      "kind": "checklist",
+      "tool": "competitor_teardown_checklist",
+      "description": "Audit a competitor teardown for completeness before it is used in planning.",
+      "items": [
+        "positioning statement",
+        "pricing page",
+        "feature matrix",
+        "customer proof",
+        "content themes",
+        "call to action"
+      ],
+      "path": "plugins/competitor-teardown-checklist"
+    },
+    {
+      "slug": "market-signal-classifier",
+      "name": "Market Signal Classifier",
+      "domain": "GTM",
+      "category": "ICP & Market Research",
+      "kind": "classify",
+      "tool": "market_signal_classifier",
+      "description": "Classify a supplied market signal about an account into its signal type.",
+      "items": [
+        "funding",
+        "expansion",
+        "hiring",
+        "leadership change",
+        "technology adoption",
+        "no signal"
+      ],
+      "path": "plugins/market-signal-classifier"
+    },
+    {
+      "slug": "tam-sam-som-calculator",
+      "name": "TAM SAM SOM Calculator",
+      "domain": "GTM",
+      "category": "ICP & Market Research",
+      "kind": "analyze",
+      "tool": "tam_sam_som_calculator",
+      "description": "Calculate TAM, SAM and SOM from supplied account counts and values only.",
+      "items": [
+        "total accounts",
+        "serviceable accounts",
+        "obtainable accounts",
+        "average contract value",
+        "win rate"
+      ],
+      "path": "plugins/tam-sam-som-calculator"
+    },
+    {
+      "slug": "buyer-persona-gap-audit",
+      "name": "Buyer Persona Gap Audit",
+      "domain": "GTM",
+      "category": "ICP & Market Research",
+      "kind": "audit",
+      "tool": "buyer_persona_gap_audit",
+      "description": "Audit a persona document for the elements a GTM team actually needs.",
+      "items": [
+        "job title",
+        "pain points",
+        "buying triggers",
+        "objections",
+        "preferred channels",
+        "decision role"
+      ],
+      "path": "plugins/buyer-persona-gap-audit"
+    },
+    {
+      "slug": "lead-list-deduper",
+      "name": "Lead List Deduper",
+      "domain": "GTM",
+      "category": "Lead Generation",
+      "kind": "analyze",
+      "tool": "lead_list_deduper",
+      "description": "Dedupe a supplied lead list by email and report list hygiene stats.",
+      "items": [
+        "total records",
+        "unique records",
+        "duplicate records",
+        "duplicate rate",
+        "domains represented"
+      ],
+      "path": "plugins/lead-list-deduper"
+    },
+    {
+      "slug": "lead-source-scorer",
+      "name": "Lead Source Scorer",
+      "domain": "GTM",
+      "category": "Lead Generation",
+      "kind": "score",
+      "tool": "lead_source_scorer",
+      "description": "Score a lead source so budget goes to sources that convert.",
+      "items": [
+        "conversion rate",
+        "cost per lead",
+        "data completeness",
+        "reply rate",
+        "unsubscribe rate"
+      ],
+      "path": "plugins/lead-source-scorer"
+    },
+    {
+      "slug": "lookalike-seed-planner",
+      "name": "Lookalike Seed Planner",
+      "domain": "GTM",
+      "category": "Lead Generation",
+      "kind": "plan",
+      "tool": "lookalike_seed_planner",
+      "description": "Plan a lookalike list build from your best supplied accounts.",
+      "items": [
+        "select seed accounts",
+        "extract shared traits",
+        "exclude existing customers",
+        "build search criteria",
+        "validate sample size"
+      ],
+      "path": "plugins/lookalike-seed-planner"
+    },
+    {
+      "slug": "event-lead-capture-checklist",
+      "name": "Event Lead Capture Checklist",
+      "domain": "GTM",
+      "category": "Lead Generation",
+      "kind": "checklist",
+      "tool": "event_lead_capture_checklist",
+      "description": "Check an event lead-capture setup before doors open.",
+      "items": [
+        "consent wording",
+        "badge scan process",
+        "qualifying question",
+        "offer hook",
+        "follow-up owner",
+        "same-day upload"
+      ],
+      "path": "plugins/event-lead-capture-checklist"
+    },
+    {
+      "slug": "referral-ask-template",
+      "name": "Referral Ask Template",
+      "domain": "GTM",
+      "category": "Lead Generation",
+      "kind": "template",
+      "tool": "referral_ask_template",
+      "description": "Draft a referral ask from supplied facts only. Draft only, never sent automatically.",
+      "items": [
+        "context",
+        "reason for asking",
+        "specific person type",
+        "easy yes path",
+        "thank you note"
+      ],
+      "path": "plugins/referral-ask-template"
+    },
+    {
+      "slug": "inbound-lead-triage",
+      "name": "Inbound Lead Triage",
+      "domain": "GTM",
+      "category": "Lead Generation",
+      "kind": "classify",
+      "tool": "inbound_lead_triage",
+      "description": "Classify an inbound enquiry and route it to the right next step.",
+      "items": [
+        "demo request",
+        "content download",
+        "pricing question",
+        "general enquiry",
+        "support request",
+        "spam"
+      ],
+      "path": "plugins/inbound-lead-triage"
+    },
+    {
+      "slug": "lead-score-calculator",
+      "name": "Lead Score Calculator",
+      "domain": "GTM",
+      "category": "Lead Scoring & Enrichment",
+      "kind": "score",
+      "tool": "lead_score_calculator",
+      "description": "Calculate a transparent lead score from supplied signals.",
+      "items": [
+        "firmographic fit",
+        "engagement recency",
+        "page intent",
+        "role seniority",
+        "company growth"
+      ],
+      "path": "plugins/lead-score-calculator"
+    },
+    {
+      "slug": "enrichment-completeness-audit",
+      "name": "Enrichment Completeness Audit",
+      "domain": "GTM",
+      "category": "Lead Scoring & Enrichment",
+      "kind": "audit",
+      "tool": "enrichment_completeness_audit",
+      "description": "Audit lead records for missing enrichment fields.",
+      "items": [
+        "full name",
+        "job title",
+        "company",
+        "email",
+        "linkedin url",
+        "industry",
+        "company size"
+      ],
+      "path": "plugins/enrichment-completeness-audit"
+    },
+    {
+      "slug": "intent-signal-scorer",
+      "name": "Intent Signal Scorer",
+      "domain": "GTM",
+      "category": "Lead Scoring & Enrichment",
+      "kind": "score",
+      "tool": "intent_signal_scorer",
+      "description": "Score buying intent from supplied behavioural signals.",
+      "items": [
+        "pricing page visits",
+        "comparison searches",
+        "repeat visits",
+        "content depth",
+        "recency"
+      ],
+      "path": "plugins/intent-signal-scorer"
+    },
+    {
+      "slug": "lead-priority-ranker",
+      "name": "Lead Priority Ranker",
+      "domain": "GTM",
+      "category": "Lead Scoring & Enrichment",
+      "kind": "prioritize",
+      "tool": "lead_priority_ranker",
+      "description": "Rank leads by impact over effort from supplied values.",
+      "items": [
+        "fit score",
+        "intent score",
+        "deal size",
+        "recency",
+        "effort to reach"
+      ],
+      "path": "plugins/lead-priority-ranker"
+    },
+    {
+      "slug": "data-decay-reporter",
+      "name": "Data Decay Reporter",
+      "domain": "GTM",
+      "category": "Lead Scoring & Enrichment",
+      "kind": "analyze",
+      "tool": "data_decay_reporter",
+      "description": "Report CRM data decay from supplied record ages and bounce counts.",
+      "items": [
+        "records checked",
+        "stale records",
+        "job changes detected",
+        "bounced emails",
+        "decay rate"
+      ],
+      "path": "plugins/data-decay-reporter"
+    },
+    {
+      "slug": "champion-tracker-template",
+      "name": "Champion Tracker Template",
+      "domain": "GTM",
+      "category": "Lead Scoring & Enrichment",
+      "kind": "template",
+      "tool": "champion_tracker_template",
+      "description": "Render a champion tracking sheet from supplied facts only.",
+      "items": [
+        "champion name",
+        "role",
+        "influence level",
+        "last contact",
+        "next action"
+      ],
+      "path": "plugins/champion-tracker-template"
+    },
+    {
+      "slug": "cold-email-draft-builder",
+      "name": "Cold Email Draft Builder",
+      "domain": "GTM",
+      "category": "Outreach & Sequences",
+      "kind": "template",
+      "tool": "cold_email_draft_builder",
+      "description": "Draft a cold email from one supplied personal signal and supplied proof only. Draft only.",
+      "items": [
+        "subject line",
+        "personal signal",
+        "problem statement",
+        "relevant proof supplied by user",
+        "soft call to action"
+      ],
+      "path": "plugins/cold-email-draft-builder"
+    },
+    {
+      "slug": "sequence-cadence-planner",
+      "name": "Sequence Cadence Planner",
+      "domain": "GTM",
+      "category": "Outreach & Sequences",
+      "kind": "plan",
+      "tool": "sequence_cadence_planner",
+      "description": "Plan a multi-touch sequence cadence with spacing and purpose per touch.",
+      "items": [
+        "day 1 email",
+        "day 3 bump",
+        "day 7 value email",
+        "day 12 linkedin touch",
+        "day 21 break-up"
+      ],
+      "path": "plugins/sequence-cadence-planner"
+    },
+    {
+      "slug": "subject-line-scorer",
+      "name": "Subject Line Scorer",
+      "domain": "GTM",
+      "category": "Outreach & Sequences",
+      "kind": "score",
+      "tool": "subject_line_scorer",
+      "description": "Score a subject line before it is used. Spam-trigger risk is scored inversely.",
+      "items": [
+        "length",
+        "personalisation",
+        "specificity",
+        "curiosity",
+        "spam trigger risk"
+      ],
+      "path": "plugins/subject-line-scorer"
+    },
+    {
+      "slug": "follow-up-bump-drafter",
+      "name": "Follow-up Bump Drafter",
+      "domain": "GTM",
+      "category": "Outreach & Sequences",
+      "kind": "template",
+      "tool": "follow_up_bump_drafter",
+      "description": "Draft a short follow-up bump from supplied facts only. Draft only.",
+      "items": [
+        "thread reference",
+        "new value point",
+        "choice question",
+        "easy opt out"
+      ],
+      "path": "plugins/follow-up-bump-drafter"
+    },
+    {
+      "slug": "linkedin-touch-drafter",
+      "name": "LinkedIn Touch Drafter",
+      "domain": "GTM",
+      "category": "Outreach & Sequences",
+      "kind": "template",
+      "tool": "linkedin_touch_drafter",
+      "description": "Draft a LinkedIn touch from a supplied shared context only. Draft only.",
+      "items": [
+        "shared context",
+        "specific observation",
+        "useful resource",
+        "open question"
+      ],
+      "path": "plugins/linkedin-touch-drafter"
+    },
+    {
+      "slug": "outreach-personalisation-audit",
+      "name": "Outreach Personalisation Audit",
+      "domain": "GTM",
+      "category": "Outreach & Sequences",
+      "kind": "audit",
+      "tool": "outreach_personalisation_audit",
+      "description": "Audit a draft for real personalisation versus mail-merge filler.",
+      "items": [
+        "personal signal",
+        "named company",
+        "role relevance",
+        "specific detail",
+        "call to action"
+      ],
+      "path": "plugins/outreach-personalisation-audit"
+    },
+    {
+      "slug": "reply-intent-classifier",
+      "name": "Reply Intent Classifier",
+      "domain": "GTM",
+      "category": "Reply & Meeting",
+      "kind": "classify",
+      "tool": "reply_intent_classifier",
+      "description": "Classify an email reply by intent so hot replies move first.",
+      "items": [
+        "interested",
+        "meeting request",
+        "objection",
+        "not now",
+        "not relevant",
+        "unsubscribe",
+        "pricing question"
+      ],
+      "path": "plugins/reply-intent-classifier"
+    },
+    {
+      "slug": "objection-response-drafter",
+      "name": "Objection Response Drafter",
+      "domain": "GTM",
+      "category": "Reply & Meeting",
+      "kind": "template",
+      "tool": "objection_response_drafter",
+      "description": "Draft an objection reply from supplied evidence only. Draft only, human approval required.",
+      "items": [
+        "acknowledge objection",
+        "supplied evidence",
+        "reframe",
+        "low-risk next step"
+      ],
+      "path": "plugins/objection-response-drafter"
+    },
+    {
+      "slug": "meeting-booking-checklist",
+      "name": "Meeting Booking Checklist",
+      "domain": "GTM",
+      "category": "Reply & Meeting",
+      "kind": "checklist",
+      "tool": "meeting_booking_checklist",
+      "description": "Check a meeting booking flow before the invite goes out.",
+      "items": [
+        "two time options",
+        "timezone stated",
+        "calendar invite",
+        "agenda line",
+        "reminder set"
+      ],
+      "path": "plugins/meeting-booking-checklist"
+    },
+    {
+      "slug": "no-show-recovery-drafter",
+      "name": "No-show Recovery Drafter",
+      "domain": "GTM",
+      "category": "Reply & Meeting",
+      "kind": "template",
+      "tool": "no_show_recovery_drafter",
+      "description": "Draft a no-show recovery message from supplied facts. Draft only.",
+      "items": [
+        "grace opening",
+        "no blame",
+        "two new options",
+        "value recap"
+      ],
+      "path": "plugins/no-show-recovery-drafter"
+    },
+    {
+      "slug": "reply-sla-tracker",
+      "name": "Reply SLA Tracker",
+      "domain": "GTM",
+      "category": "Reply & Meeting",
+      "kind": "analyze",
+      "tool": "reply_sla_tracker",
+      "description": "Report reply SLA performance from supplied counts.",
+      "items": [
+        "replies received",
+        "replies answered",
+        "in time",
+        "in late",
+        "average response hours"
+      ],
+      "path": "plugins/reply-sla-tracker"
+    },
+    {
+      "slug": "meeting-notes-extractor",
+      "name": "Meeting Notes Extractor",
+      "domain": "GTM",
+      "category": "Reply & Meeting",
+      "kind": "audit",
+      "tool": "meeting_notes_extractor",
+      "description": "Check meeting notes contain decisions, owners and deadlines.",
+      "items": [
+        "decision",
+        "action item",
+        "owner",
+        "deadline",
+        "risk",
+        "next meeting"
+      ],
+      "path": "plugins/meeting-notes-extractor"
+    },
+    {
+      "slug": "sponsor-fit-scorer",
+      "name": "Sponsor Fit Scorer",
+      "domain": "GTM",
+      "category": "Sponsors & Partners",
+      "kind": "score",
+      "tool": "sponsor_fit_scorer",
+      "description": "Score a prospective sponsor against a supplied event or community audience.",
+      "items": [
+        "audience match",
+        "brand alignment",
+        "budget fit",
+        "category exclusivity",
+        "activation interest"
+      ],
+      "path": "plugins/sponsor-fit-scorer"
+    },
+    {
+      "slug": "partner-tier-designer",
+      "name": "Partner Tier Designer",
+      "domain": "GTM",
+      "category": "Sponsors & Partners",
+      "kind": "plan",
+      "tool": "partner_tier_designer",
+      "description": "Design a partner tier ladder from a stated goal and supplied deliverables.",
+      "items": [
+        "define entry tier",
+        "define annual tier",
+        "price the gap",
+        "list deliverables per tier",
+        "set upgrade trigger"
+      ],
+      "path": "plugins/partner-tier-designer"
+    },
+    {
+      "slug": "sponsor-proposal-audit",
+      "name": "Sponsor Proposal Audit",
+      "domain": "GTM",
+      "category": "Sponsors & Partners",
+      "kind": "audit",
+      "tool": "sponsor_proposal_audit",
+      "description": "Audit a sponsor proposal for missing commercial elements. Audience numbers must be supplied, never invented.",
+      "items": [
+        "audience evidence",
+        "deliverables",
+        "pricing",
+        "dates",
+        "terms",
+        "call to action"
+      ],
+      "path": "plugins/sponsor-proposal-audit"
+    },
+    {
+      "slug": "partner-outreach-drafter",
+      "name": "Partner Outreach Drafter",
+      "domain": "GTM",
+      "category": "Sponsors & Partners",
+      "kind": "template",
+      "tool": "partner_outreach_drafter",
+      "description": "Draft partner outreach from supplied audience facts only. Draft only.",
+      "items": [
+        "shared audience",
+        "entry offer",
+        "proof supplied by user",
+        "meeting ask"
+      ],
+      "path": "plugins/partner-outreach-drafter"
+    },
+    {
+      "slug": "sponsor-deliverable-tracker",
+      "name": "Sponsor Deliverable Tracker",
+      "domain": "GTM",
+      "category": "Sponsors & Partners",
+      "kind": "checklist",
+      "tool": "sponsor_deliverable_tracker",
+      "description": "Track sponsor deliverables promised versus delivered.",
+      "items": [
+        "logo placed",
+        "speaking slot",
+        "lead list shared",
+        "social post",
+        "post-event report"
+      ],
+      "path": "plugins/sponsor-deliverable-tracker"
+    },
+    {
+      "slug": "co-marketing-planner",
+      "name": "Co-marketing Planner",
+      "domain": "GTM",
+      "category": "Sponsors & Partners",
+      "kind": "plan",
+      "tool": "co_marketing_planner",
+      "description": "Plan a co-marketing activity with a partner from a stated goal.",
+      "items": [
+        "joint audience",
+        "shared asset",
+        "channel split",
+        "owner per side",
+        "success metric"
+      ],
+      "path": "plugins/co-marketing-planner"
+    },
+    {
+      "slug": "proposal-structure-builder",
+      "name": "Proposal Structure Builder",
+      "domain": "GTM",
+      "category": "Proposals & Pricing",
+      "kind": "template",
+      "tool": "proposal_structure_builder",
+      "description": "Build a proposal skeleton from supplied scope and pricing only. No invented proof.",
+      "items": [
+        "problem",
+        "outcomes",
+        "scope",
+        "deliverables",
+        "timeline",
+        "investment",
+        "terms"
+      ],
+      "path": "plugins/proposal-structure-builder"
+    },
+    {
+      "slug": "pricing-page-audit",
+      "name": "Pricing Page Audit",
+      "domain": "GTM",
+      "category": "Proposals & Pricing",
+      "kind": "audit",
+      "tool": "pricing_page_audit",
+      "description": "Audit pricing copy for clarity elements.",
+      "items": [
+        "tiers named",
+        "price anchor",
+        "deliverables per tier",
+        "faq",
+        "terms",
+        "call to action"
+      ],
+      "path": "plugins/pricing-page-audit"
+    },
+    {
+      "slug": "discount-guardrail-checker",
+      "name": "Discount Guardrail Checker",
+      "domain": "GTM",
+      "category": "Proposals & Pricing",
+      "kind": "score",
+      "tool": "discount_guardrail_checker",
+      "description": "Score a discount request against guardrails before approval.",
+      "items": [
+        "margin protected",
+        "scope reduced",
+        "payment terms",
+        "expiry date",
+        "approval level"
+      ],
+      "path": "plugins/discount-guardrail-checker"
+    },
+    {
+      "slug": "quote-follow-up-drafter",
+      "name": "Quote Follow-up Drafter",
+      "domain": "GTM",
+      "category": "Proposals & Pricing",
+      "kind": "template",
+      "tool": "quote_follow_up_drafter",
+      "description": "Draft a quote follow-up from supplied quote facts. Draft only.",
+      "items": [
+        "quote reference",
+        "decision blocker help",
+        "deadline reminder",
+        "next step"
+      ],
+      "path": "plugins/quote-follow-up-drafter"
+    },
+    {
+      "slug": "roi-calculator",
+      "name": "ROI Calculator",
+      "domain": "GTM",
+      "category": "Proposals & Pricing",
+      "kind": "analyze",
+      "tool": "roi_calculator",
+      "description": "Calculate ROI and payback from supplied numbers only.",
+      "items": [
+        "current cost",
+        "time saved per week",
+        "hourly rate",
+        "tool cost",
+        "payback weeks"
+      ],
+      "path": "plugins/roi-calculator"
+    },
+    {
+      "slug": "proposal-win-loss-classifier",
+      "name": "Proposal Win/Loss Classifier",
+      "domain": "GTM",
+      "category": "Proposals & Pricing",
+      "kind": "classify",
+      "tool": "proposal_win_loss_classifier",
+      "description": "Classify a lost or won proposal outcome from supplied notes.",
+      "items": [
+        "price",
+        "budget frozen",
+        "competitor chosen",
+        "timing",
+        "no response",
+        "champion left"
+      ],
+      "path": "plugins/proposal-win-loss-classifier"
+    },
+    {
+      "slug": "deal-health-scorer",
+      "name": "Deal Health Scorer",
+      "domain": "GTM",
+      "category": "Pipeline & CRM",
+      "kind": "score",
+      "tool": "deal_health_scorer",
+      "description": "Score deal health from supplied CRM facts.",
+      "items": [
+        "days since contact",
+        "next step set",
+        "champion engaged",
+        "economic buyer known",
+        "close date realistic"
+      ],
+      "path": "plugins/deal-health-scorer"
+    },
+    {
+      "slug": "pipeline-coverage-calculator",
+      "name": "Pipeline Coverage Calculator",
+      "domain": "GTM",
+      "category": "Pipeline & CRM",
+      "kind": "analyze",
+      "tool": "pipeline_coverage_calculator",
+      "description": "Calculate pipeline coverage from supplied pipeline and target.",
+      "items": [
+        "open pipeline",
+        "target",
+        "coverage ratio",
+        "weighted pipeline",
+        "gap"
+      ],
+      "path": "plugins/pipeline-coverage-calculator"
+    },
+    {
+      "slug": "stale-deal-detector",
+      "name": "Stale Deal Detector",
+      "domain": "GTM",
+      "category": "Pipeline & CRM",
+      "kind": "checklist",
+      "tool": "stale_deal_detector",
+      "description": "Flag stale deals from a supplied checklist of deal hygiene items.",
+      "items": [
+        "last activity date",
+        "next step",
+        "stage age",
+        "owner assigned",
+        "close date updated"
+      ],
+      "path": "plugins/stale-deal-detector"
+    },
+    {
+      "slug": "crm-field-hygiene-audit",
+      "name": "CRM Field Hygiene Audit",
+      "domain": "GTM",
+      "category": "Pipeline & CRM",
+      "kind": "audit",
+      "tool": "crm_field_hygiene_audit",
+      "description": "Audit a deal record for required CRM fields.",
+      "items": [
+        "company",
+        "contact",
+        "stage",
+        "amount",
+        "close date",
+        "next step",
+        "source"
+      ],
+      "path": "plugins/crm-field-hygiene-audit"
+    },
+    {
+      "slug": "forecast-risk-ranker",
+      "name": "Forecast Risk Ranker",
+      "domain": "GTM",
+      "category": "Pipeline & CRM",
+      "kind": "prioritize",
+      "tool": "forecast_risk_ranker",
+      "description": "Rank forecast deals by value at risk over effort to save.",
+      "items": [
+        "deal size",
+        "stage confidence",
+        "days to close",
+        "slippage count",
+        "effort to save"
+      ],
+      "path": "plugins/forecast-risk-ranker"
+    },
+    {
+      "slug": "handoff-notes-template",
+      "name": "Handoff Notes Template",
+      "domain": "GTM",
+      "category": "Pipeline & CRM",
+      "kind": "template",
+      "tool": "handoff_notes_template",
+      "description": "Render a sales handoff note from supplied facts only.",
+      "items": [
+        "deal context",
+        "key contacts",
+        "commitments made",
+        "risks",
+        "immediate next step"
+      ],
+      "path": "plugins/handoff-notes-template"
+    },
+    {
+      "slug": "content-idea-scorer",
+      "name": "Content Idea Scorer",
+      "domain": "GTM",
+      "category": "Content & Thought Leadership",
+      "kind": "score",
+      "tool": "content_idea_scorer",
+      "description": "Score a content idea before production time is spent.",
+      "items": [
+        "audience relevance",
+        "originality",
+        "proof available",
+        "effort to produce",
+        "distribution fit"
+      ],
+      "path": "plugins/content-idea-scorer"
+    },
+    {
+      "slug": "linkedin-post-drafter",
+      "name": "LinkedIn Post Drafter",
+      "domain": "GTM",
+      "category": "Content & Thought Leadership",
+      "kind": "template",
+      "tool": "linkedin_post_drafter",
+      "description": "Draft a LinkedIn post from a supplied insight and example only. Draft only, never auto-posted.",
+      "items": [
+        "hook",
+        "supplied insight",
+        "supplied example",
+        "lesson",
+        "question to readers"
+      ],
+      "path": "plugins/linkedin-post-drafter"
+    },
+    {
+      "slug": "case-study-audit",
+      "name": "Case Study Audit",
+      "domain": "GTM",
+      "category": "Content & Thought Leadership",
+      "kind": "audit",
+      "tool": "case_study_audit",
+      "description": "Audit a case study for permission and evidence elements. Results must be supplied.",
+      "items": [
+        "client permission",
+        "problem",
+        "approach",
+        "measured result",
+        "quote",
+        "dates"
+      ],
+      "path": "plugins/case-study-audit"
+    },
+    {
+      "slug": "content-repurposing-planner",
+      "name": "Content Repurposing Planner",
+      "domain": "GTM",
+      "category": "Content & Thought Leadership",
+      "kind": "plan",
+      "tool": "content_repurposing_planner",
+      "description": "Plan repurposing one supplied asset into multiple formats.",
+      "items": [
+        "pick anchor asset",
+        "extract clips",
+        "extract quotes",
+        "write short post",
+        "schedule newsletter section"
+      ],
+      "path": "plugins/content-repurposing-planner"
+    },
+    {
+      "slug": "newsletter-section-builder",
+      "name": "Newsletter Section Builder",
+      "domain": "GTM",
+      "category": "Content & Thought Leadership",
+      "kind": "template",
+      "tool": "newsletter_section_builder",
+      "description": "Build a newsletter section from supplied facts only. Draft only.",
+      "items": [
+        "headline",
+        "what happened",
+        "why it matters",
+        "what to do",
+        "link"
+      ],
+      "path": "plugins/newsletter-section-builder"
+    },
+    {
+      "slug": "speaking-pitch-drafter",
+      "name": "Speaking Pitch Drafter",
+      "domain": "GTM",
+      "category": "Content & Thought Leadership",
+      "kind": "template",
+      "tool": "speaking_pitch_drafter",
+      "description": "Draft a speaking pitch from supplied bio and topic only. Draft only.",
+      "items": [
+        "event fit",
+        "topic",
+        "three takeaways",
+        "speaker bio supplied by user",
+        "format"
+      ],
+      "path": "plugins/speaking-pitch-drafter"
+    },
+    {
+      "slug": "campaign-metrics-reporter",
+      "name": "Campaign Metrics Reporter",
+      "domain": "GTM",
+      "category": "Analytics & Learning",
+      "kind": "analyze",
+      "tool": "campaign_metrics_reporter",
+      "description": "Report campaign funnel maths from supplied counts.",
+      "items": [
+        "sent",
+        "opened",
+        "replied",
+        "meetings",
+        "cost per meeting"
+      ],
+      "path": "plugins/campaign-metrics-reporter"
+    },
+    {
+      "slug": "ab-test-verdict-tool",
+      "name": "A/B Test Verdict Tool",
+      "domain": "GTM",
+      "category": "Analytics & Learning",
+      "kind": "score",
+      "tool": "ab_test_verdict_tool",
+      "description": "Score whether an A/B test result is strong enough to act on, from supplied data.",
+      "items": [
+        "sample size",
+        "conversion lift",
+        "consistency",
+        "effort",
+        "downside risk"
+      ],
+      "path": "plugins/ab-test-verdict-tool"
+    },
+    {
+      "slug": "segment-learning-logger",
+      "name": "Segment Learning Logger",
+      "domain": "GTM",
+      "category": "Analytics & Learning",
+      "kind": "template",
+      "tool": "segment_learning_logger",
+      "description": "Log a segment learning in a fixed format from supplied results.",
+      "items": [
+        "segment",
+        "result",
+        "evidence",
+        "decision scale or pause",
+        "next test"
+      ],
+      "path": "plugins/segment-learning-logger"
+    },
+    {
+      "slug": "funnel-leak-detector",
+      "name": "Funnel Leak Detector",
+      "domain": "GTM",
+      "category": "Analytics & Learning",
+      "kind": "checklist",
+      "tool": "funnel_leak_detector",
+      "description": "Identify the weakest funnel stage from supplied completion items.",
+      "items": [
+        "visit to signup",
+        "signup to reply",
+        "reply to meeting",
+        "meeting to proposal",
+        "proposal to close"
+      ],
+      "path": "plugins/funnel-leak-detector"
+    },
+    {
+      "slug": "weekly-gtm-review-builder",
+      "name": "Weekly GTM Review Builder",
+      "domain": "GTM",
+      "category": "Analytics & Learning",
+      "kind": "template",
+      "tool": "weekly_gtm_review_builder",
+      "description": "Build a weekly GTM review from supplied metrics only.",
+      "items": [
+        "headline metric",
+        "wins",
+        "losses",
+        "lessons",
+        "one priority"
+      ],
+      "path": "plugins/weekly-gtm-review-builder"
+    },
+    {
+      "slug": "experiment-priority-ranker",
+      "name": "Experiment Priority Ranker",
+      "domain": "GTM",
+      "category": "Analytics & Learning",
+      "kind": "prioritize",
+      "tool": "experiment_priority_ranker",
+      "description": "Rank GTM experiments by impact, confidence and effort (ICE-style).",
+      "items": [
+        "expected impact",
+        "confidence",
+        "effort",
+        "learning value",
+        "speed to result"
+      ],
+      "path": "plugins/experiment-priority-ranker"
+    },
+    {
+      "slug": "welcome-message-drafter",
+      "name": "Welcome Message Drafter",
+      "domain": "Community",
+      "category": "Member Onboarding",
+      "kind": "template",
+      "tool": "welcome_message_drafter",
+      "description": "Draft a welcome message from supplied community facts. Draft only.",
+      "items": [
+        "member name supplied by user",
+        "first step",
+        "introduce-yourself prompt",
+        "key resource"
+      ],
+      "path": "plugins/welcome-message-drafter"
+    },
+    {
+      "slug": "onboarding-checklist-builder",
+      "name": "Onboarding Checklist Builder",
+      "domain": "Community",
+      "category": "Member Onboarding",
+      "kind": "checklist",
+      "tool": "onboarding_checklist_builder",
+      "description": "Check a new member onboarding journey for completion.",
+      "items": [
+        "profile complete",
+        "introduction posted",
+        "starter resource read",
+        "first event rsvp",
+        "buddy assigned"
+      ],
+      "path": "plugins/onboarding-checklist-builder"
+    },
+    {
+      "slug": "new-member-intro-classifier",
+      "name": "New Member Intro Classifier",
+      "domain": "Community",
+      "category": "Member Onboarding",
+      "kind": "classify",
+      "tool": "new_member_intro_classifier",
+      "description": "Classify a member introduction by member type for routing to relevant channels.",
+      "items": [
+        "builder",
+        "founder",
+        "operator",
+        "student",
+        "job seeker",
+        "investor",
+        "other"
+      ],
+      "path": "plugins/new-member-intro-classifier"
+    },
+    {
+      "slug": "onboarding-drop-off-reporter",
+      "name": "Onboarding Drop-off Reporter",
+      "domain": "Community",
+      "category": "Member Onboarding",
+      "kind": "analyze",
+      "tool": "onboarding_drop_off_reporter",
+      "description": "Report onboarding funnel drop-off from supplied counts.",
+      "items": [
+        "joined",
+        "profile completed",
+        "introduced",
+        "attended first event",
+        "active at day 30"
+      ],
+      "path": "plugins/onboarding-drop-off-reporter"
+    },
+    {
+      "slug": "buddy-match-scorer",
+      "name": "Buddy Match Scorer",
+      "domain": "Community",
+      "category": "Member Onboarding",
+      "kind": "score",
+      "tool": "buddy_match_scorer",
+      "description": "Score a buddy pairing for a new member from supplied attributes.",
+      "items": [
+        "shared interests",
+        "location",
+        "experience gap fit",
+        "availability",
+        "language"
+      ],
+      "path": "plugins/buddy-match-scorer"
+    },
+    {
+      "slug": "first-week-plan-builder",
+      "name": "First-week Plan Builder",
+      "domain": "Community",
+      "category": "Member Onboarding",
+      "kind": "plan",
+      "tool": "first_week_plan_builder",
+      "description": "Build a first-week plan for a new member cohort.",
+      "items": [
+        "day 1 welcome",
+        "day 2 resource",
+        "day 3 intro prompt",
+        "day 5 event invite",
+        "day 7 check-in"
+      ],
+      "path": "plugins/first-week-plan-builder"
+    },
+    {
+      "slug": "event-run-sheet-checklist",
+      "name": "Event Run Sheet Checklist",
+      "domain": "Community",
+      "category": "Events",
+      "kind": "checklist",
+      "tool": "event_run_sheet_checklist",
+      "description": "Check an event run sheet before event day.",
+      "items": [
+        "venue confirmed",
+        "speakers confirmed",
+        "av tested",
+        "registration list",
+        "signage",
+        "photographer briefed"
+      ],
+      "path": "plugins/event-run-sheet-checklist"
+    },
+    {
+      "slug": "event-idea-scorer",
+      "name": "Event Idea Scorer",
+      "domain": "Community",
+      "category": "Events",
+      "kind": "score",
+      "tool": "event_idea_scorer",
+      "description": "Score an event idea before committing a venue.",
+      "items": [
+        "member demand",
+        "speaker availability",
+        "cost",
+        "sponsor fit",
+        "format novelty"
+      ],
+      "path": "plugins/event-idea-scorer"
+    },
+    {
+      "slug": "rsvp-conversion-reporter",
+      "name": "RSVP Conversion Reporter",
+      "domain": "Community",
+      "category": "Events",
+      "kind": "analyze",
+      "tool": "rsvp_conversion_reporter",
+      "description": "Report RSVP to attendance conversion from supplied counts.",
+      "items": [
+        "registrations",
+        "check-ins",
+        "show rate",
+        "waitlist",
+        "no-shows"
+      ],
+      "path": "plugins/rsvp-conversion-reporter"
+    },
+    {
+      "slug": "speaker-brief-template",
+      "name": "Speaker Brief Template",
+      "domain": "Community",
+      "category": "Events",
+      "kind": "template",
+      "tool": "speaker_brief_template",
+      "description": "Render a speaker brief from supplied event facts only.",
+      "items": [
+        "event context",
+        "audience",
+        "talk slot",
+        "format",
+        "av needs",
+        "deadline"
+      ],
+      "path": "plugins/speaker-brief-template"
+    },
+    {
+      "slug": "post-event-follow-up-drafter",
+      "name": "Post-event Follow-up Drafter",
+      "domain": "Community",
+      "category": "Events",
+      "kind": "template",
+      "tool": "post_event_follow_up_drafter",
+      "description": "Draft post-event follow-up from supplied highlights. Draft only.",
+      "items": [
+        "thank you",
+        "highlight supplied by user",
+        "recording link",
+        "feedback ask",
+        "next event"
+      ],
+      "path": "plugins/post-event-follow-up-drafter"
+    },
+    {
+      "slug": "waitlist-priority-ranker",
+      "name": "Waitlist Priority Ranker",
+      "domain": "Community",
+      "category": "Events",
+      "kind": "prioritize",
+      "tool": "waitlist_priority_ranker",
+      "description": "Rank a waitlist fairly from supplied criteria.",
+      "items": [
+        "member tenure",
+        "rsvp speed",
+        "past attendance",
+        "contribution",
+        "effort"
+      ],
+      "path": "plugins/waitlist-priority-ranker"
+    },
+    {
+      "slug": "engagement-health-scorer",
+      "name": "Engagement Health Scorer",
+      "domain": "Community",
+      "category": "Engagement",
+      "kind": "score",
+      "tool": "engagement_health_scorer",
+      "description": "Score community engagement health from supplied metrics.",
+      "items": [
+        "active member rate",
+        "posts per week",
+        "reply rate",
+        "event attendance",
+        "new member activation"
+      ],
+      "path": "plugins/engagement-health-scorer"
+    },
+    {
+      "slug": "discussion-prompt-drafter",
+      "name": "Discussion Prompt Drafter",
+      "domain": "Community",
+      "category": "Engagement",
+      "kind": "template",
+      "tool": "discussion_prompt_drafter",
+      "description": "Draft a discussion prompt from a supplied topic. Draft only.",
+      "items": [
+        "topic hook",
+        "context",
+        "question",
+        "example starter",
+        "call to respond"
+      ],
+      "path": "plugins/discussion-prompt-drafter"
+    },
+    {
+      "slug": "quiet-member-reactivation-drafter",
+      "name": "Quiet Member Reactivation Drafter",
+      "domain": "Community",
+      "category": "Engagement",
+      "kind": "template",
+      "tool": "quiet_member_reactivation_drafter",
+      "description": "Draft a reactivation message from supplied facts. Draft only.",
+      "items": [
+        "personal note",
+        "what they missed supplied by user",
+        "low-effort invite",
+        "opt out line"
+      ],
+      "path": "plugins/quiet-member-reactivation-drafter"
+    },
+    {
+      "slug": "engagement-campaign-planner",
+      "name": "Engagement Campaign Planner",
+      "domain": "Community",
+      "category": "Engagement",
+      "kind": "plan",
+      "tool": "engagement_campaign_planner",
+      "description": "Plan a four-week engagement campaign.",
+      "items": [
+        "pick theme",
+        "week 1 prompt",
+        "week 2 challenge",
+        "week 3 spotlight",
+        "week 4 event tie-in"
+      ],
+      "path": "plugins/engagement-campaign-planner"
+    },
+    {
+      "slug": "top-contributor-spotlight-template",
+      "name": "Top Contributor Spotlight Template",
+      "domain": "Community",
+      "category": "Engagement",
+      "kind": "template",
+      "tool": "top_contributor_spotlight_template",
+      "description": "Render a contributor spotlight from supplied facts only.",
+      "items": [
+        "member name supplied by user",
+        "contribution",
+        "quote supplied by user",
+        "thank you"
+      ],
+      "path": "plugins/top-contributor-spotlight-template"
+    },
+    {
+      "slug": "channel-activity-reporter",
+      "name": "Channel Activity Reporter",
+      "domain": "Community",
+      "category": "Engagement",
+      "kind": "analyze",
+      "tool": "channel_activity_reporter",
+      "description": "Report channel activity and unanswered-post risk from supplied counts.",
+      "items": [
+        "posts",
+        "replies",
+        "unique contributors",
+        "unanswered posts",
+        "response time hours"
+      ],
+      "path": "plugins/channel-activity-reporter"
+    },
+    {
+      "slug": "churn-risk-scorer",
+      "name": "Churn Risk Scorer",
+      "domain": "Community",
+      "category": "Retention & Churn",
+      "kind": "score",
+      "tool": "churn_risk_scorer",
+      "description": "Score member churn risk from supplied activity signals. Higher inactivity means higher risk.",
+      "items": [
+        "days inactive",
+        "event absence",
+        "post decline",
+        "support issues",
+        "tenure"
+      ],
+      "path": "plugins/churn-risk-scorer"
+    },
+    {
+      "slug": "retention-campaign-planner",
+      "name": "Retention Campaign Planner",
+      "domain": "Community",
+      "category": "Retention & Churn",
+      "kind": "plan",
+      "tool": "retention_campaign_planner",
+      "description": "Plan a retention campaign for at-risk members.",
+      "items": [
+        "segment at-risk members",
+        "personal outreach",
+        "value reminder",
+        "win-back offer",
+        "measure return rate"
+      ],
+      "path": "plugins/retention-campaign-planner"
+    },
+    {
+      "slug": "exit-feedback-classifier",
+      "name": "Exit Feedback Classifier",
+      "domain": "Community",
+      "category": "Retention & Churn",
+      "kind": "classify",
+      "tool": "exit_feedback_classifier",
+      "description": "Classify exit feedback into a churn reason.",
+      "items": [
+        "no time",
+        "not relevant",
+        "cost",
+        "found alternative",
+        "life change",
+        "negative experience"
+      ],
+      "path": "plugins/exit-feedback-classifier"
+    },
+    {
+      "slug": "member-health-checklist",
+      "name": "Member Health Checklist",
+      "domain": "Community",
+      "category": "Retention & Churn",
+      "kind": "checklist",
+      "tool": "member_health_checklist",
+      "description": "Check member health signals for a cohort review.",
+      "items": [
+        "logged in recently",
+        "attended event",
+        "posted or replied",
+        "used a resource",
+        "gave feedback"
+      ],
+      "path": "plugins/member-health-checklist"
+    },
+    {
+      "slug": "win-back-drafter",
+      "name": "Win-back Drafter",
+      "domain": "Community",
+      "category": "Retention & Churn",
+      "kind": "template",
+      "tool": "win_back_drafter",
+      "description": "Draft a win-back message from supplied updates. Draft only.",
+      "items": [
+        "acknowledge absence",
+        "what is new supplied by user",
+        "personal invite",
+        "no pressure close"
+      ],
+      "path": "plugins/win-back-drafter"
+    },
+    {
+      "slug": "cohort-retention-reporter",
+      "name": "Cohort Retention Reporter",
+      "domain": "Community",
+      "category": "Retention & Churn",
+      "kind": "analyze",
+      "tool": "cohort_retention_reporter",
+      "description": "Report cohort retention from supplied counts.",
+      "items": [
+        "month 0 members",
+        "month 1 retained",
+        "month 3 retained",
+        "month 6 retained",
+        "retention curve"
+      ],
+      "path": "plugins/cohort-retention-reporter"
+    },
+    {
+      "slug": "post-moderation-classifier",
+      "name": "Post Moderation Classifier",
+      "domain": "Community",
+      "category": "Moderation & Safety",
+      "kind": "classify",
+      "tool": "post_moderation_classifier",
+      "description": "Classify a community post for moderation routing. Flags only, never auto-removes.",
+      "items": [
+        "welcome",
+        "self promotion",
+        "spam",
+        "abuse",
+        "off topic",
+        "needs help"
+      ],
+      "path": "plugins/post-moderation-classifier"
+    },
+    {
+      "slug": "code-of-conduct-audit",
+      "name": "Code of Conduct Audit",
+      "domain": "Community",
+      "category": "Moderation & Safety",
+      "kind": "audit",
+      "tool": "code_of_conduct_audit",
+      "description": "Audit a code of conduct for essential safety elements.",
+      "items": [
+        "expected behaviour",
+        "unacceptable behaviour",
+        "reporting route",
+        "consequences",
+        "appeals process"
+      ],
+      "path": "plugins/code-of-conduct-audit"
+    },
+    {
+      "slug": "spam-signal-scorer",
+      "name": "Spam Signal Scorer",
+      "domain": "Community",
+      "category": "Moderation & Safety",
+      "kind": "score",
+      "tool": "spam_signal_scorer",
+      "description": "Score spam signals in a post from supplied indicators. Flag for human review only.",
+      "items": [
+        "link density",
+        "new account",
+        "repeated text",
+        "keyword stuffing",
+        "report count"
+      ],
+      "path": "plugins/spam-signal-scorer"
+    },
+    {
+      "slug": "moderator-escalation-template",
+      "name": "Moderator Escalation Template",
+      "domain": "Community",
+      "category": "Moderation & Safety",
+      "kind": "template",
+      "tool": "moderator_escalation_template",
+      "description": "Render a moderation escalation record from supplied evidence only.",
+      "items": [
+        "incident summary",
+        "evidence supplied by moderator",
+        "rule reference",
+        "action taken",
+        "appeal note"
+      ],
+      "path": "plugins/moderator-escalation-template"
+    },
+    {
+      "slug": "community-guidelines-checklist",
+      "name": "Community Guidelines Checklist",
+      "domain": "Community",
+      "category": "Moderation & Safety",
+      "kind": "checklist",
+      "tool": "community_guidelines_checklist",
+      "description": "Check community safety operations readiness.",
+      "items": [
+        "guidelines pinned",
+        "reporting route",
+        "moderator rota",
+        "response sla",
+        "appeals process"
+      ],
+      "path": "plugins/community-guidelines-checklist"
+    },
+    {
+      "slug": "conflict-de-escalation-drafter",
+      "name": "Conflict De-escalation Drafter",
+      "domain": "Community",
+      "category": "Moderation & Safety",
+      "kind": "template",
+      "tool": "conflict_de_escalation_drafter",
+      "description": "Draft a de-escalation reply. Draft only, human moderator sends.",
+      "items": [
+        "calm opening",
+        "shared ground",
+        "rule reminder",
+        "private follow-up offer"
+      ],
+      "path": "plugins/conflict-de-escalation-drafter"
+    },
+    {
+      "slug": "speaker-fit-scorer-community",
+      "name": "Speaker Fit Scorer (Community)",
+      "domain": "Community",
+      "category": "Speakers & Sponsors",
+      "kind": "score",
+      "tool": "speaker_fit_scorer_community",
+      "description": "Score a speaker for a community event from supplied information.",
+      "items": [
+        "topic relevance",
+        "audience level",
+        "talk experience",
+        "diversity of perspective",
+        "availability"
+      ],
+      "path": "plugins/speaker-fit-scorer-community"
+    },
+    {
+      "slug": "sponsor-activation-checklist",
+      "name": "Sponsor Activation Checklist",
+      "domain": "Community",
+      "category": "Speakers & Sponsors",
+      "kind": "checklist",
+      "tool": "sponsor_activation_checklist",
+      "description": "Check sponsor activation readiness for a community event.",
+      "items": [
+        "logo assets",
+        "booth plan",
+        "speaking slot",
+        "lead capture",
+        "post-event report date"
+      ],
+      "path": "plugins/sponsor-activation-checklist"
+    },
+    {
+      "slug": "speaker-outreach-drafter",
+      "name": "Speaker Outreach Drafter",
+      "domain": "Community",
+      "category": "Speakers & Sponsors",
+      "kind": "template",
+      "tool": "speaker_outreach_drafter",
+      "description": "Draft speaker outreach from supplied event facts. Draft only.",
+      "items": [
+        "event context",
+        "audience supplied by user",
+        "topic fit",
+        "logistics",
+        "next step"
+      ],
+      "path": "plugins/speaker-outreach-drafter"
+    },
+    {
+      "slug": "sponsor-satisfaction-reporter",
+      "name": "Sponsor Satisfaction Reporter",
+      "domain": "Community",
+      "category": "Speakers & Sponsors",
+      "kind": "analyze",
+      "tool": "sponsor_satisfaction_reporter",
+      "description": "Report sponsor satisfaction from supplied survey counts.",
+      "items": [
+        "sponsors surveyed",
+        "satisfied",
+        "neutral",
+        "dissatisfied",
+        "renewal intent"
+      ],
+      "path": "plugins/sponsor-satisfaction-reporter"
+    },
+    {
+      "slug": "panel-composition-audit",
+      "name": "Panel Composition Audit",
+      "domain": "Community",
+      "category": "Speakers & Sponsors",
+      "kind": "audit",
+      "tool": "panel_composition_audit",
+      "description": "Audit a panel line-up for balance elements.",
+      "items": [
+        "topic balance",
+        "seniority mix",
+        "company mix",
+        "perspective mix",
+        "moderator assigned"
+      ],
+      "path": "plugins/panel-composition-audit"
+    },
+    {
+      "slug": "thank-you-note-drafter",
+      "name": "Thank-you Note Drafter",
+      "domain": "Community",
+      "category": "Speakers & Sponsors",
+      "kind": "template",
+      "tool": "thank_you_note_drafter",
+      "description": "Draft a thank-you note from supplied facts. Draft only.",
+      "items": [
+        "specific contribution",
+        "audience impact supplied by user",
+        "photo or recording link",
+        "future invite"
+      ],
+      "path": "plugins/thank-you-note-drafter"
+    },
+    {
+      "slug": "nps-calculator",
+      "name": "NPS Calculator",
+      "domain": "Community",
+      "category": "Feedback & NPS",
+      "kind": "analyze",
+      "tool": "nps_calculator",
+      "description": "Calculate NPS from supplied promoter, passive and detractor counts.",
+      "items": [
+        "promoters",
+        "passives",
+        "detractors",
+        "total responses",
+        "nps score"
+      ],
+      "path": "plugins/nps-calculator"
+    },
+    {
+      "slug": "feedback-theme-classifier",
+      "name": "Feedback Theme Classifier",
+      "domain": "Community",
+      "category": "Feedback & NPS",
+      "kind": "classify",
+      "tool": "feedback_theme_classifier",
+      "description": "Classify member feedback into a theme.",
+      "items": [
+        "content quality",
+        "networking",
+        "logistics",
+        "speakers",
+        "food and venue",
+        "other"
+      ],
+      "path": "plugins/feedback-theme-classifier"
+    },
+    {
+      "slug": "survey-design-audit",
+      "name": "Survey Design Audit",
+      "domain": "Community",
+      "category": "Feedback & NPS",
+      "kind": "audit",
+      "tool": "survey_design_audit",
+      "description": "Audit a survey design before sending.",
+      "items": [
+        "one clear goal",
+        "five questions or fewer",
+        "rating scale",
+        "open text option",
+        "thank you note"
+      ],
+      "path": "plugins/survey-design-audit"
+    },
+    {
+      "slug": "feedback-response-drafter",
+      "name": "Feedback Response Drafter",
+      "domain": "Community",
+      "category": "Feedback & NPS",
+      "kind": "template",
+      "tool": "feedback_response_drafter",
+      "description": "Draft a response to feedback from supplied actions. Draft only.",
+      "items": [
+        "thank them",
+        "specific point",
+        "what will change supplied by user",
+        "timeline"
+      ],
+      "path": "plugins/feedback-response-drafter"
+    },
+    {
+      "slug": "detractor-recovery-checklist",
+      "name": "Detractor Recovery Checklist",
+      "domain": "Community",
+      "category": "Feedback & NPS",
+      "kind": "checklist",
+      "tool": "detractor_recovery_checklist",
+      "description": "Check detractor recovery steps are complete.",
+      "items": [
+        "acknowledge within 48h",
+        "understand issue",
+        "offer fix",
+        "follow up",
+        "log learning"
+      ],
+      "path": "plugins/detractor-recovery-checklist"
+    },
+    {
+      "slug": "feedback-priority-ranker",
+      "name": "Feedback Priority Ranker",
+      "domain": "Community",
+      "category": "Feedback & NPS",
+      "kind": "prioritize",
+      "tool": "feedback_priority_ranker",
+      "description": "Rank feedback themes by mentions and effort.",
+      "items": [
+        "mentions",
+        "severity",
+        "member impact",
+        "effort to fix",
+        "strategic fit"
+      ],
+      "path": "plugins/feedback-priority-ranker"
+    },
+    {
+      "slug": "ambassador-fit-scorer",
+      "name": "Ambassador Fit Scorer",
+      "domain": "Community",
+      "category": "Ambassadors",
+      "kind": "score",
+      "tool": "ambassador_fit_scorer",
+      "description": "Score an ambassador candidate from supplied contributions.",
+      "items": [
+        "community tenure",
+        "contribution history",
+        "reach",
+        "reputation",
+        "availability"
+      ],
+      "path": "plugins/ambassador-fit-scorer"
+    },
+    {
+      "slug": "ambassador-onboarding-planner",
+      "name": "Ambassador Onboarding Planner",
+      "domain": "Community",
+      "category": "Ambassadors",
+      "kind": "plan",
+      "tool": "ambassador_onboarding_planner",
+      "description": "Plan ambassador onboarding over 30 days.",
+      "items": [
+        "welcome call",
+        "starter kit",
+        "first task",
+        "introduce to members",
+        "30-day check-in"
+      ],
+      "path": "plugins/ambassador-onboarding-planner"
+    },
+    {
+      "slug": "ambassador-activity-reporter",
+      "name": "Ambassador Activity Reporter",
+      "domain": "Community",
+      "category": "Ambassadors",
+      "kind": "analyze",
+      "tool": "ambassador_activity_reporter",
+      "description": "Report ambassador programme activity from supplied counts.",
+      "items": [
+        "active ambassadors",
+        "events hosted",
+        "posts made",
+        "members helped",
+        "coverage rate"
+      ],
+      "path": "plugins/ambassador-activity-reporter"
+    },
+    {
+      "slug": "ambassador-brief-template",
+      "name": "Ambassador Brief Template",
+      "domain": "Community",
+      "category": "Ambassadors",
+      "kind": "template",
+      "tool": "ambassador_brief_template",
+      "description": "Render an ambassador brief from supplied campaign facts.",
+      "items": [
+        "campaign goal",
+        "key message supplied by user",
+        "assets",
+        "do and do not",
+        "deadline"
+      ],
+      "path": "plugins/ambassador-brief-template"
+    },
+    {
+      "slug": "ambassador-recognition-drafter",
+      "name": "Ambassador Recognition Drafter",
+      "domain": "Community",
+      "category": "Ambassadors",
+      "kind": "template",
+      "tool": "ambassador_recognition_drafter",
+      "description": "Draft ambassador recognition from supplied facts. Draft only.",
+      "items": [
+        "name supplied by user",
+        "specific contribution",
+        "impact supplied by user",
+        "public thank you"
+      ],
+      "path": "plugins/ambassador-recognition-drafter"
+    },
+    {
+      "slug": "ambassador-programme-audit",
+      "name": "Ambassador Programme Audit",
+      "domain": "Community",
+      "category": "Ambassadors",
+      "kind": "audit",
+      "tool": "ambassador_programme_audit",
+      "description": "Audit an ambassador programme for completeness.",
+      "items": [
+        "selection criteria",
+        "onboarding",
+        "activity tracking",
+        "recognition",
+        "rewards",
+        "exit process"
+      ],
+      "path": "plugins/ambassador-programme-audit"
+    },
+    {
+      "slug": "community-health-reporter",
+      "name": "Community Health Reporter",
+      "domain": "Community",
+      "category": "Community Analytics",
+      "kind": "analyze",
+      "tool": "community_health_reporter",
+      "description": "Report headline community health from supplied counts.",
+      "items": [
+        "total members",
+        "active members",
+        "active rate",
+        "new members",
+        "churned members"
+      ],
+      "path": "plugins/community-health-reporter"
+    },
+    {
+      "slug": "growth-funnel-reporter",
+      "name": "Growth Funnel Reporter",
+      "domain": "Community",
+      "category": "Community Analytics",
+      "kind": "analyze",
+      "tool": "growth_funnel_reporter",
+      "description": "Report community growth funnel conversion from supplied counts.",
+      "items": [
+        "invites",
+        "signups",
+        "activated",
+        "engaged",
+        "retained"
+      ],
+      "path": "plugins/growth-funnel-reporter"
+    },
+    {
+      "slug": "content-performance-scorer",
+      "name": "Content Performance Scorer",
+      "domain": "Community",
+      "category": "Community Analytics",
+      "kind": "score",
+      "tool": "content_performance_scorer",
+      "description": "Score a community post's performance from supplied metrics.",
+      "items": [
+        "views",
+        "reactions",
+        "comments",
+        "shares",
+        "saves"
+      ],
+      "path": "plugins/content-performance-scorer"
+    },
+    {
+      "slug": "member-segment-analyser",
+      "name": "Member Segment Analyser",
+      "domain": "Community",
+      "category": "Community Analytics",
+      "kind": "classify",
+      "tool": "member_segment_analyser",
+      "description": "Classify a member segment from a supplied activity description.",
+      "items": [
+        "power user",
+        "regular",
+        "occasional",
+        "lurker",
+        "at risk"
+      ],
+      "path": "plugins/member-segment-analyser"
+    },
+    {
+      "slug": "monthly-report-builder",
+      "name": "Monthly Report Builder",
+      "domain": "Community",
+      "category": "Community Analytics",
+      "kind": "template",
+      "tool": "monthly_report_builder",
+      "description": "Build a monthly community report from supplied metrics only.",
+      "items": [
+        "headline metric",
+        "growth",
+        "engagement highlight supplied by user",
+        "challenges",
+        "next month priority"
+      ],
+      "path": "plugins/monthly-report-builder"
+    },
+    {
+      "slug": "benchmark-gap-audit",
+      "name": "Benchmark Gap Audit",
+      "domain": "Community",
+      "category": "Community Analytics",
+      "kind": "audit",
+      "tool": "benchmark_gap_audit",
+      "description": "Audit which benchmark metrics are tracked versus missing.",
+      "items": [
+        "active rate",
+        "response time",
+        "event show rate",
+        "nps",
+        "retention rate"
+      ],
+      "path": "plugins/benchmark-gap-audit"
+    },
+    {
+      "slug": "membership-tier-scorer",
+      "name": "Membership Tier Scorer",
+      "domain": "Community",
+      "category": "Monetisation",
+      "kind": "score",
+      "tool": "membership_tier_scorer",
+      "description": "Score a paid membership tier design. Sponsors pay first in Lionel's model, member paywalls need explicit review.",
+      "items": [
+        "value delivered",
+        "price fit",
+        "exclusivity",
+        "delivery cost",
+        "support load"
+      ],
+      "path": "plugins/membership-tier-scorer"
+    },
+    {
+      "slug": "sponsored-slot-pricing-calculator",
+      "name": "Sponsored Slot Pricing Calculator",
+      "domain": "Community",
+      "category": "Monetisation",
+      "kind": "analyze",
+      "tool": "sponsored_slot_pricing_calculator",
+      "description": "Calculate a sponsored slot price from supplied audience and rate inputs only.",
+      "items": [
+        "audience size",
+        "expected impressions",
+        "base rate",
+        "premium factor",
+        "package price"
+      ],
+      "path": "plugins/sponsored-slot-pricing-calculator"
+    },
+    {
+      "slug": "monetisation-idea-ranker",
+      "name": "Monetisation Idea Ranker",
+      "domain": "Community",
+      "category": "Monetisation",
+      "kind": "prioritize",
+      "tool": "monetisation_idea_ranker",
+      "description": "Rank monetisation ideas protecting member goodwill.",
+      "items": [
+        "revenue potential",
+        "member goodwill",
+        "effort",
+        "sponsor fit",
+        "speed to launch"
+      ],
+      "path": "plugins/monetisation-idea-ranker"
+    },
+    {
+      "slug": "paid-event-break-even-calculator",
+      "name": "Paid Event Break-even Calculator",
+      "domain": "Community",
+      "category": "Monetisation",
+      "kind": "analyze",
+      "tool": "paid_event_break_even_calculator",
+      "description": "Calculate break-even ticket sales from supplied costs and price.",
+      "items": [
+        "venue cost",
+        "food cost",
+        "other costs",
+        "ticket price",
+        "break-even tickets"
+      ],
+      "path": "plugins/paid-event-break-even-calculator"
+    },
+    {
+      "slug": "sponsor-package-builder",
+      "name": "Sponsor Package Builder",
+      "domain": "Community",
+      "category": "Monetisation",
+      "kind": "template",
+      "tool": "sponsor_package_builder",
+      "description": "Build a sponsor package from supplied audience facts and deliverables only.",
+      "items": [
+        "audience supplied by user",
+        "deliverables",
+        "term",
+        "investment",
+        "reporting"
+      ],
+      "path": "plugins/sponsor-package-builder"
+    },
+    {
+      "slug": "revenue-mix-reporter",
+      "name": "Revenue Mix Reporter",
+      "domain": "Community",
+      "category": "Monetisation",
+      "kind": "analyze",
+      "tool": "revenue_mix_reporter",
+      "description": "Report revenue mix percentages from supplied amounts.",
+      "items": [
+        "sponsorship",
+        "tickets",
+        "memberships",
+        "workshops",
+        "other revenue"
+      ],
+      "path": "plugins/revenue-mix-reporter"
+    }
+  ]
+}

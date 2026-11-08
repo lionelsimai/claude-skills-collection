@@ -1,0 +1,72 @@
+{
+  "name": "discount-guardrail-checker",
+  "display_name": "Discount Guardrail Checker",
+  "description": "Score a discount request against guardrails before approval.",
+  "category": "Proposals & Pricing",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "discount_guardrail_checker",
+      "description": "Score a discount request against guardrails before approval.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: margin_protected, scope_reduced, payment_terms, expiry_date, approval_level"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "margin_protected": 70,
+          "scope_reduced": 70,
+          "payment_terms": 70,
+          "expiry_date": 70,
+          "approval_level": 70
+        }
+      },
+      "output": {
+        "plugin": "discount-guardrail-checker",
+        "tool": "discount_guardrail_checker",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "margin protected",
+        "scope reduced",
+        "payment terms",
+        "expiry date",
+        "approval level"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "proposals & pricing",
+    "gtm",
+    "score"
+  ]
+}

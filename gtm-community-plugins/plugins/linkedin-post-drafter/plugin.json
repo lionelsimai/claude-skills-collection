@@ -1,0 +1,70 @@
+{
+  "name": "linkedin-post-drafter",
+  "display_name": "LinkedIn Post Drafter",
+  "description": "Draft a LinkedIn post from a supplied insight and example only. Draft only, never auto-posted.",
+  "category": "Content & Thought Leadership",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "linkedin_post_drafter",
+      "description": "Draft a LinkedIn post from a supplied insight and example only. Draft only, never auto-posted.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: hook, supplied_insight, supplied_example, lesson, question_to_readers"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "hook": "[supplied: hook]",
+          "supplied_insight": "[supplied: supplied insight]",
+          "supplied_example": "[supplied: supplied example]"
+        }
+      },
+      "output": {
+        "plugin": "linkedin-post-drafter",
+        "tool": "linkedin_post_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "hook",
+        "supplied insight",
+        "supplied example",
+        "lesson",
+        "question to readers"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "content & thought leadership",
+    "gtm",
+    "template"
+  ]
+}

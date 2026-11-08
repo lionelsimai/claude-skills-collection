@@ -1,0 +1,69 @@
+{
+  "name": "win-back-drafter",
+  "display_name": "Win-back Drafter",
+  "description": "Draft a win-back message from supplied updates. Draft only.",
+  "category": "Retention & Churn",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "win_back_drafter",
+      "description": "Draft a win-back message from supplied updates. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: acknowledge_absence, what_is_new_supplied_by_user, personal_invite, no_pressure_close"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "acknowledge_absence": "[supplied: acknowledge absence]",
+          "what_is_new_supplied_by_user": "[supplied: what is new supplied by user]",
+          "personal_invite": "[supplied: personal invite]"
+        }
+      },
+      "output": {
+        "plugin": "win-back-drafter",
+        "tool": "win_back_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "acknowledge absence",
+        "what is new supplied by user",
+        "personal invite",
+        "no pressure close"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "retention & churn",
+    "community",
+    "template"
+  ]
+}

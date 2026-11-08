@@ -1,0 +1,69 @@
+{
+  "name": "retention-campaign-planner",
+  "display_name": "Retention Campaign Planner",
+  "description": "Plan a retention campaign for at-risk members.",
+  "category": "Retention & Churn",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "retention_campaign_planner",
+      "description": "Plan a retention campaign for at-risk members.",
+      "kind": "plan",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "goal": {
+            "type": "string"
+          },
+          "timeframe_days": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "goal"
+        ]
+      },
+      "sample_input": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+      },
+      "output": {
+        "plugin": "retention-campaign-planner",
+        "tool": "retention_campaign_planner",
+        "kind": "plan",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "plan",
+    "config": {
+      "items": [
+        "segment at-risk members",
+        "personal outreach",
+        "value reminder",
+        "win-back offer",
+        "measure return rate"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "retention & churn",
+    "community",
+    "plan"
+  ]
+}

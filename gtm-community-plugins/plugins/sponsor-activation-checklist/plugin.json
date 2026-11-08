@@ -1,0 +1,72 @@
+{
+  "name": "sponsor-activation-checklist",
+  "display_name": "Sponsor Activation Checklist",
+  "description": "Check sponsor activation readiness for a community event.",
+  "category": "Speakers & Sponsors",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "sponsor_activation_checklist",
+      "description": "Check sponsor activation readiness for a community event.",
+      "kind": "checklist",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Completed items from: logo assets, booth plan, speaking slot, lead capture, post-event report date"
+          }
+        },
+        "required": [
+          "completed"
+        ]
+      },
+      "sample_input": {
+        "completed": [
+          "logo assets",
+          "booth plan"
+        ]
+      },
+      "output": {
+        "plugin": "sponsor-activation-checklist",
+        "tool": "sponsor_activation_checklist",
+        "kind": "checklist",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "checklist",
+    "config": {
+      "items": [
+        "logo assets",
+        "booth plan",
+        "speaking slot",
+        "lead capture",
+        "post-event report date"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "speakers & sponsors",
+    "community",
+    "checklist"
+  ]
+}

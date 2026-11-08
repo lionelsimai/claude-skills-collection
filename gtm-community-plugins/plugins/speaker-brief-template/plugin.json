@@ -1,0 +1,71 @@
+{
+  "name": "speaker-brief-template",
+  "display_name": "Speaker Brief Template",
+  "description": "Render a speaker brief from supplied event facts only.",
+  "category": "Events",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "speaker_brief_template",
+      "description": "Render a speaker brief from supplied event facts only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: event_context, audience, talk_slot, format, av_needs, deadline"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "event_context": "[supplied: event context]",
+          "audience": "[supplied: audience]",
+          "talk_slot": "[supplied: talk slot]"
+        }
+      },
+      "output": {
+        "plugin": "speaker-brief-template",
+        "tool": "speaker_brief_template",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "event context",
+        "audience",
+        "talk slot",
+        "format",
+        "av needs",
+        "deadline"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "events",
+    "community",
+    "template"
+  ]
+}

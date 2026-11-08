@@ -1,0 +1,66 @@
+{
+  "name": "proposal-win-loss-classifier",
+  "display_name": "Proposal Win/Loss Classifier",
+  "description": "Classify a lost or won proposal outcome from supplied notes.",
+  "category": "Proposals & Pricing",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "proposal_win_loss_classifier",
+      "description": "Classify a lost or won proposal outcome from supplied notes.",
+      "kind": "classify",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "This is about price and needs review."
+      },
+      "output": {
+        "plugin": "proposal-win-loss-classifier",
+        "tool": "proposal_win_loss_classifier",
+        "kind": "classify",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "classify",
+    "config": {
+      "items": [
+        "price",
+        "budget frozen",
+        "competitor chosen",
+        "timing",
+        "no response",
+        "champion left"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "proposals & pricing",
+    "gtm",
+    "classify"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "lead-source-scorer",
+  "display_name": "Lead Source Scorer",
+  "description": "Score a lead source so budget goes to sources that convert.",
+  "category": "Lead Generation",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "lead_source_scorer",
+      "description": "Score a lead source so budget goes to sources that convert.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: conversion_rate, cost_per_lead, data_completeness, reply_rate, unsubscribe_rate"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "conversion_rate": 70,
+          "cost_per_lead": 70,
+          "data_completeness": 70,
+          "reply_rate": 70,
+          "unsubscribe_rate": 70
+        }
+      },
+      "output": {
+        "plugin": "lead-source-scorer",
+        "tool": "lead_source_scorer",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "conversion rate",
+        "cost per lead",
+        "data completeness",
+        "reply rate",
+        "unsubscribe rate"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "lead generation",
+    "gtm",
+    "score"
+  ]
+}

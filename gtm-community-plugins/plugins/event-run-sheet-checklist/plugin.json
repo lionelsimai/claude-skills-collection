@@ -1,0 +1,73 @@
+{
+  "name": "event-run-sheet-checklist",
+  "display_name": "Event Run Sheet Checklist",
+  "description": "Check an event run sheet before event day.",
+  "category": "Events",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "event_run_sheet_checklist",
+      "description": "Check an event run sheet before event day.",
+      "kind": "checklist",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Completed items from: venue confirmed, speakers confirmed, av tested, registration list, signage, photographer briefed"
+          }
+        },
+        "required": [
+          "completed"
+        ]
+      },
+      "sample_input": {
+        "completed": [
+          "venue confirmed",
+          "speakers confirmed"
+        ]
+      },
+      "output": {
+        "plugin": "event-run-sheet-checklist",
+        "tool": "event_run_sheet_checklist",
+        "kind": "checklist",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "checklist",
+    "config": {
+      "items": [
+        "venue confirmed",
+        "speakers confirmed",
+        "av tested",
+        "registration list",
+        "signage",
+        "photographer briefed"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "events",
+    "community",
+    "checklist"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "proposal-structure-builder",
+  "display_name": "Proposal Structure Builder",
+  "description": "Build a proposal skeleton from supplied scope and pricing only. No invented proof.",
+  "category": "Proposals & Pricing",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "proposal_structure_builder",
+      "description": "Build a proposal skeleton from supplied scope and pricing only. No invented proof.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: problem, outcomes, scope, deliverables, timeline, investment, terms"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "problem": "[supplied: problem]",
+          "outcomes": "[supplied: outcomes]",
+          "scope": "[supplied: scope]"
+        }
+      },
+      "output": {
+        "plugin": "proposal-structure-builder",
+        "tool": "proposal_structure_builder",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "problem",
+        "outcomes",
+        "scope",
+        "deliverables",
+        "timeline",
+        "investment",
+        "terms"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "proposals & pricing",
+    "gtm",
+    "template"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "name": "champion-tracker-template",
+  "display_name": "Champion Tracker Template",
+  "description": "Render a champion tracking sheet from supplied facts only.",
+  "category": "Lead Scoring & Enrichment",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "champion_tracker_template",
+      "description": "Render a champion tracking sheet from supplied facts only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: champion_name, role, influence_level, last_contact, next_action"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "champion_name": "[supplied: champion name]",
+          "role": "[supplied: role]",
+          "influence_level": "[supplied: influence level]"
+        }
+      },
+      "output": {
+        "plugin": "champion-tracker-template",
+        "tool": "champion_tracker_template",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "champion name",
+        "role",
+        "influence level",
+        "last contact",
+        "next action"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "lead scoring & enrichment",
+    "gtm",
+    "template"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "name": "sponsored-slot-pricing-calculator",
+  "display_name": "Sponsored Slot Pricing Calculator",
+  "description": "Calculate a sponsored slot price from supplied audience and rate inputs only.",
+  "category": "Monetisation",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "sponsored_slot_pricing_calculator",
+      "description": "Calculate a sponsored slot price from supplied audience and rate inputs only.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "audience_size": 100,
+          "expected_impressions": 90,
+          "base_rate": 80,
+          "premium_factor": 70,
+          "package_price": 60
+        }
+      },
+      "output": {
+        "plugin": "sponsored-slot-pricing-calculator",
+        "tool": "sponsored_slot_pricing_calculator",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "audience size",
+        "expected impressions",
+        "base rate",
+        "premium factor",
+        "package price"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "monetisation",
+    "community",
+    "analyze"
+  ]
+}

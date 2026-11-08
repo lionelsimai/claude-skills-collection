@@ -1,0 +1,66 @@
+{
+  "name": "meeting-notes-extractor",
+  "display_name": "Meeting Notes Extractor",
+  "description": "Check meeting notes contain decisions, owners and deadlines.",
+  "category": "Reply & Meeting",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "meeting_notes_extractor",
+      "description": "Check meeting notes contain decisions, owners and deadlines.",
+      "kind": "audit",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "decision action item owner are covered in this document."
+      },
+      "output": {
+        "plugin": "meeting-notes-extractor",
+        "tool": "meeting_notes_extractor",
+        "kind": "audit",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "audit",
+    "config": {
+      "items": [
+        "decision",
+        "action item",
+        "owner",
+        "deadline",
+        "risk",
+        "next meeting"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "reply & meeting",
+    "gtm",
+    "audit"
+  ]
+}

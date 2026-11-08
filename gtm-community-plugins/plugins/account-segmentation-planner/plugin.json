@@ -1,0 +1,69 @@
+{
+  "name": "account-segmentation-planner",
+  "display_name": "Account Segmentation Planner",
+  "description": "Build a tiered account segmentation plan from a stated goal.",
+  "category": "ICP & Market Research",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "account_segmentation_planner",
+      "description": "Build a tiered account segmentation plan from a stated goal.",
+      "kind": "plan",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "goal": {
+            "type": "string"
+          },
+          "timeframe_days": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "goal"
+        ]
+      },
+      "sample_input": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+      },
+      "output": {
+        "plugin": "account-segmentation-planner",
+        "tool": "account_segmentation_planner",
+        "kind": "plan",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "plan",
+    "config": {
+      "items": [
+        "define segment criteria",
+        "rank accounts by fit",
+        "assign segment tiers",
+        "name segment owners",
+        "set review cadence"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "icp & market research",
+    "gtm",
+    "plan"
+  ]
+}

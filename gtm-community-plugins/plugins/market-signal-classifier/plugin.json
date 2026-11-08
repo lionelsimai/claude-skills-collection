@@ -1,0 +1,66 @@
+{
+  "name": "market-signal-classifier",
+  "display_name": "Market Signal Classifier",
+  "description": "Classify a supplied market signal about an account into its signal type.",
+  "category": "ICP & Market Research",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "market_signal_classifier",
+      "description": "Classify a supplied market signal about an account into its signal type.",
+      "kind": "classify",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "This is about funding and needs review."
+      },
+      "output": {
+        "plugin": "market-signal-classifier",
+        "tool": "market_signal_classifier",
+        "kind": "classify",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "classify",
+    "config": {
+      "items": [
+        "funding",
+        "expansion",
+        "hiring",
+        "leadership change",
+        "technology adoption",
+        "no signal"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "icp & market research",
+    "gtm",
+    "classify"
+  ]
+}

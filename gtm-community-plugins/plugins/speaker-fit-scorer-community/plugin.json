@@ -1,0 +1,72 @@
+{
+  "name": "speaker-fit-scorer-community",
+  "display_name": "Speaker Fit Scorer (Community)",
+  "description": "Score a speaker for a community event from supplied information.",
+  "category": "Speakers & Sponsors",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "speaker_fit_scorer_community",
+      "description": "Score a speaker for a community event from supplied information.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: topic_relevance, audience_level, talk_experience, diversity_of_perspective, availability"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "topic_relevance": 70,
+          "audience_level": 70,
+          "talk_experience": 70,
+          "diversity_of_perspective": 70,
+          "availability": 70
+        }
+      },
+      "output": {
+        "plugin": "speaker-fit-scorer-community",
+        "tool": "speaker_fit_scorer_community",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "topic relevance",
+        "audience level",
+        "talk experience",
+        "diversity of perspective",
+        "availability"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "speakers & sponsors",
+    "community",
+    "score"
+  ]
+}

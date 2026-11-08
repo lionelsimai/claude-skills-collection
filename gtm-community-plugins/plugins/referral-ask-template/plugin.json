@@ -1,0 +1,70 @@
+{
+  "name": "referral-ask-template",
+  "display_name": "Referral Ask Template",
+  "description": "Draft a referral ask from supplied facts only. Draft only, never sent automatically.",
+  "category": "Lead Generation",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "referral_ask_template",
+      "description": "Draft a referral ask from supplied facts only. Draft only, never sent automatically.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: context, reason_for_asking, specific_person_type, easy_yes_path, thank_you_note"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "context": "[supplied: context]",
+          "reason_for_asking": "[supplied: reason for asking]",
+          "specific_person_type": "[supplied: specific person type]"
+        }
+      },
+      "output": {
+        "plugin": "referral-ask-template",
+        "tool": "referral_ask_template",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "context",
+        "reason for asking",
+        "specific person type",
+        "easy yes path",
+        "thank you note"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "lead generation",
+    "gtm",
+    "template"
+  ]
+}

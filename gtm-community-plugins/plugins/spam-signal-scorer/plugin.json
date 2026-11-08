@@ -1,0 +1,72 @@
+{
+  "name": "spam-signal-scorer",
+  "display_name": "Spam Signal Scorer",
+  "description": "Score spam signals in a post from supplied indicators. Flag for human review only.",
+  "category": "Moderation & Safety",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "spam_signal_scorer",
+      "description": "Score spam signals in a post from supplied indicators. Flag for human review only.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: link_density, new_account, repeated_text, keyword_stuffing, report_count"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "link_density": 70,
+          "new_account": 70,
+          "repeated_text": 70,
+          "keyword_stuffing": 70,
+          "report_count": 70
+        }
+      },
+      "output": {
+        "plugin": "spam-signal-scorer",
+        "tool": "spam_signal_scorer",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "link density",
+        "new account",
+        "repeated text",
+        "keyword stuffing",
+        "report count"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "moderation & safety",
+    "community",
+    "score"
+  ]
+}

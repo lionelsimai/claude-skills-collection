@@ -1,0 +1,67 @@
+{
+  "name": "reply-intent-classifier",
+  "display_name": "Reply Intent Classifier",
+  "description": "Classify an email reply by intent so hot replies move first.",
+  "category": "Reply & Meeting",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "reply_intent_classifier",
+      "description": "Classify an email reply by intent so hot replies move first.",
+      "kind": "classify",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "This is about interested and needs review."
+      },
+      "output": {
+        "plugin": "reply-intent-classifier",
+        "tool": "reply_intent_classifier",
+        "kind": "classify",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "classify",
+    "config": {
+      "items": [
+        "interested",
+        "meeting request",
+        "objection",
+        "not now",
+        "not relevant",
+        "unsubscribe",
+        "pricing question"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "reply & meeting",
+    "gtm",
+    "classify"
+  ]
+}

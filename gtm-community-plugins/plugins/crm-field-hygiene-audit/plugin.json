@@ -1,0 +1,67 @@
+{
+  "name": "crm-field-hygiene-audit",
+  "display_name": "CRM Field Hygiene Audit",
+  "description": "Audit a deal record for required CRM fields.",
+  "category": "Pipeline & CRM",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "crm_field_hygiene_audit",
+      "description": "Audit a deal record for required CRM fields.",
+      "kind": "audit",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "company contact stage are covered in this document."
+      },
+      "output": {
+        "plugin": "crm-field-hygiene-audit",
+        "tool": "crm_field_hygiene_audit",
+        "kind": "audit",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "audit",
+    "config": {
+      "items": [
+        "company",
+        "contact",
+        "stage",
+        "amount",
+        "close date",
+        "next step",
+        "source"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "pipeline & crm",
+    "gtm",
+    "audit"
+  ]
+}

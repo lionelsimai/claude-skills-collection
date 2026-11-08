@@ -1,0 +1,70 @@
+{
+  "name": "discussion-prompt-drafter",
+  "display_name": "Discussion Prompt Drafter",
+  "description": "Draft a discussion prompt from a supplied topic. Draft only.",
+  "category": "Engagement",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "discussion_prompt_drafter",
+      "description": "Draft a discussion prompt from a supplied topic. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: topic_hook, context, question, example_starter, call_to_respond"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "topic_hook": "[supplied: topic hook]",
+          "context": "[supplied: context]",
+          "question": "[supplied: question]"
+        }
+      },
+      "output": {
+        "plugin": "discussion-prompt-drafter",
+        "tool": "discussion_prompt_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "topic hook",
+        "context",
+        "question",
+        "example starter",
+        "call to respond"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "engagement",
+    "community",
+    "template"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "community-guidelines-checklist",
+  "display_name": "Community Guidelines Checklist",
+  "description": "Check community safety operations readiness.",
+  "category": "Moderation & Safety",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "community_guidelines_checklist",
+      "description": "Check community safety operations readiness.",
+      "kind": "checklist",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Completed items from: guidelines pinned, reporting route, moderator rota, response sla, appeals process"
+          }
+        },
+        "required": [
+          "completed"
+        ]
+      },
+      "sample_input": {
+        "completed": [
+          "guidelines pinned",
+          "reporting route"
+        ]
+      },
+      "output": {
+        "plugin": "community-guidelines-checklist",
+        "tool": "community_guidelines_checklist",
+        "kind": "checklist",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "checklist",
+    "config": {
+      "items": [
+        "guidelines pinned",
+        "reporting route",
+        "moderator rota",
+        "response sla",
+        "appeals process"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "moderation & safety",
+    "community",
+    "checklist"
+  ]
+}

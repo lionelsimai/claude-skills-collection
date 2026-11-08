@@ -1,0 +1,72 @@
+{
+  "name": "buddy-match-scorer",
+  "display_name": "Buddy Match Scorer",
+  "description": "Score a buddy pairing for a new member from supplied attributes.",
+  "category": "Member Onboarding",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "buddy_match_scorer",
+      "description": "Score a buddy pairing for a new member from supplied attributes.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: shared_interests, location, experience_gap_fit, availability, language"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "shared_interests": 70,
+          "location": 70,
+          "experience_gap_fit": 70,
+          "availability": 70,
+          "language": 70
+        }
+      },
+      "output": {
+        "plugin": "buddy-match-scorer",
+        "tool": "buddy_match_scorer",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "shared interests",
+        "location",
+        "experience gap fit",
+        "availability",
+        "language"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "member onboarding",
+    "community",
+    "score"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "name": "community-health-reporter",
+  "display_name": "Community Health Reporter",
+  "description": "Report headline community health from supplied counts.",
+  "category": "Community Analytics",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "community_health_reporter",
+      "description": "Report headline community health from supplied counts.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "total_members": 100,
+          "active_members": 90,
+          "active_rate": 80,
+          "new_members": 70,
+          "churned_members": 60
+        }
+      },
+      "output": {
+        "plugin": "community-health-reporter",
+        "tool": "community_health_reporter",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "total members",
+        "active members",
+        "active rate",
+        "new members",
+        "churned members"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "community analytics",
+    "community",
+    "analyze"
+  ]
+}

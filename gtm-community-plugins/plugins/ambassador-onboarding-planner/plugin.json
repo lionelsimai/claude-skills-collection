@@ -1,0 +1,69 @@
+{
+  "name": "ambassador-onboarding-planner",
+  "display_name": "Ambassador Onboarding Planner",
+  "description": "Plan ambassador onboarding over 30 days.",
+  "category": "Ambassadors",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "ambassador_onboarding_planner",
+      "description": "Plan ambassador onboarding over 30 days.",
+      "kind": "plan",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "goal": {
+            "type": "string"
+          },
+          "timeframe_days": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "goal"
+        ]
+      },
+      "sample_input": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+      },
+      "output": {
+        "plugin": "ambassador-onboarding-planner",
+        "tool": "ambassador_onboarding_planner",
+        "kind": "plan",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "plan",
+    "config": {
+      "items": [
+        "welcome call",
+        "starter kit",
+        "first task",
+        "introduce to members",
+        "30-day check-in"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "ambassadors",
+    "community",
+    "plan"
+  ]
+}

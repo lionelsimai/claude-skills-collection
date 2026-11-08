@@ -1,0 +1,72 @@
+{
+  "name": "sponsor-fit-scorer",
+  "display_name": "Sponsor Fit Scorer",
+  "description": "Score a prospective sponsor against a supplied event or community audience.",
+  "category": "Sponsors & Partners",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "sponsor_fit_scorer",
+      "description": "Score a prospective sponsor against a supplied event or community audience.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: audience_match, brand_alignment, budget_fit, category_exclusivity, activation_interest"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "audience_match": 70,
+          "brand_alignment": 70,
+          "budget_fit": 70,
+          "category_exclusivity": 70,
+          "activation_interest": 70
+        }
+      },
+      "output": {
+        "plugin": "sponsor-fit-scorer",
+        "tool": "sponsor_fit_scorer",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "audience match",
+        "brand alignment",
+        "budget fit",
+        "category exclusivity",
+        "activation interest"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "sponsors & partners",
+    "gtm",
+    "score"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "name": "inbound-lead-triage",
+  "display_name": "Inbound Lead Triage",
+  "description": "Classify an inbound enquiry and route it to the right next step.",
+  "category": "Lead Generation",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "inbound_lead_triage",
+      "description": "Classify an inbound enquiry and route it to the right next step.",
+      "kind": "classify",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "This is about demo request and needs review."
+      },
+      "output": {
+        "plugin": "inbound-lead-triage",
+        "tool": "inbound_lead_triage",
+        "kind": "classify",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "classify",
+    "config": {
+      "items": [
+        "demo request",
+        "content download",
+        "pricing question",
+        "general enquiry",
+        "support request",
+        "spam"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "lead generation",
+    "gtm",
+    "classify"
+  ]
+}

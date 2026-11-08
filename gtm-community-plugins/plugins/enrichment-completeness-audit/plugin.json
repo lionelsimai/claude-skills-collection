@@ -1,0 +1,67 @@
+{
+  "name": "enrichment-completeness-audit",
+  "display_name": "Enrichment Completeness Audit",
+  "description": "Audit lead records for missing enrichment fields.",
+  "category": "Lead Scoring & Enrichment",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "enrichment_completeness_audit",
+      "description": "Audit lead records for missing enrichment fields.",
+      "kind": "audit",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "full name job title company are covered in this document."
+      },
+      "output": {
+        "plugin": "enrichment-completeness-audit",
+        "tool": "enrichment_completeness_audit",
+        "kind": "audit",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "audit",
+    "config": {
+      "items": [
+        "full name",
+        "job title",
+        "company",
+        "email",
+        "linkedin url",
+        "industry",
+        "company size"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "lead scoring & enrichment",
+    "gtm",
+    "audit"
+  ]
+}

@@ -1,0 +1,3408 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "Lionel GTM + Community Plugins",
+  "version": "1.0.0",
+  "description": "120 deterministic, guardrailed GTM and community management tools. Drafts only, human approval required, no fabrication, no auto-send.",
+  "license": {
+   "name": "MIT"
+  },
+  "contact": {
+   "name": "Lionel Sim",
+   "url": "https://sg.linkedin.com/in/lionelshen"
+  }
+ },
+ "servers": [
+  {
+   "url": "http://localhost:8787"
+  }
+ ],
+ "paths": {
+  "/health": {
+   "get": {
+    "operationId": "health",
+    "responses": {
+     "200": {
+      "description": "ok"
+     }
+    }
+   }
+  },
+  "/tools/icp_fit_scorer": {
+   "post": {
+    "operationId": "icp_fit_scorer",
+    "summary": "Score an account against your ideal customer profile on five weighted criteria.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "company_size_fit": 70,
+         "industry_match": 70,
+         "geography_fit": 70,
+         "technology_fit": 70,
+         "buying_signal_strength": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/account_segmentation_planner": {
+   "post": {
+    "operationId": "account_segmentation_planner",
+    "summary": "Build a tiered account segmentation plan from a stated goal.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/competitor_teardown_checklist": {
+   "post": {
+    "operationId": "competitor_teardown_checklist",
+    "summary": "Audit a competitor teardown for completeness before it is used in planning.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "completed": [
+         "positioning statement",
+         "pricing page"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/market_signal_classifier": {
+   "post": {
+    "operationId": "market_signal_classifier",
+    "summary": "Classify a supplied market signal about an account into its signal type.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "This is about funding and needs review."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/tam_sam_som_calculator": {
+   "post": {
+    "operationId": "tam_sam_som_calculator",
+    "summary": "Calculate TAM, SAM and SOM from supplied account counts and values only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "total_accounts": 100,
+         "serviceable_accounts": 90,
+         "obtainable_accounts": 80,
+         "average_contract_value": 70,
+         "win_rate": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/buyer_persona_gap_audit": {
+   "post": {
+    "operationId": "buyer_persona_gap_audit",
+    "summary": "Audit a persona document for the elements a GTM team actually needs.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "job title pain points buying triggers are covered in this document."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/lead_list_deduper": {
+   "post": {
+    "operationId": "lead_list_deduper",
+    "summary": "Dedupe a supplied lead list by email and report list hygiene stats.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "total_records": 100,
+         "unique_records": 90,
+         "duplicate_records": 80,
+         "duplicate_rate": 70,
+         "domains_represented": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/lead_source_scorer": {
+   "post": {
+    "operationId": "lead_source_scorer",
+    "summary": "Score a lead source so budget goes to sources that convert.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "conversion_rate": 70,
+         "cost_per_lead": 70,
+         "data_completeness": 70,
+         "reply_rate": 70,
+         "unsubscribe_rate": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/lookalike_seed_planner": {
+   "post": {
+    "operationId": "lookalike_seed_planner",
+    "summary": "Plan a lookalike list build from your best supplied accounts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/event_lead_capture_checklist": {
+   "post": {
+    "operationId": "event_lead_capture_checklist",
+    "summary": "Check an event lead-capture setup before doors open.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "completed": [
+         "consent wording",
+         "badge scan process"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/referral_ask_template": {
+   "post": {
+    "operationId": "referral_ask_template",
+    "summary": "Draft a referral ask from supplied facts only. Draft only, never sent automatically.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "context": "[supplied: context]",
+         "reason_for_asking": "[supplied: reason for asking]",
+         "specific_person_type": "[supplied: specific person type]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/inbound_lead_triage": {
+   "post": {
+    "operationId": "inbound_lead_triage",
+    "summary": "Classify an inbound enquiry and route it to the right next step.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "This is about demo request and needs review."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/lead_score_calculator": {
+   "post": {
+    "operationId": "lead_score_calculator",
+    "summary": "Calculate a transparent lead score from supplied signals.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "firmographic_fit": 70,
+         "engagement_recency": 70,
+         "page_intent": 70,
+         "role_seniority": 70,
+         "company_growth": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/enrichment_completeness_audit": {
+   "post": {
+    "operationId": "enrichment_completeness_audit",
+    "summary": "Audit lead records for missing enrichment fields.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "full name job title company are covered in this document."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/intent_signal_scorer": {
+   "post": {
+    "operationId": "intent_signal_scorer",
+    "summary": "Score buying intent from supplied behavioural signals.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "pricing_page_visits": 70,
+         "comparison_searches": 70,
+         "repeat_visits": 70,
+         "content_depth": 70,
+         "recency": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/lead_priority_ranker": {
+   "post": {
+    "operationId": "lead_priority_ranker",
+    "summary": "Rank leads by impact over effort from supplied values.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "items": [
+         {
+          "name": "Example 1",
+          "impact": 8,
+          "effort": 2
+         },
+         {
+          "name": "Example 2",
+          "impact": 7,
+          "effort": 3
+         },
+         {
+          "name": "Example 3",
+          "impact": 6,
+          "effort": 4
+         }
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/data_decay_reporter": {
+   "post": {
+    "operationId": "data_decay_reporter",
+    "summary": "Report CRM data decay from supplied record ages and bounce counts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "records_checked": 100,
+         "stale_records": 90,
+         "job_changes_detected": 80,
+         "bounced_emails": 70,
+         "decay_rate": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/champion_tracker_template": {
+   "post": {
+    "operationId": "champion_tracker_template",
+    "summary": "Render a champion tracking sheet from supplied facts only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "champion_name": "[supplied: champion name]",
+         "role": "[supplied: role]",
+         "influence_level": "[supplied: influence level]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/cold_email_draft_builder": {
+   "post": {
+    "operationId": "cold_email_draft_builder",
+    "summary": "Draft a cold email from one supplied personal signal and supplied proof only. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "subject_line": "[supplied: subject line]",
+         "personal_signal": "[supplied: personal signal]",
+         "problem_statement": "[supplied: problem statement]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/sequence_cadence_planner": {
+   "post": {
+    "operationId": "sequence_cadence_planner",
+    "summary": "Plan a multi-touch sequence cadence with spacing and purpose per touch.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/subject_line_scorer": {
+   "post": {
+    "operationId": "subject_line_scorer",
+    "summary": "Score a subject line before it is used. Spam-trigger risk is scored inversely.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "length": 70,
+         "personalisation": 70,
+         "specificity": 70,
+         "curiosity": 70,
+         "spam_trigger_risk": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/follow_up_bump_drafter": {
+   "post": {
+    "operationId": "follow_up_bump_drafter",
+    "summary": "Draft a short follow-up bump from supplied facts only. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "thread_reference": "[supplied: thread reference]",
+         "new_value_point": "[supplied: new value point]",
+         "choice_question": "[supplied: choice question]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/linkedin_touch_drafter": {
+   "post": {
+    "operationId": "linkedin_touch_drafter",
+    "summary": "Draft a LinkedIn touch from a supplied shared context only. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "shared_context": "[supplied: shared context]",
+         "specific_observation": "[supplied: specific observation]",
+         "useful_resource": "[supplied: useful resource]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/outreach_personalisation_audit": {
+   "post": {
+    "operationId": "outreach_personalisation_audit",
+    "summary": "Audit a draft for real personalisation versus mail-merge filler.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "personal signal named company role relevance are covered in this document."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/reply_intent_classifier": {
+   "post": {
+    "operationId": "reply_intent_classifier",
+    "summary": "Classify an email reply by intent so hot replies move first.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "This is about interested and needs review."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/objection_response_drafter": {
+   "post": {
+    "operationId": "objection_response_drafter",
+    "summary": "Draft an objection reply from supplied evidence only. Draft only, human approval required.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "acknowledge_objection": "[supplied: acknowledge objection]",
+         "supplied_evidence": "[supplied: supplied evidence]",
+         "reframe": "[supplied: reframe]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/meeting_booking_checklist": {
+   "post": {
+    "operationId": "meeting_booking_checklist",
+    "summary": "Check a meeting booking flow before the invite goes out.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "completed": [
+         "two time options",
+         "timezone stated"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/no_show_recovery_drafter": {
+   "post": {
+    "operationId": "no_show_recovery_drafter",
+    "summary": "Draft a no-show recovery message from supplied facts. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "grace_opening": "[supplied: grace opening]",
+         "no_blame": "[supplied: no blame]",
+         "two_new_options": "[supplied: two new options]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/reply_sla_tracker": {
+   "post": {
+    "operationId": "reply_sla_tracker",
+    "summary": "Report reply SLA performance from supplied counts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "replies_received": 100,
+         "replies_answered": 90,
+         "in_time": 80,
+         "in_late": 70,
+         "average_response_hours": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/meeting_notes_extractor": {
+   "post": {
+    "operationId": "meeting_notes_extractor",
+    "summary": "Check meeting notes contain decisions, owners and deadlines.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "decision action item owner are covered in this document."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/sponsor_fit_scorer": {
+   "post": {
+    "operationId": "sponsor_fit_scorer",
+    "summary": "Score a prospective sponsor against a supplied event or community audience.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "audience_match": 70,
+         "brand_alignment": 70,
+         "budget_fit": 70,
+         "category_exclusivity": 70,
+         "activation_interest": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/partner_tier_designer": {
+   "post": {
+    "operationId": "partner_tier_designer",
+    "summary": "Design a partner tier ladder from a stated goal and supplied deliverables.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/sponsor_proposal_audit": {
+   "post": {
+    "operationId": "sponsor_proposal_audit",
+    "summary": "Audit a sponsor proposal for missing commercial elements. Audience numbers must be supplied, never invented.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "audience evidence deliverables pricing are covered in this document."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/partner_outreach_drafter": {
+   "post": {
+    "operationId": "partner_outreach_drafter",
+    "summary": "Draft partner outreach from supplied audience facts only. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "shared_audience": "[supplied: shared audience]",
+         "entry_offer": "[supplied: entry offer]",
+         "proof_supplied_by_user": "[supplied: proof supplied by user]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/sponsor_deliverable_tracker": {
+   "post": {
+    "operationId": "sponsor_deliverable_tracker",
+    "summary": "Track sponsor deliverables promised versus delivered.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "completed": [
+         "logo placed",
+         "speaking slot"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/co_marketing_planner": {
+   "post": {
+    "operationId": "co_marketing_planner",
+    "summary": "Plan a co-marketing activity with a partner from a stated goal.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/proposal_structure_builder": {
+   "post": {
+    "operationId": "proposal_structure_builder",
+    "summary": "Build a proposal skeleton from supplied scope and pricing only. No invented proof.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "problem": "[supplied: problem]",
+         "outcomes": "[supplied: outcomes]",
+         "scope": "[supplied: scope]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/pricing_page_audit": {
+   "post": {
+    "operationId": "pricing_page_audit",
+    "summary": "Audit pricing copy for clarity elements.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "tiers named price anchor deliverables per tier are covered in this document."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/discount_guardrail_checker": {
+   "post": {
+    "operationId": "discount_guardrail_checker",
+    "summary": "Score a discount request against guardrails before approval.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "margin_protected": 70,
+         "scope_reduced": 70,
+         "payment_terms": 70,
+         "expiry_date": 70,
+         "approval_level": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/quote_follow_up_drafter": {
+   "post": {
+    "operationId": "quote_follow_up_drafter",
+    "summary": "Draft a quote follow-up from supplied quote facts. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "quote_reference": "[supplied: quote reference]",
+         "decision_blocker_help": "[supplied: decision blocker help]",
+         "deadline_reminder": "[supplied: deadline reminder]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/roi_calculator": {
+   "post": {
+    "operationId": "roi_calculator",
+    "summary": "Calculate ROI and payback from supplied numbers only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "current_cost": 100,
+         "time_saved_per_week": 90,
+         "hourly_rate": 80,
+         "tool_cost": 70,
+         "payback_weeks": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/proposal_win_loss_classifier": {
+   "post": {
+    "operationId": "proposal_win_loss_classifier",
+    "summary": "Classify a lost or won proposal outcome from supplied notes.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "This is about price and needs review."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/deal_health_scorer": {
+   "post": {
+    "operationId": "deal_health_scorer",
+    "summary": "Score deal health from supplied CRM facts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "days_since_contact": 70,
+         "next_step_set": 70,
+         "champion_engaged": 70,
+         "economic_buyer_known": 70,
+         "close_date_realistic": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/pipeline_coverage_calculator": {
+   "post": {
+    "operationId": "pipeline_coverage_calculator",
+    "summary": "Calculate pipeline coverage from supplied pipeline and target.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "open_pipeline": 100,
+         "target": 90,
+         "coverage_ratio": 80,
+         "weighted_pipeline": 70,
+         "gap": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/stale_deal_detector": {
+   "post": {
+    "operationId": "stale_deal_detector",
+    "summary": "Flag stale deals from a supplied checklist of deal hygiene items.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "completed": [
+         "last activity date",
+         "next step"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/crm_field_hygiene_audit": {
+   "post": {
+    "operationId": "crm_field_hygiene_audit",
+    "summary": "Audit a deal record for required CRM fields.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "company contact stage are covered in this document."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/forecast_risk_ranker": {
+   "post": {
+    "operationId": "forecast_risk_ranker",
+    "summary": "Rank forecast deals by value at risk over effort to save.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "items": [
+         {
+          "name": "Example 1",
+          "impact": 8,
+          "effort": 2
+         },
+         {
+          "name": "Example 2",
+          "impact": 7,
+          "effort": 3
+         },
+         {
+          "name": "Example 3",
+          "impact": 6,
+          "effort": 4
+         }
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/handoff_notes_template": {
+   "post": {
+    "operationId": "handoff_notes_template",
+    "summary": "Render a sales handoff note from supplied facts only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "deal_context": "[supplied: deal context]",
+         "key_contacts": "[supplied: key contacts]",
+         "commitments_made": "[supplied: commitments made]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/content_idea_scorer": {
+   "post": {
+    "operationId": "content_idea_scorer",
+    "summary": "Score a content idea before production time is spent.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "audience_relevance": 70,
+         "originality": 70,
+         "proof_available": 70,
+         "effort_to_produce": 70,
+         "distribution_fit": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/linkedin_post_drafter": {
+   "post": {
+    "operationId": "linkedin_post_drafter",
+    "summary": "Draft a LinkedIn post from a supplied insight and example only. Draft only, never auto-posted.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "hook": "[supplied: hook]",
+         "supplied_insight": "[supplied: supplied insight]",
+         "supplied_example": "[supplied: supplied example]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/case_study_audit": {
+   "post": {
+    "operationId": "case_study_audit",
+    "summary": "Audit a case study for permission and evidence elements. Results must be supplied.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "client permission problem approach are covered in this document."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/content_repurposing_planner": {
+   "post": {
+    "operationId": "content_repurposing_planner",
+    "summary": "Plan repurposing one supplied asset into multiple formats.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/newsletter_section_builder": {
+   "post": {
+    "operationId": "newsletter_section_builder",
+    "summary": "Build a newsletter section from supplied facts only. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "headline": "[supplied: headline]",
+         "what_happened": "[supplied: what happened]",
+         "why_it_matters": "[supplied: why it matters]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/speaking_pitch_drafter": {
+   "post": {
+    "operationId": "speaking_pitch_drafter",
+    "summary": "Draft a speaking pitch from supplied bio and topic only. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "event_fit": "[supplied: event fit]",
+         "topic": "[supplied: topic]",
+         "three_takeaways": "[supplied: three takeaways]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/campaign_metrics_reporter": {
+   "post": {
+    "operationId": "campaign_metrics_reporter",
+    "summary": "Report campaign funnel maths from supplied counts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "sent": 100,
+         "opened": 90,
+         "replied": 80,
+         "meetings": 70,
+         "cost_per_meeting": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/ab_test_verdict_tool": {
+   "post": {
+    "operationId": "ab_test_verdict_tool",
+    "summary": "Score whether an A/B test result is strong enough to act on, from supplied data.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "sample_size": 70,
+         "conversion_lift": 70,
+         "consistency": 70,
+         "effort": 70,
+         "downside_risk": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/segment_learning_logger": {
+   "post": {
+    "operationId": "segment_learning_logger",
+    "summary": "Log a segment learning in a fixed format from supplied results.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "segment": "[supplied: segment]",
+         "result": "[supplied: result]",
+         "evidence": "[supplied: evidence]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/funnel_leak_detector": {
+   "post": {
+    "operationId": "funnel_leak_detector",
+    "summary": "Identify the weakest funnel stage from supplied completion items.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "completed": [
+         "visit to signup",
+         "signup to reply"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/weekly_gtm_review_builder": {
+   "post": {
+    "operationId": "weekly_gtm_review_builder",
+    "summary": "Build a weekly GTM review from supplied metrics only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "headline_metric": "[supplied: headline metric]",
+         "wins": "[supplied: wins]",
+         "losses": "[supplied: losses]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/experiment_priority_ranker": {
+   "post": {
+    "operationId": "experiment_priority_ranker",
+    "summary": "Rank GTM experiments by impact, confidence and effort (ICE-style).",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "items": [
+         {
+          "name": "Example 1",
+          "impact": 8,
+          "effort": 2
+         },
+         {
+          "name": "Example 2",
+          "impact": 7,
+          "effort": 3
+         },
+         {
+          "name": "Example 3",
+          "impact": 6,
+          "effort": 4
+         }
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/welcome_message_drafter": {
+   "post": {
+    "operationId": "welcome_message_drafter",
+    "summary": "Draft a welcome message from supplied community facts. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "member_name_supplied_by_user": "[supplied: member name supplied by user]",
+         "first_step": "[supplied: first step]",
+         "introduce-yourself_prompt": "[supplied: introduce-yourself prompt]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/onboarding_checklist_builder": {
+   "post": {
+    "operationId": "onboarding_checklist_builder",
+    "summary": "Check a new member onboarding journey for completion.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "completed": [
+         "profile complete",
+         "introduction posted"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/new_member_intro_classifier": {
+   "post": {
+    "operationId": "new_member_intro_classifier",
+    "summary": "Classify a member introduction by member type for routing to relevant channels.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "This is about builder and needs review."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/onboarding_drop_off_reporter": {
+   "post": {
+    "operationId": "onboarding_drop_off_reporter",
+    "summary": "Report onboarding funnel drop-off from supplied counts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "joined": 100,
+         "profile_completed": 90,
+         "introduced": 80,
+         "attended_first_event": 70,
+         "active_at_day_30": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/buddy_match_scorer": {
+   "post": {
+    "operationId": "buddy_match_scorer",
+    "summary": "Score a buddy pairing for a new member from supplied attributes.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "shared_interests": 70,
+         "location": 70,
+         "experience_gap_fit": 70,
+         "availability": 70,
+         "language": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/first_week_plan_builder": {
+   "post": {
+    "operationId": "first_week_plan_builder",
+    "summary": "Build a first-week plan for a new member cohort.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/event_run_sheet_checklist": {
+   "post": {
+    "operationId": "event_run_sheet_checklist",
+    "summary": "Check an event run sheet before event day.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "completed": [
+         "venue confirmed",
+         "speakers confirmed"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/event_idea_scorer": {
+   "post": {
+    "operationId": "event_idea_scorer",
+    "summary": "Score an event idea before committing a venue.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "member_demand": 70,
+         "speaker_availability": 70,
+         "cost": 70,
+         "sponsor_fit": 70,
+         "format_novelty": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/rsvp_conversion_reporter": {
+   "post": {
+    "operationId": "rsvp_conversion_reporter",
+    "summary": "Report RSVP to attendance conversion from supplied counts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "registrations": 100,
+         "check_ins": 90,
+         "show_rate": 80,
+         "waitlist": 70,
+         "no_shows": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/speaker_brief_template": {
+   "post": {
+    "operationId": "speaker_brief_template",
+    "summary": "Render a speaker brief from supplied event facts only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "event_context": "[supplied: event context]",
+         "audience": "[supplied: audience]",
+         "talk_slot": "[supplied: talk slot]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/post_event_follow_up_drafter": {
+   "post": {
+    "operationId": "post_event_follow_up_drafter",
+    "summary": "Draft post-event follow-up from supplied highlights. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "thank_you": "[supplied: thank you]",
+         "highlight_supplied_by_user": "[supplied: highlight supplied by user]",
+         "recording_link": "[supplied: recording link]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/waitlist_priority_ranker": {
+   "post": {
+    "operationId": "waitlist_priority_ranker",
+    "summary": "Rank a waitlist fairly from supplied criteria.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "items": [
+         {
+          "name": "Example 1",
+          "impact": 8,
+          "effort": 2
+         },
+         {
+          "name": "Example 2",
+          "impact": 7,
+          "effort": 3
+         },
+         {
+          "name": "Example 3",
+          "impact": 6,
+          "effort": 4
+         }
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/engagement_health_scorer": {
+   "post": {
+    "operationId": "engagement_health_scorer",
+    "summary": "Score community engagement health from supplied metrics.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "active_member_rate": 70,
+         "posts_per_week": 70,
+         "reply_rate": 70,
+         "event_attendance": 70,
+         "new_member_activation": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/discussion_prompt_drafter": {
+   "post": {
+    "operationId": "discussion_prompt_drafter",
+    "summary": "Draft a discussion prompt from a supplied topic. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "topic_hook": "[supplied: topic hook]",
+         "context": "[supplied: context]",
+         "question": "[supplied: question]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/quiet_member_reactivation_drafter": {
+   "post": {
+    "operationId": "quiet_member_reactivation_drafter",
+    "summary": "Draft a reactivation message from supplied facts. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "personal_note": "[supplied: personal note]",
+         "what_they_missed_supplied_by_user": "[supplied: what they missed supplied by user]",
+         "low-effort_invite": "[supplied: low-effort invite]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/engagement_campaign_planner": {
+   "post": {
+    "operationId": "engagement_campaign_planner",
+    "summary": "Plan a four-week engagement campaign.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/top_contributor_spotlight_template": {
+   "post": {
+    "operationId": "top_contributor_spotlight_template",
+    "summary": "Render a contributor spotlight from supplied facts only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "member_name_supplied_by_user": "[supplied: member name supplied by user]",
+         "contribution": "[supplied: contribution]",
+         "quote_supplied_by_user": "[supplied: quote supplied by user]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/channel_activity_reporter": {
+   "post": {
+    "operationId": "channel_activity_reporter",
+    "summary": "Report channel activity and unanswered-post risk from supplied counts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "posts": 100,
+         "replies": 90,
+         "unique_contributors": 80,
+         "unanswered_posts": 70,
+         "response_time_hours": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/churn_risk_scorer": {
+   "post": {
+    "operationId": "churn_risk_scorer",
+    "summary": "Score member churn risk from supplied activity signals. Higher inactivity means higher risk.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "days_inactive": 70,
+         "event_absence": 70,
+         "post_decline": 70,
+         "support_issues": 70,
+         "tenure": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/retention_campaign_planner": {
+   "post": {
+    "operationId": "retention_campaign_planner",
+    "summary": "Plan a retention campaign for at-risk members.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/exit_feedback_classifier": {
+   "post": {
+    "operationId": "exit_feedback_classifier",
+    "summary": "Classify exit feedback into a churn reason.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "This is about no time and needs review."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/member_health_checklist": {
+   "post": {
+    "operationId": "member_health_checklist",
+    "summary": "Check member health signals for a cohort review.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "completed": [
+         "logged in recently",
+         "attended event"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/win_back_drafter": {
+   "post": {
+    "operationId": "win_back_drafter",
+    "summary": "Draft a win-back message from supplied updates. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "acknowledge_absence": "[supplied: acknowledge absence]",
+         "what_is_new_supplied_by_user": "[supplied: what is new supplied by user]",
+         "personal_invite": "[supplied: personal invite]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/cohort_retention_reporter": {
+   "post": {
+    "operationId": "cohort_retention_reporter",
+    "summary": "Report cohort retention from supplied counts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "month_0_members": 100,
+         "month_1_retained": 90,
+         "month_3_retained": 80,
+         "month_6_retained": 70,
+         "retention_curve": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/post_moderation_classifier": {
+   "post": {
+    "operationId": "post_moderation_classifier",
+    "summary": "Classify a community post for moderation routing. Flags only, never auto-removes.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "This is about welcome and needs review."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/code_of_conduct_audit": {
+   "post": {
+    "operationId": "code_of_conduct_audit",
+    "summary": "Audit a code of conduct for essential safety elements.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "expected behaviour unacceptable behaviour reporting route are covered in this document."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/spam_signal_scorer": {
+   "post": {
+    "operationId": "spam_signal_scorer",
+    "summary": "Score spam signals in a post from supplied indicators. Flag for human review only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "link_density": 70,
+         "new_account": 70,
+         "repeated_text": 70,
+         "keyword_stuffing": 70,
+         "report_count": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/moderator_escalation_template": {
+   "post": {
+    "operationId": "moderator_escalation_template",
+    "summary": "Render a moderation escalation record from supplied evidence only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "incident_summary": "[supplied: incident summary]",
+         "evidence_supplied_by_moderator": "[supplied: evidence supplied by moderator]",
+         "rule_reference": "[supplied: rule reference]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/community_guidelines_checklist": {
+   "post": {
+    "operationId": "community_guidelines_checklist",
+    "summary": "Check community safety operations readiness.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "completed": [
+         "guidelines pinned",
+         "reporting route"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/conflict_de_escalation_drafter": {
+   "post": {
+    "operationId": "conflict_de_escalation_drafter",
+    "summary": "Draft a de-escalation reply. Draft only, human moderator sends.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "calm_opening": "[supplied: calm opening]",
+         "shared_ground": "[supplied: shared ground]",
+         "rule_reminder": "[supplied: rule reminder]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/speaker_fit_scorer_community": {
+   "post": {
+    "operationId": "speaker_fit_scorer_community",
+    "summary": "Score a speaker for a community event from supplied information.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "topic_relevance": 70,
+         "audience_level": 70,
+         "talk_experience": 70,
+         "diversity_of_perspective": 70,
+         "availability": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/sponsor_activation_checklist": {
+   "post": {
+    "operationId": "sponsor_activation_checklist",
+    "summary": "Check sponsor activation readiness for a community event.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "completed": [
+         "logo assets",
+         "booth plan"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/speaker_outreach_drafter": {
+   "post": {
+    "operationId": "speaker_outreach_drafter",
+    "summary": "Draft speaker outreach from supplied event facts. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "event_context": "[supplied: event context]",
+         "audience_supplied_by_user": "[supplied: audience supplied by user]",
+         "topic_fit": "[supplied: topic fit]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/sponsor_satisfaction_reporter": {
+   "post": {
+    "operationId": "sponsor_satisfaction_reporter",
+    "summary": "Report sponsor satisfaction from supplied survey counts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "sponsors_surveyed": 100,
+         "satisfied": 90,
+         "neutral": 80,
+         "dissatisfied": 70,
+         "renewal_intent": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/panel_composition_audit": {
+   "post": {
+    "operationId": "panel_composition_audit",
+    "summary": "Audit a panel line-up for balance elements.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "topic balance seniority mix company mix are covered in this document."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/thank_you_note_drafter": {
+   "post": {
+    "operationId": "thank_you_note_drafter",
+    "summary": "Draft a thank-you note from supplied facts. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "specific_contribution": "[supplied: specific contribution]",
+         "audience_impact_supplied_by_user": "[supplied: audience impact supplied by user]",
+         "photo_or_recording_link": "[supplied: photo or recording link]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/nps_calculator": {
+   "post": {
+    "operationId": "nps_calculator",
+    "summary": "Calculate NPS from supplied promoter, passive and detractor counts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "promoters": 60,
+         "passives": 25,
+         "detractors": 15,
+         "total_responses": 100
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/feedback_theme_classifier": {
+   "post": {
+    "operationId": "feedback_theme_classifier",
+    "summary": "Classify member feedback into a theme.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "This is about content quality and needs review."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/survey_design_audit": {
+   "post": {
+    "operationId": "survey_design_audit",
+    "summary": "Audit a survey design before sending.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "one clear goal five questions or fewer rating scale are covered in this document."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/feedback_response_drafter": {
+   "post": {
+    "operationId": "feedback_response_drafter",
+    "summary": "Draft a response to feedback from supplied actions. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "thank_them": "[supplied: thank them]",
+         "specific_point": "[supplied: specific point]",
+         "what_will_change_supplied_by_user": "[supplied: what will change supplied by user]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/detractor_recovery_checklist": {
+   "post": {
+    "operationId": "detractor_recovery_checklist",
+    "summary": "Check detractor recovery steps are complete.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "completed": [
+         "acknowledge within 48h",
+         "understand issue"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/feedback_priority_ranker": {
+   "post": {
+    "operationId": "feedback_priority_ranker",
+    "summary": "Rank feedback themes by mentions and effort.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "items": [
+         {
+          "name": "Example 1",
+          "impact": 8,
+          "effort": 2
+         },
+         {
+          "name": "Example 2",
+          "impact": 7,
+          "effort": 3
+         },
+         {
+          "name": "Example 3",
+          "impact": 6,
+          "effort": 4
+         }
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/ambassador_fit_scorer": {
+   "post": {
+    "operationId": "ambassador_fit_scorer",
+    "summary": "Score an ambassador candidate from supplied contributions.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "community_tenure": 70,
+         "contribution_history": 70,
+         "reach": 70,
+         "reputation": 70,
+         "availability": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/ambassador_onboarding_planner": {
+   "post": {
+    "operationId": "ambassador_onboarding_planner",
+    "summary": "Plan ambassador onboarding over 30 days.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/ambassador_activity_reporter": {
+   "post": {
+    "operationId": "ambassador_activity_reporter",
+    "summary": "Report ambassador programme activity from supplied counts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "active_ambassadors": 100,
+         "events_hosted": 90,
+         "posts_made": 80,
+         "members_helped": 70,
+         "coverage_rate": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/ambassador_brief_template": {
+   "post": {
+    "operationId": "ambassador_brief_template",
+    "summary": "Render an ambassador brief from supplied campaign facts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "campaign_goal": "[supplied: campaign goal]",
+         "key_message_supplied_by_user": "[supplied: key message supplied by user]",
+         "assets": "[supplied: assets]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/ambassador_recognition_drafter": {
+   "post": {
+    "operationId": "ambassador_recognition_drafter",
+    "summary": "Draft ambassador recognition from supplied facts. Draft only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "name_supplied_by_user": "[supplied: name supplied by user]",
+         "specific_contribution": "[supplied: specific contribution]",
+         "impact_supplied_by_user": "[supplied: impact supplied by user]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/ambassador_programme_audit": {
+   "post": {
+    "operationId": "ambassador_programme_audit",
+    "summary": "Audit an ambassador programme for completeness.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "selection criteria onboarding activity tracking are covered in this document."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/community_health_reporter": {
+   "post": {
+    "operationId": "community_health_reporter",
+    "summary": "Report headline community health from supplied counts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "total_members": 100,
+         "active_members": 90,
+         "active_rate": 80,
+         "new_members": 70,
+         "churned_members": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/growth_funnel_reporter": {
+   "post": {
+    "operationId": "growth_funnel_reporter",
+    "summary": "Report community growth funnel conversion from supplied counts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "invites": 100,
+         "signups": 90,
+         "activated": 80,
+         "engaged": 70,
+         "retained": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/content_performance_scorer": {
+   "post": {
+    "operationId": "content_performance_scorer",
+    "summary": "Score a community post's performance from supplied metrics.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "views": 70,
+         "reactions": 70,
+         "comments": 70,
+         "shares": 70,
+         "saves": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/member_segment_analyser": {
+   "post": {
+    "operationId": "member_segment_analyser",
+    "summary": "Classify a member segment from a supplied activity description.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "This is about power user and needs review."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/monthly_report_builder": {
+   "post": {
+    "operationId": "monthly_report_builder",
+    "summary": "Build a monthly community report from supplied metrics only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "headline_metric": "[supplied: headline metric]",
+         "growth": "[supplied: growth]",
+         "engagement_highlight_supplied_by_user": "[supplied: engagement highlight supplied by user]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/benchmark_gap_audit": {
+   "post": {
+    "operationId": "benchmark_gap_audit",
+    "summary": "Audit which benchmark metrics are tracked versus missing.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "text": "active rate response time event show rate are covered in this document."
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/membership_tier_scorer": {
+   "post": {
+    "operationId": "membership_tier_scorer",
+    "summary": "Score a paid membership tier design. Sponsors pay first in Lionel's model, member paywalls need explicit review.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "metrics": {
+         "value_delivered": 70,
+         "price_fit": 70,
+         "exclusivity": 70,
+         "delivery_cost": 70,
+         "support_load": 70
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/sponsored_slot_pricing_calculator": {
+   "post": {
+    "operationId": "sponsored_slot_pricing_calculator",
+    "summary": "Calculate a sponsored slot price from supplied audience and rate inputs only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "audience_size": 100,
+         "expected_impressions": 90,
+         "base_rate": 80,
+         "premium_factor": 70,
+         "package_price": 60
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/monetisation_idea_ranker": {
+   "post": {
+    "operationId": "monetisation_idea_ranker",
+    "summary": "Rank monetisation ideas protecting member goodwill.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "items": [
+         {
+          "name": "Example 1",
+          "impact": 8,
+          "effort": 2
+         },
+         {
+          "name": "Example 2",
+          "impact": 7,
+          "effort": 3
+         },
+         {
+          "name": "Example 3",
+          "impact": 6,
+          "effort": 4
+         }
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/paid_event_break_even_calculator": {
+   "post": {
+    "operationId": "paid_event_break_even_calculator",
+    "summary": "Calculate break-even ticket sales from supplied costs and price.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "counts": {
+         "venue_cost": 2000,
+         "food_cost": 1500,
+         "other_costs": 500,
+         "ticket_price": 50
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/sponsor_package_builder": {
+   "post": {
+    "operationId": "sponsor_package_builder",
+    "summary": "Build a sponsor package from supplied audience facts and deliverables only.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "facts": {
+         "audience_supplied_by_user": "[supplied: audience supplied by user]",
+         "deliverables": "[supplied: deliverables]",
+         "term": "[supplied: term]"
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  },
+  "/tools/revenue_mix_reporter": {
+   "post": {
+    "operationId": "revenue_mix_reporter",
+    "summary": "Report revenue mix percentages from supplied amounts.",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "type": "object"
+       },
+       "example": {
+        "amounts": {
+         "sponsorship": 1000,
+         "tickets": 2000,
+         "memberships": 3000,
+         "workshops": 4000,
+         "other_revenue": 5000
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Tool result with guardrails"
+     }
+    }
+   }
+  }
+ }
+}

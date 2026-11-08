@@ -1,0 +1,73 @@
+{
+  "name": "competitor-teardown-checklist",
+  "display_name": "Competitor Teardown Checklist",
+  "description": "Audit a competitor teardown for completeness before it is used in planning.",
+  "category": "ICP & Market Research",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "competitor_teardown_checklist",
+      "description": "Audit a competitor teardown for completeness before it is used in planning.",
+      "kind": "checklist",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Completed items from: positioning statement, pricing page, feature matrix, customer proof, content themes, call to action"
+          }
+        },
+        "required": [
+          "completed"
+        ]
+      },
+      "sample_input": {
+        "completed": [
+          "positioning statement",
+          "pricing page"
+        ]
+      },
+      "output": {
+        "plugin": "competitor-teardown-checklist",
+        "tool": "competitor_teardown_checklist",
+        "kind": "checklist",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "checklist",
+    "config": {
+      "items": [
+        "positioning statement",
+        "pricing page",
+        "feature matrix",
+        "customer proof",
+        "content themes",
+        "call to action"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "icp & market research",
+    "gtm",
+    "checklist"
+  ]
+}

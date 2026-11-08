@@ -1,0 +1,66 @@
+{
+  "name": "pricing-page-audit",
+  "display_name": "Pricing Page Audit",
+  "description": "Audit pricing copy for clarity elements.",
+  "category": "Proposals & Pricing",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "pricing_page_audit",
+      "description": "Audit pricing copy for clarity elements.",
+      "kind": "audit",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "tiers named price anchor deliverables per tier are covered in this document."
+      },
+      "output": {
+        "plugin": "pricing-page-audit",
+        "tool": "pricing_page_audit",
+        "kind": "audit",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "audit",
+    "config": {
+      "items": [
+        "tiers named",
+        "price anchor",
+        "deliverables per tier",
+        "faq",
+        "terms",
+        "call to action"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "proposals & pricing",
+    "gtm",
+    "audit"
+  ]
+}

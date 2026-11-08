@@ -1,0 +1,70 @@
+{
+  "name": "post-event-follow-up-drafter",
+  "display_name": "Post-event Follow-up Drafter",
+  "description": "Draft post-event follow-up from supplied highlights. Draft only.",
+  "category": "Events",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "post_event_follow_up_drafter",
+      "description": "Draft post-event follow-up from supplied highlights. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: thank_you, highlight_supplied_by_user, recording_link, feedback_ask, next_event"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "thank_you": "[supplied: thank you]",
+          "highlight_supplied_by_user": "[supplied: highlight supplied by user]",
+          "recording_link": "[supplied: recording link]"
+        }
+      },
+      "output": {
+        "plugin": "post-event-follow-up-drafter",
+        "tool": "post_event_follow_up_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "thank you",
+        "highlight supplied by user",
+        "recording link",
+        "feedback ask",
+        "next event"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "events",
+    "community",
+    "template"
+  ]
+}

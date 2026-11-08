@@ -1,0 +1,84 @@
+{
+  "name": "forecast-risk-ranker",
+  "display_name": "Forecast Risk Ranker",
+  "description": "Rank forecast deals by value at risk over effort to save.",
+  "category": "Pipeline & CRM",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "forecast_risk_ranker",
+      "description": "Rank forecast deals by value at risk over effort to save.",
+      "kind": "prioritize",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "sample_input": {
+        "items": [
+          {
+            "name": "Example 1",
+            "impact": 8,
+            "effort": 2
+          },
+          {
+            "name": "Example 2",
+            "impact": 7,
+            "effort": 3
+          },
+          {
+            "name": "Example 3",
+            "impact": 6,
+            "effort": 4
+          }
+        ]
+      },
+      "output": {
+        "plugin": "forecast-risk-ranker",
+        "tool": "forecast_risk_ranker",
+        "kind": "prioritize",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "prioritize",
+    "config": {
+      "items": [
+        "deal size",
+        "stage confidence",
+        "days to close",
+        "slippage count",
+        "effort to save"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "pipeline & crm",
+    "gtm",
+    "prioritize"
+  ]
+}

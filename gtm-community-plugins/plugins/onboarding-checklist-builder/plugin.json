@@ -1,0 +1,72 @@
+{
+  "name": "onboarding-checklist-builder",
+  "display_name": "Onboarding Checklist Builder",
+  "description": "Check a new member onboarding journey for completion.",
+  "category": "Member Onboarding",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "onboarding_checklist_builder",
+      "description": "Check a new member onboarding journey for completion.",
+      "kind": "checklist",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Completed items from: profile complete, introduction posted, starter resource read, first event rsvp, buddy assigned"
+          }
+        },
+        "required": [
+          "completed"
+        ]
+      },
+      "sample_input": {
+        "completed": [
+          "profile complete",
+          "introduction posted"
+        ]
+      },
+      "output": {
+        "plugin": "onboarding-checklist-builder",
+        "tool": "onboarding_checklist_builder",
+        "kind": "checklist",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "checklist",
+    "config": {
+      "items": [
+        "profile complete",
+        "introduction posted",
+        "starter resource read",
+        "first event rsvp",
+        "buddy assigned"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "member onboarding",
+    "community",
+    "checklist"
+  ]
+}

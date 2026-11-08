@@ -1,0 +1,28 @@
+{
+  "name": "gtm-community-plugins",
+  "version": "1.0.0",
+  "description": "120 GTM and community management plugins by Lionel Sim (The AI Capitol / OpenBuilder): scoring, triage, checklists, audits, drafts and reports \u2014 deterministic, guardrailed, drafts only, no auto-send.",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "homepage": "",
+  "license": "MIT",
+  "keywords": [
+    "gtm",
+    "community",
+    "marketing",
+    "sales",
+    "events",
+    "mcp",
+    "plugin"
+  ],
+  "mcpServers": {
+    "gtm-community-plugins": {
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp_server.py"
+      ]
+    }
+  }
+}

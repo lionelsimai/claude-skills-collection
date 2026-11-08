@@ -1,0 +1,78 @@
+{
+  "name": "data-decay-reporter",
+  "display_name": "Data Decay Reporter",
+  "description": "Report CRM data decay from supplied record ages and bounce counts.",
+  "category": "Lead Scoring & Enrichment",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "data_decay_reporter",
+      "description": "Report CRM data decay from supplied record ages and bounce counts.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "records_checked": 100,
+          "stale_records": 90,
+          "job_changes_detected": 80,
+          "bounced_emails": 70,
+          "decay_rate": 60
+        }
+      },
+      "output": {
+        "plugin": "data-decay-reporter",
+        "tool": "data_decay_reporter",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "records checked",
+        "stale records",
+        "job changes detected",
+        "bounced emails",
+        "decay rate"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "lead scoring & enrichment",
+    "gtm",
+    "analyze"
+  ]
+}

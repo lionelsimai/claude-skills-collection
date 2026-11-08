@@ -1,0 +1,66 @@
+{
+  "name": "ambassador-programme-audit",
+  "display_name": "Ambassador Programme Audit",
+  "description": "Audit an ambassador programme for completeness.",
+  "category": "Ambassadors",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "ambassador_programme_audit",
+      "description": "Audit an ambassador programme for completeness.",
+      "kind": "audit",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "selection criteria onboarding activity tracking are covered in this document."
+      },
+      "output": {
+        "plugin": "ambassador-programme-audit",
+        "tool": "ambassador_programme_audit",
+        "kind": "audit",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "audit",
+    "config": {
+      "items": [
+        "selection criteria",
+        "onboarding",
+        "activity tracking",
+        "recognition",
+        "rewards",
+        "exit process"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "ambassadors",
+    "community",
+    "audit"
+  ]
+}

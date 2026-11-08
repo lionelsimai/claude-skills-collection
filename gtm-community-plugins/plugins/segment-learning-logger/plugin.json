@@ -1,0 +1,70 @@
+{
+  "name": "segment-learning-logger",
+  "display_name": "Segment Learning Logger",
+  "description": "Log a segment learning in a fixed format from supplied results.",
+  "category": "Analytics & Learning",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "segment_learning_logger",
+      "description": "Log a segment learning in a fixed format from supplied results.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: segment, result, evidence, decision_scale_or_pause, next_test"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "segment": "[supplied: segment]",
+          "result": "[supplied: result]",
+          "evidence": "[supplied: evidence]"
+        }
+      },
+      "output": {
+        "plugin": "segment-learning-logger",
+        "tool": "segment_learning_logger",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "segment",
+        "result",
+        "evidence",
+        "decision scale or pause",
+        "next test"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "analytics & learning",
+    "gtm",
+    "template"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "name": "case-study-audit",
+  "display_name": "Case Study Audit",
+  "description": "Audit a case study for permission and evidence elements. Results must be supplied.",
+  "category": "Content & Thought Leadership",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "case_study_audit",
+      "description": "Audit a case study for permission and evidence elements. Results must be supplied.",
+      "kind": "audit",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "client permission problem approach are covered in this document."
+      },
+      "output": {
+        "plugin": "case-study-audit",
+        "tool": "case_study_audit",
+        "kind": "audit",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "audit",
+    "config": {
+      "items": [
+        "client permission",
+        "problem",
+        "approach",
+        "measured result",
+        "quote",
+        "dates"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "content & thought leadership",
+    "gtm",
+    "audit"
+  ]
+}

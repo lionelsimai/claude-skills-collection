@@ -1,0 +1,69 @@
+{
+  "name": "feedback-response-drafter",
+  "display_name": "Feedback Response Drafter",
+  "description": "Draft a response to feedback from supplied actions. Draft only.",
+  "category": "Feedback & NPS",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "feedback_response_drafter",
+      "description": "Draft a response to feedback from supplied actions. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: thank_them, specific_point, what_will_change_supplied_by_user, timeline"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "thank_them": "[supplied: thank them]",
+          "specific_point": "[supplied: specific point]",
+          "what_will_change_supplied_by_user": "[supplied: what will change supplied by user]"
+        }
+      },
+      "output": {
+        "plugin": "feedback-response-drafter",
+        "tool": "feedback_response_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "thank them",
+        "specific point",
+        "what will change supplied by user",
+        "timeline"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "feedback & nps",
+    "community",
+    "template"
+  ]
+}

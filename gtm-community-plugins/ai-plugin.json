@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "lionel_gtm_community_plugins",
+  "human_plugin_name": "Lionel GTM + Community Plugins",
+  "description_for_human": "120 GTM and community management tools: scoring, triage, checklists, audits, drafts and reports.",
+  "description_for_model": "Use these tools for go-to-market and community management work. Every tool returns guardrails: use supplied facts only, never invent metrics or proof, drafts only, human approval required, never auto-send.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "openapi_url": "http://localhost:8787/openapi.json"
+  },
+  "logo_url": "",
+  "contact_email": "",
+  "legal_info_url": "https://github.com/lionelsimai/"
+}

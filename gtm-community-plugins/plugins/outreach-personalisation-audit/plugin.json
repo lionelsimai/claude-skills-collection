@@ -1,0 +1,65 @@
+{
+  "name": "outreach-personalisation-audit",
+  "display_name": "Outreach Personalisation Audit",
+  "description": "Audit a draft for real personalisation versus mail-merge filler.",
+  "category": "Outreach & Sequences",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "outreach_personalisation_audit",
+      "description": "Audit a draft for real personalisation versus mail-merge filler.",
+      "kind": "audit",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "personal signal named company role relevance are covered in this document."
+      },
+      "output": {
+        "plugin": "outreach-personalisation-audit",
+        "tool": "outreach_personalisation_audit",
+        "kind": "audit",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "audit",
+    "config": {
+      "items": [
+        "personal signal",
+        "named company",
+        "role relevance",
+        "specific detail",
+        "call to action"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "outreach & sequences",
+    "gtm",
+    "audit"
+  ]
+}

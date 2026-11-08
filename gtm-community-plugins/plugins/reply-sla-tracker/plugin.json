@@ -1,0 +1,78 @@
+{
+  "name": "reply-sla-tracker",
+  "display_name": "Reply SLA Tracker",
+  "description": "Report reply SLA performance from supplied counts.",
+  "category": "Reply & Meeting",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "reply_sla_tracker",
+      "description": "Report reply SLA performance from supplied counts.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "replies_received": 100,
+          "replies_answered": 90,
+          "in_time": 80,
+          "in_late": 70,
+          "average_response_hours": 60
+        }
+      },
+      "output": {
+        "plugin": "reply-sla-tracker",
+        "tool": "reply_sla_tracker",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "replies received",
+        "replies answered",
+        "in time",
+        "in late",
+        "average response hours"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "reply & meeting",
+    "gtm",
+    "analyze"
+  ]
+}

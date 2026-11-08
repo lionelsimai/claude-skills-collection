@@ -1,0 +1,72 @@
+{
+  "name": "deal-health-scorer",
+  "display_name": "Deal Health Scorer",
+  "description": "Score deal health from supplied CRM facts.",
+  "category": "Pipeline & CRM",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "deal_health_scorer",
+      "description": "Score deal health from supplied CRM facts.",
+      "kind": "score",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "object",
+            "description": "Scores 0-100 keyed by: days_since_contact, next_step_set, champion_engaged, economic_buyer_known, close_date_realistic"
+          }
+        },
+        "required": [
+          "metrics"
+        ]
+      },
+      "sample_input": {
+        "metrics": {
+          "days_since_contact": 70,
+          "next_step_set": 70,
+          "champion_engaged": 70,
+          "economic_buyer_known": 70,
+          "close_date_realistic": 70
+        }
+      },
+      "output": {
+        "plugin": "deal-health-scorer",
+        "tool": "deal_health_scorer",
+        "kind": "score",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "score",
+    "config": {
+      "items": [
+        "days since contact",
+        "next step set",
+        "champion engaged",
+        "economic buyer known",
+        "close date realistic"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "pipeline & crm",
+    "gtm",
+    "score"
+  ]
+}

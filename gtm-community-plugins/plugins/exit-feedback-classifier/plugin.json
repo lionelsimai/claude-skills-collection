@@ -1,0 +1,66 @@
+{
+  "name": "exit-feedback-classifier",
+  "display_name": "Exit Feedback Classifier",
+  "description": "Classify exit feedback into a churn reason.",
+  "category": "Retention & Churn",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "exit_feedback_classifier",
+      "description": "Classify exit feedback into a churn reason.",
+      "kind": "classify",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "This is about no time and needs review."
+      },
+      "output": {
+        "plugin": "exit-feedback-classifier",
+        "tool": "exit_feedback_classifier",
+        "kind": "classify",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "classify",
+    "config": {
+      "items": [
+        "no time",
+        "not relevant",
+        "cost",
+        "found alternative",
+        "life change",
+        "negative experience"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "retention & churn",
+    "community",
+    "classify"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "name": "nps-calculator",
+  "display_name": "NPS Calculator",
+  "description": "Calculate NPS from supplied promoter, passive and detractor counts.",
+  "category": "Feedback & NPS",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "nps_calculator",
+      "description": "Calculate NPS from supplied promoter, passive and detractor counts.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "promoters": 60,
+          "passives": 25,
+          "detractors": 15,
+          "total_responses": 100
+        }
+      },
+      "output": {
+        "plugin": "nps-calculator",
+        "tool": "nps_calculator",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "promoters",
+        "passives",
+        "detractors",
+        "total responses",
+        "nps score"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "feedback & nps",
+    "community",
+    "analyze"
+  ]
+}

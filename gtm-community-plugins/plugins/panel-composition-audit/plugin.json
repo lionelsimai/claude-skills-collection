@@ -1,0 +1,65 @@
+{
+  "name": "panel-composition-audit",
+  "display_name": "Panel Composition Audit",
+  "description": "Audit a panel line-up for balance elements.",
+  "category": "Speakers & Sponsors",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "panel_composition_audit",
+      "description": "Audit a panel line-up for balance elements.",
+      "kind": "audit",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "sample_input": {
+        "text": "topic balance seniority mix company mix are covered in this document."
+      },
+      "output": {
+        "plugin": "panel-composition-audit",
+        "tool": "panel_composition_audit",
+        "kind": "audit",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "audit",
+    "config": {
+      "items": [
+        "topic balance",
+        "seniority mix",
+        "company mix",
+        "perspective mix",
+        "moderator assigned"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "speakers & sponsors",
+    "community",
+    "audit"
+  ]
+}

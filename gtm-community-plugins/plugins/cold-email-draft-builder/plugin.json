@@ -1,0 +1,70 @@
+{
+  "name": "cold-email-draft-builder",
+  "display_name": "Cold Email Draft Builder",
+  "description": "Draft a cold email from one supplied personal signal and supplied proof only. Draft only.",
+  "category": "Outreach & Sequences",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "cold_email_draft_builder",
+      "description": "Draft a cold email from one supplied personal signal and supplied proof only. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: subject_line, personal_signal, problem_statement, relevant_proof_supplied_by_user, soft_call_to_action"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "subject_line": "[supplied: subject line]",
+          "personal_signal": "[supplied: personal signal]",
+          "problem_statement": "[supplied: problem statement]"
+        }
+      },
+      "output": {
+        "plugin": "cold-email-draft-builder",
+        "tool": "cold_email_draft_builder",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "subject line",
+        "personal signal",
+        "problem statement",
+        "relevant proof supplied by user",
+        "soft call to action"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "outreach & sequences",
+    "gtm",
+    "template"
+  ]
+}

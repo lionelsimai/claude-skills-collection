@@ -1,0 +1,73 @@
+{
+  "name": "event-lead-capture-checklist",
+  "display_name": "Event Lead Capture Checklist",
+  "description": "Check an event lead-capture setup before doors open.",
+  "category": "Lead Generation",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "event_lead_capture_checklist",
+      "description": "Check an event lead-capture setup before doors open.",
+      "kind": "checklist",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Completed items from: consent wording, badge scan process, qualifying question, offer hook, follow-up owner, same-day upload"
+          }
+        },
+        "required": [
+          "completed"
+        ]
+      },
+      "sample_input": {
+        "completed": [
+          "consent wording",
+          "badge scan process"
+        ]
+      },
+      "output": {
+        "plugin": "event-lead-capture-checklist",
+        "tool": "event_lead_capture_checklist",
+        "kind": "checklist",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "checklist",
+    "config": {
+      "items": [
+        "consent wording",
+        "badge scan process",
+        "qualifying question",
+        "offer hook",
+        "follow-up owner",
+        "same-day upload"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "lead generation",
+    "gtm",
+    "checklist"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "name": "sequence-cadence-planner",
+  "display_name": "Sequence Cadence Planner",
+  "description": "Plan a multi-touch sequence cadence with spacing and purpose per touch.",
+  "category": "Outreach & Sequences",
+  "domain": "GTM",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "sequence_cadence_planner",
+      "description": "Plan a multi-touch sequence cadence with spacing and purpose per touch.",
+      "kind": "plan",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "goal": {
+            "type": "string"
+          },
+          "timeframe_days": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "goal"
+        ]
+      },
+      "sample_input": {
+        "goal": "Improve results next quarter with a fictional example team",
+        "timeframe_days": 30
+      },
+      "output": {
+        "plugin": "sequence-cadence-planner",
+        "tool": "sequence_cadence_planner",
+        "kind": "plan",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "plan",
+    "config": {
+      "items": [
+        "day 1 email",
+        "day 3 bump",
+        "day 7 value email",
+        "day 12 linkedin touch",
+        "day 21 break-up"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "outreach & sequences",
+    "gtm",
+    "plan"
+  ]
+}

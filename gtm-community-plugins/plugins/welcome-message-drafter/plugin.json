@@ -1,0 +1,69 @@
+{
+  "name": "welcome-message-drafter",
+  "display_name": "Welcome Message Drafter",
+  "description": "Draft a welcome message from supplied community facts. Draft only.",
+  "category": "Member Onboarding",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "welcome_message_drafter",
+      "description": "Draft a welcome message from supplied community facts. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: member_name_supplied_by_user, first_step, introduce-yourself_prompt, key_resource"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "member_name_supplied_by_user": "[supplied: member name supplied by user]",
+          "first_step": "[supplied: first step]",
+          "introduce-yourself_prompt": "[supplied: introduce-yourself prompt]"
+        }
+      },
+      "output": {
+        "plugin": "welcome-message-drafter",
+        "tool": "welcome_message_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "member name supplied by user",
+        "first step",
+        "introduce-yourself prompt",
+        "key resource"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "member onboarding",
+    "community",
+    "template"
+  ]
+}

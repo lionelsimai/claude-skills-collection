@@ -1,0 +1,78 @@
+{
+  "name": "ambassador-activity-reporter",
+  "display_name": "Ambassador Activity Reporter",
+  "description": "Report ambassador programme activity from supplied counts.",
+  "category": "Ambassadors",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "ambassador_activity_reporter",
+      "description": "Report ambassador programme activity from supplied counts.",
+      "kind": "analyze",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "counts": {
+            "type": "object"
+          },
+          "amounts": {
+            "type": "object"
+          },
+          "series": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": []
+      },
+      "sample_input": {
+        "counts": {
+          "active_ambassadors": 100,
+          "events_hosted": 90,
+          "posts_made": 80,
+          "members_helped": 70,
+          "coverage_rate": 60
+        }
+      },
+      "output": {
+        "plugin": "ambassador-activity-reporter",
+        "tool": "ambassador_activity_reporter",
+        "kind": "analyze",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "analyze",
+    "config": {
+      "items": [
+        "active ambassadors",
+        "events hosted",
+        "posts made",
+        "members helped",
+        "coverage rate"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "ambassadors",
+    "community",
+    "analyze"
+  ]
+}

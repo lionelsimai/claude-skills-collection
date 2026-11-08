@@ -1,0 +1,69 @@
+{
+  "name": "quiet-member-reactivation-drafter",
+  "display_name": "Quiet Member Reactivation Drafter",
+  "description": "Draft a reactivation message from supplied facts. Draft only.",
+  "category": "Engagement",
+  "domain": "Community",
+  "version": "1.0.0",
+  "author": {
+    "name": "Lionel Sim",
+    "url": "https://sg.linkedin.com/in/lionelshen"
+  },
+  "license": "MIT",
+  "tools": [
+    {
+      "name": "quiet_member_reactivation_drafter",
+      "description": "Draft a reactivation message from supplied facts. Draft only.",
+      "kind": "template",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "facts": {
+            "type": "object",
+            "description": "Supplied facts only, keys include: personal_note, what_they_missed_supplied_by_user, low-effort_invite, opt_out_line"
+          }
+        },
+        "required": [
+          "facts"
+        ]
+      },
+      "sample_input": {
+        "facts": {
+          "personal_note": "[supplied: personal note]",
+          "what_they_missed_supplied_by_user": "[supplied: what they missed supplied by user]",
+          "low-effort_invite": "[supplied: low-effort invite]"
+        }
+      },
+      "output": {
+        "plugin": "quiet-member-reactivation-drafter",
+        "tool": "quiet_member_reactivation_drafter",
+        "kind": "template",
+        "result": "object (shape varies by kind, see README)",
+        "guardrails": "object \u2014 present on every result"
+      }
+    }
+  ],
+  "handler": {
+    "type": "template",
+    "config": {
+      "items": [
+        "personal note",
+        "what they missed supplied by user",
+        "low-effort invite",
+        "opt out line"
+      ]
+    }
+  },
+  "guardrails": {
+    "no_fabrication": true,
+    "draft_only_for_generative_tools": true,
+    "human_approval_required": true,
+    "no_auto_send": true,
+    "use_supplied_facts_only": true
+  },
+  "keywords": [
+    "engagement",
+    "community",
+    "template"
+  ]
+}
