@@ -1,0 +1,77 @@
+---
+name: early-childhood-education-cost-estimate-quotes
+description: |
+  Build transparent, defensible cost estimates and quotes as a early years educator.
+  TRIGGERS - Use when a early years educator needs a cost estimates & quotes for young children and their families in a nursery or early years setting.
+category: Early Childhood Education
+license: MIT
+version: 1.0
+---
+# Cost Estimates & Quotes — Early Childhood Education
+
+Build transparent, defensible cost estimates and quotes as a early years educator. The deliverable is an itemised estimate with assumptions, exclusions and validity terms.
+This skill is written for a early years educator working with young children and their families in a nursery or early years setting.
+
+## When to use
+- You are a early years educator preparing, delivering or reviewing this part of your work in a nursery or early years setting.
+- You need a defensible, repeatable approach that produces an itemised estimate with assumptions, exclusions and validity terms.
+- A colleague, auditor or client asks how this was done and what evidence supports it.
+
+## Key Concepts
+| Term | Meaning |
+|------|---------|
+| Learning journey | a record of a child's development and experiences |
+| Key person | the staff member with particular responsibility for a child |
+| School readiness | the skills and confidence a child needs to start school |
+
+## Workflow
+1. **Step 1** - Scope the work precisely from the assessment and learning journeys; list what is included and excluded
+2. **Step 2** - Cost each element: professional time, observation apps usage, materials, travel and third-party fees
+3. **Step 3** - Add contingency proportionate to uncertainty — and say so openly rather than burying it, which protects against safeguarding concerns missed
+4. **Step 4** - Present the quote with options where genuine choices exist, and relate value to outcomes such as child progress tracking
+5. **Step 5** - Record acceptance, variations and final costs against the estimate so future quotes get more accurate
+
+## Profession-Specific Components
+| Component | Details for Early Childhood Education |
+|-----------|-------------------------------|
+| Core documentation | learning journeys; observation records; safeguarding logs; transition reports |
+| Core tools & equipment | observation apps; communication books; assessment frameworks; photo documentation tools |
+| People involved | young children and their families; the early years educator; colleagues and other services in a nursery or early years setting |
+| Primary record | learning journeys — keep it current, dated and attributable |
+
+## Output Format
+**Context:** [Situation in a nursery or early years setting] | **Objective:** [What this must achieve] | **Audience:** [young children and their families and other stakeholders]
+
+The finished output is an itemised estimate with assumptions, exclusions and validity terms, structured as:
+1. Summary of position and evidence
+2. Detail, following the workflow above
+3. Decisions, actions, owners and dates
+4. Review point and escalation route
+
+### Action Plan
+1. **Immediate:** Confirm scope, consent and the evidence available in learning journeys.
+2. **Short-term:** Complete the workflow steps and record outcomes against child progress tracking.
+3. **Medium-term:** Review results, close actions, and update local procedures in a nursery or early years setting.
+
+## Success Metrics
+| Metric | Target | Method |
+|--------|--------|--------|
+| child progress tracking | Agree a local target and track the trend | Measured from learning journeys and reviewed on a set cycle |
+| parent engagement | Agree a local target and track the trend | Measured from learning journeys and reviewed on a set cycle |
+| observation completion | Agree a local target and track the trend | Measured from learning journeys and reviewed on a set cycle |
+| safeguarding training compliance | Agree a local target and track the trend | Measured from learning journeys and reviewed on a set cycle |
+
+## Guardrails & Quality Checks
+- Never let this happen: safeguarding concerns missed.
+- Never let this happen: unsafe ratios.
+- Never let this happen: allergies overlooked.
+- Work only within the competence and authority of a early years educator; escalate or refer anything beyond it.
+- Record facts and observations, not speculation, and keep records confidential to a nursery or early years setting's rules.
+- Verify names, dates, figures and measurements twice before anything is issued or signed off.
+- Use only real, verified information from the case in hand — never invent results, credentials or evidence.
+
+## Example (illustrative)
+A early years educator in a nursery or early years setting applies this workflow for young children and their families: they open
+learning journeys, work through the five steps using observation apps, and close by recording
+the outcome against child progress tracking and agreeing the next review date. (Illustrative example only —
+replace with the real details of the case in hand.)
