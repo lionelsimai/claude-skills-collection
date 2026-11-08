@@ -1,5 +1,10 @@
 # Resume Optimizer — an open-source AI skill
 
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![Version](https://img.shields.io/badge/version-1.3.0-blue)
+![Format: Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-orange)
+![Tests](https://img.shields.io/github/actions/workflow/status/lionelsimai/resume-optimizer/tests.yml?branch=main&label=tests)
+
 Give your AI agent a resume and a job opening, and it returns a polished,
 tailored resume that applicant tracking systems (ATS) can parse and
 recruiters can find — without inventing a single fact.
