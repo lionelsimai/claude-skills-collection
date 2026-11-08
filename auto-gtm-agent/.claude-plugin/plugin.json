@@ -1,0 +1,17 @@
+{
+  "name": "auto-gtm-agent",
+  "version": "0.1.0",
+  "description": "A personal AI agent plugin for go-to-market: learn an offer, score leads against an ICP, draft one-to-one personal emails for human approval, triage replies, and learn which segments to scale or pause. Use it when a founder or revenue team wants an Explee-style outbound motion without vendor lock-in, a proprietary lead database, or auto-sending.",
+  "author": {
+    "name": "Lionel Sim"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gtm",
+    "outbound",
+    "leads",
+    "email",
+    "mcp-free",
+    "cli"
+  ]
+}

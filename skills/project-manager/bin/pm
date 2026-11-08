@@ -1,0 +1,388 @@
+#!/usr/bin/env python3
+"""pm — project manager CLI for the project-manager workspace skill.
+
+Dependency-free (python3 stdlib only). Stores projects as JSON under
+./projects/<slug>.json.
+
+Usage examples:
+  pm init "hermes-lab" --goal "Landing page + workshop funnel" --deadline 2026-11-30
+  pm task add hermes-lab "Draft landing hero copy" --priority P1 --due 2026-10-05
+  pm task start hermes-lab t3 --note "WIP: first draft"
+  pm task done hermes-lab t3
+  pm task block hermes-lab t2 --note "Waiting on venue confirmation"
+  pm status hermes-lab
+  pm standup
+  pm review
+  pm list
+"""
+import argparse
+import json
+import os
+import re
+import sys
+from datetime import date, datetime, timedelta
+
+BASE = os.environ.get("PM_PROJECTS_DIR", os.path.expanduser("./"))
+STATUS_ORDER = ["todo", "doing", "blocked", "done"]
+PRIORITIES = ["P0", "P1", "P2", "P3"]
+
+
+def slugify(name):
+    slug = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+    return slug or "project"
+
+
+def ensure_base():
+    os.makedirs(BASE, exist_ok=True)
+
+
+def path_for(slug):
+    return os.path.join(BASE, slug + ".json")
+
+
+def load(slug):
+    p = path_for(slug)
+    if not os.path.exists(p):
+        die(f"project '{slug}' not found ({p}). Run `pm init` first.")
+    with open(p) as f:
+        return json.load(f)
+
+
+def save(proj):
+    with open(path_for(proj["slug"]), "w") as f:
+        json.dump(proj, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+
+
+def die(msg):
+    print("pm: " + msg, file=sys.stderr)
+    sys.exit(1)
+
+
+def now_iso():
+    return datetime.now().isoformat(timespec="seconds")
+
+
+def today():
+    return date.today().isoformat()
+
+
+def cmd_init(args):
+    ensure_base()
+    slug = slugify(args.name)
+    p = path_for(slug)
+    if os.path.exists(p):
+        die(f"project '{slug}' already exists.")
+    proj = {
+        "slug": slug,
+        "name": args.name,
+        "goal": args.goal or "",
+        "deadline": args.deadline or "",
+        "status": "active",
+        "created": today(),
+        "owner": args.owner or "",
+        "notes": [],
+        "tasks": [],
+        "_seq": 0,
+    }
+    save(proj)
+    print(f"created project '{slug}' ({p})")
+
+
+def find_project(slug_or_name):
+    ensure_base()
+    slug = slugify(slug_or_name)
+    if os.path.exists(path_for(slug)):
+        return slug
+    # fuzzy: match by name substring
+    matches = []
+    for fn in os.listdir(BASE):
+        if fn.endswith(".json"):
+            with open(os.path.join(BASE, fn)) as f:
+                proj = json.load(f)
+            if slug_or_name.lower() in proj.get("name", "").lower():
+                matches.append(proj["slug"])
+    if len(matches) == 1:
+        return matches[0]
+    if len(matches) > 1:
+        die(f"ambiguous project '{slug_or_name}': {', '.join(matches)}")
+    die(f"project '{slug_or_name}' not found.")
+
+
+def get_task(proj, task_id):
+    tid = task_id.lower()
+    for t in proj["tasks"]:
+        if t["id"].lower() == tid:
+            return t
+    die(f"task '{task_id}' not found in project '{proj['slug']}'.")
+
+
+def cmd_task_add(args):
+    slug = find_project(args.project)
+    proj = load(slug)
+    if proj["status"] == "archived":
+        die(f"project '{slug}' is archived.")
+    proj["_seq"] += 1
+    task = {
+        "id": f"t{proj['_seq']}",
+        "title": args.title,
+        "status": "todo",
+        "priority": (args.priority or "P2").upper(),
+        "due": args.due or "",
+        "owner": args.owner or "",
+        "created": today(),
+        "updated": today(),
+        "notes": [args.note] if args.note else [],
+    }
+    if task["priority"] not in PRIORITIES:
+        die(f"priority must be one of {', '.join(PRIORITIES)}")
+    proj["tasks"].append(task)
+    save(proj)
+    print(f"{slug} {task['id']}: {task['title']} [{task['priority']}]")
+
+
+def touch(proj, task, new_status, note=None):
+    task["status"] = new_status
+    task["updated"] = today()
+    if note:
+        task["notes"].append(f"{today()} ({new_status}): {note}")
+    save(proj)
+    print(f"{proj['slug']} {task['id']}: {task['title']} -> {new_status}")
+
+
+def cmd_task_update(args):
+    slug = find_project(args.project)
+    proj = load(slug)
+    task = get_task(proj, args.task)
+    mapping = {"start": "doing", "done": "done", "block": "blocked", "unblock": "todo"}
+    touch(proj, task, mapping[args.action], args.note)
+
+
+def cmd_note(args):
+    slug = find_project(args.project)
+    proj = load(slug)
+    entry = f"{today()}: {args.text}"
+    if args.task:
+        task = get_task(proj, args.task)
+        task["notes"].append(entry)
+        task["updated"] = today()
+    else:
+        proj["notes"].append(entry)
+    save(proj)
+    print(f"note added to {slug}" + (f" {args.task}" if args.task else ""))
+
+
+def fmt_task(t):
+    bits = [f"{t['id']}", f"[{t['status']}]", t["title"]]
+    if t.get("priority") != "P2":
+        bits.insert(2, f"({t['priority']})")
+    if t.get("due"):
+        bits.append(f"due {t['due']}")
+    if t.get("owner"):
+        bits.append(f"@{t['owner']}")
+    return " ".join(bits)
+
+
+def cmd_status(args):
+    slug = find_project(args.project)
+    proj = load(slug)
+    lines = [f"# {proj['name']}", ""]
+    if proj.get("goal"):
+        lines.append(f"Goal: {proj['goal']}")
+    if proj.get("deadline"):
+        lines.append(f"Deadline: {proj['deadline']}")
+    lines.append(f"Status: {proj['status']}")
+    lines.append("")
+    counts = {s: 0 for s in STATUS_ORDER}
+    for t in proj["tasks"]:
+        counts[t["status"]] = counts.get(t["status"], 0) + 1
+    total = len(proj["tasks"])
+    lines.append(f"Tasks: {total} "
+                 f"({', '.join(f'{counts[s]} {s}' for s in STATUS_ORDER if counts[s])})")
+    lines.append("")
+    by_status = {}
+    for t in proj["tasks"]:
+        by_status.setdefault(t["status"], []).append(t)
+    for s in STATUS_ORDER:
+        items = sorted(by_status.get(s, []), key=lambda t: (PRIORITIES.index(t["priority"]), t.get("due") or "9999"))
+        if not items:
+            continue
+        lines.append(f"## {s.upper()}")
+        for t in items:
+            lines.append(f"- {fmt_task(t)}")
+        lines.append("")
+    if proj.get("notes"):
+        lines.append("## Notes")
+        for n in proj["notes"][-10:]:
+            lines.append(f"- {n}")
+        lines.append("")
+    out = "\n".join(lines).rstrip() + "\n"
+    if args.out:
+        with open(args.out, "w") as f:
+            f.write(out)
+        print(f"status written to {args.out}")
+    else:
+        print(out)
+
+
+def cmd_list(args):
+    ensure_base()
+    projs = []
+    for fn in sorted(os.listdir(BASE)):
+        if fn.endswith(".json"):
+            with open(os.path.join(BASE, fn)) as f:
+                projs.append(json.load(f))
+    if args.status != "all":
+        projs = [p for p in projs if p["status"] == args.status]
+    if not projs:
+        print("(no projects)")
+        return
+    for p in projs:
+        open_n = sum(1 for t in p["tasks"] if t["status"] in ("todo", "doing", "blocked"))
+        done_n = sum(1 for t in p["tasks"] if t["status"] == "done")
+        dl = f" due {p['deadline']}" if p.get("deadline") else ""
+        print(f"{p['slug']}: {p['name']} [{p['status']}] {done_n}/{done_n+open_n} done{dl}")
+
+
+def changed_since(task, since):
+    return task.get("updated", "") >= since
+
+
+def cmd_standup(args):
+    ensure_base()
+    since = args.since or (date.today() - timedelta(days=1)).isoformat()
+    done, next_up, blocked = [], [], []
+    for fn in sorted(os.listdir(BASE)):
+        if not fn.endswith(".json"):
+            continue
+        with open(os.path.join(BASE, fn)) as f:
+            proj = json.load(f)
+        if proj["status"] != "active":
+            continue
+        for t in proj["tasks"]:
+            label = f"{proj['slug']}: {t['title']} ({t['id']})"
+            if t["status"] == "done" and changed_since(t, since):
+                done.append(label)
+            elif t["status"] == "blocked":
+                blocked.append(label)
+            elif t["status"] == "doing":
+                next_up.append(label)
+            elif t["status"] == "todo" and (t.get("due") or "9999") <= since:
+                next_up.append(label + " [overdue]")
+    lines = [f"# Standup — {today()} (since {since})", ""]
+    for header, items in [("Done", done), ("Next up", next_up), ("Blocked", blocked)]:
+        lines.append(f"## {header}")
+        lines += [f"- {i}" for i in items] or ["- (none)"]
+        lines.append("")
+    print("\n".join(lines).rstrip() + "\n")
+
+
+def cmd_review(args):
+    ensure_base()
+    since = args.since or (date.today() - timedelta(days=7)).isoformat()
+    lines = [f"# Weekly review — week ending {today()} (since {since})", ""]
+    for fn in sorted(os.listdir(BASE)):
+        if not fn.endswith(".json"):
+            continue
+        with open(os.path.join(BASE, fn)) as f:
+            proj = json.load(f)
+        if proj["status"] != "active":
+            continue
+        done = [t for t in proj["tasks"] if t["status"] == "done" and changed_since(t, since)]
+        open_t = [t for t in proj["tasks"] if t["status"] in ("doing", "blocked")]
+        overdue = [t for t in proj["tasks"]
+                   if t["status"] in ("todo", "doing", "blocked") and t.get("due") and t["due"] < today()]
+        lines.append(f"## {proj['name']} ({proj['slug']})")
+        if proj.get("goal"):
+            lines.append(f"Goal: {proj['goal']}")
+        lines.append(f"- Shipped this week: {len(done)}")
+        for t in done:
+            lines.append(f"  - {t['title']} ({t['id']})")
+        lines.append(f"- In flight / blocked: {len(open_t)}")
+        for t in open_t:
+            lines.append(f"  - {fmt_task(t)}")
+        if overdue:
+            lines.append(f"- Overdue: {len(overdue)}")
+            for t in overdue:
+                lines.append(f"  - {fmt_task(t)}")
+        lines.append("")
+    print("\n".join(lines).rstrip() + "\n")
+
+
+def cmd_archive(args):
+    slug = find_project(args.project)
+    proj = load(slug)
+    proj["status"] = "archived"
+    save(proj)
+    print(f"archived '{slug}'")
+
+
+def build_parser():
+    p = argparse.ArgumentParser(prog="pm", description="project manager CLI")
+    sub = p.add_subparsers(dest="cmd", required=True)
+
+    s = sub.add_parser("init", help="create a new project")
+    s.add_argument("name")
+    s.add_argument("--goal")
+    s.add_argument("--deadline")
+    s.add_argument("--owner")
+    s.set_defaults(fn=cmd_init)
+
+    s = sub.add_parser("task", help="add/update tasks")
+    tsub = s.add_subparsers(dest="action", required=True)
+    a = tsub.add_parser("add", help="add a task")
+    a.add_argument("project")
+    a.add_argument("title")
+    a.add_argument("--priority", help="P0/P1/P2/P3 (default P2)")
+    a.add_argument("--due", help="YYYY-MM-DD")
+    a.add_argument("--owner")
+    a.add_argument("--note")
+    a.set_defaults(fn=cmd_task_add)
+    for action in ("start", "done", "block", "unblock"):
+        a = tsub.add_parser(action, help=f"mark task {action}")
+        a.add_argument("project")
+        a.add_argument("task")
+        a.add_argument("--note")
+        a.set_defaults(fn=cmd_task_update, action=action)
+
+    s = sub.add_parser("note", help="add a note to a project or task")
+    s.add_argument("project")
+    s.add_argument("text")
+    s.add_argument("--task")
+    s.set_defaults(fn=cmd_note)
+
+    s = sub.add_parser("status", help="render project status summary")
+    s.add_argument("project")
+    s.add_argument("--out", help="write markdown to file")
+    s.set_defaults(fn=cmd_status)
+
+    s = sub.add_parser("list", help="list projects")
+    s.add_argument("--status", default="active", help="active|archived|all (default active)")
+    s.set_defaults(fn=cmd_list)
+
+    s = sub.add_parser("standup", help="standup across active projects")
+    s.add_argument("--since", help="YYYY-MM-DD (default yesterday)")
+    s.set_defaults(fn=cmd_standup)
+
+    s = sub.add_parser("review", help="weekly review across active projects")
+    s.add_argument("--since", help="YYYY-MM-DD (default 7 days ago)")
+    s.set_defaults(fn=cmd_review)
+
+    s = sub.add_parser("archive", help="archive a project")
+    s.add_argument("project")
+    s.set_defaults(fn=cmd_archive)
+
+    return p
+
+
+def main():
+    parser = build_parser()
+    args = parser.parse_args()
+    try:
+        args.fn(args)
+    except BrokenPipeError:
+        pass
+
+
+if __name__ == "__main__":
+    main()

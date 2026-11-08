@@ -1,28 +1,50 @@
 # Contributing to Claude Skills Collection
 
-## Adding a New Skill
+PRs welcome. The bar is [QUALITY.md](QUALITY.md) — read it first. In
+short: no skill or plugin is merged until it is validated, and no claim
+in it is fabricated.
 
-1. Create a new folder under `skills/` with your skill name (kebab-case)
-2. Add a `SKILL.md` file following the template in `skill-template/`
-3. Include clear triggers, workflow steps, and output format
-4. Submit a PR with a description of what the skill does
+## Adding a skill
 
-## Skill Quality Standards
+1. Create `skills/<your-skill-slug>/SKILL.md` (flat layout, kebab-case
+   slug). Start from [skill-template/SKILL.md](skill-template/SKILL.md).
+2. Frontmatter must carry `name`, a trigger-rich `description` (what it
+   does plus the phrases that should trigger it), `category` (use an
+   existing category from the catalog where one fits), `license` and
+   `version`.
+3. The body must include: a When to use section, a step-by-step
+   workflow, guardrails and quality checks, and at least one worked
+   example or a defined output format.
+4. Sanitise: no personal names, private data, home-directory paths or
+   one person's private constraints. Generalise so any user can run it.
+5. Regenerate the registry and index:
+   `python3 tools/build_catalog.py`
+6. Validate and test (both must pass, and your files must add no
+   warnings):
+   `python3 tools/validate.py`
+   `python3 tests/test_collection.py`
 
-Every skill should have:
-- [ ] Clear `name` and `description` in frontmatter
-- [ ] Specific trigger conditions
-- [ ] Step-by-step workflow
-- [ ] Defined output format
-- [ ] Quality checklist
-- [ ] At least one example scenario
+## Adding a plugin
 
-## Improving Existing Skills
+1. Put the plugin in its own top-level folder with a README that has
+   install and usage snippets you have actually run.
+2. Ship a valid manifest. Claim an MCP server only if the package
+   really provides one; document CLI or REST contracts honestly
+   (see `auto-gtm-agent/PLUGIN.md` for the pattern).
+3. Code is Python 3 standard library only unless a dependency is named,
+   justified and pinned in the plugin README.
+4. Add smoke tests for callable tools.
+5. Add the plugin to the root `.claude-plugin/marketplace.json` if it
+   is Claude Code installable, and to the table in `plugins/README.md`.
+6. Run the same regenerate / validate / test steps as for a skill.
 
-- Test the skill with 3+ different prompts
-- Note what works and what doesn't
-- Submit a PR with improvements and test results
+## Improving an existing skill
+
+- Test the skill with 3+ different prompts, note what works and what
+  does not, and include those notes in your PR.
+- Do not silently change a skill's guardrails. Call guardrail changes
+  out explicitly in the PR description.
 
 ## Questions?
 
-Open an issue or reach out at [theaicapitol.com](https://theaicapitol.com)
+Open an issue, or reach out via https://theaicapitol.com

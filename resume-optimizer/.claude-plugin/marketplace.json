@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "description": "Open-source AI agent skills by Lionel Sim (The AI Capitol).",
+    "version": "2.0.0"
+  },
+  "name": "lionel-sim-skills",
+  "owner": {
+    "name": "Lionel Sim",
+    "url": "https://www.linkedin.com/in/lionelshen"
+  },
+  "plugins": [
+    {
+      "author": {
+        "name": "Lionel Sim"
+      },
+      "category": "productivity",
+      "description": "Lionel Resume Optimizer \u2014 tailor a resume to a specific job opening: ATS keyword scoring, an honest three-bucket gap analysis, and a polished rewrite that never fabricates experience or metrics. v2 adds a callable MCP + REST plugin with 4 tools.",
+      "keywords": [
+        "resume",
+        "ats",
+        "career",
+        "job-application",
+        "recruiting"
+      ],
+      "license": "MIT",
+      "name": "resume-optimizer",
+      "source": "./",
+      "version": "2.0.0"
+    }
+  ]
+}
