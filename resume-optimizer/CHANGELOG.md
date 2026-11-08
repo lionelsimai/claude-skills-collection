@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.1 — 2026-11-08
+
+- Branding: the display name is now **Lionel Resume Optimizer** (README,
+  SKILL.md title, citation title, plugin listing), and the repository
+  moved to `lionelsimai/lionel-resume-optimizer` so people can identify
+  it at a glance. GitHub redirects the old URL. The skill name
+  `resume-optimizer` and the invoke commands are unchanged.
+
 ## 1.3.0 — 2026-11-08
 
 - Scorer correctness fixes, each found by running the tool on a real

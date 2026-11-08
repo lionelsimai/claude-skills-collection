@@ -1,4 +1,4 @@
-# The Resume Optimizer Prompt
+# The Lionel Resume Optimizer Prompt
 
 No install needed. Copy the prompt below into ChatGPT, Claude, Gemini or
 any AI chat, then paste your resume and the job description (or the job
