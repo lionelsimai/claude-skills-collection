@@ -2,7 +2,7 @@
 name: resume-optimizer
 description: Tailor a resume to a specific job opening so it passes applicant tracking systems (ATS) and reads well to recruiters. Use when a user uploads a resume (PDF, DOCX, TXT or pasted text) and provides a job posting link or job description, and asks to polish, tailor, optimise or make the resume "AI ready" / "ATS ready" for that role or for online submission.
 license: MIT
-version: 1.1.0
+version: 1.2.0
 ---
 
 # Resume Optimizer

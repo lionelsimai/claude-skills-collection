@@ -35,14 +35,40 @@ leaves a visible `[add metric: …]` slot for the candidate to fill in.
 
 ## Install
 
-This is a [Claude Skill](https://www.anthropic.com/news/skills) in the
-standard `SKILL.md` format, and works with any agent runtime that reads
-skill folders.
+This skill uses the open Agent Skills format (`SKILL.md`), so the same
+folder runs in Claude Code, Codex, Gemini CLI and any other agent
+runtime that reads skill folders.
+
+### Claude Code — plugin install (easiest)
+
+```text
+/plugin marketplace add lionelsimai/resume-optimizer
+/plugin install resume-optimizer@lionel-sim-skills
+```
+
+Then invoke it as `/resume-optimizer:resume-optimizer`, or just
+describe the task and Claude Code picks it up automatically.
+
+### Claude Code / Claude — manual install
 
 ```bash
 git clone https://github.com/lionelsimai/resume-optimizer.git
 cp -r resume-optimizer ~/.claude/skills/
 ```
+
+Invoke it as `/resume-optimizer`, or describe the task.
+
+### Codex
+
+Inside Codex, point the built-in installer at this repo:
+
+```text
+$skill-installer install https://github.com/lionelsimai/resume-optimizer
+```
+
+Or copy the folder into `~/.agents/skills/resume-optimizer` yourself.
+Invoke it with `$resume-optimizer`, browse with `/skills`, or describe
+the task and Codex picks it up.
 
 Also published in the
 [claude-skills-collection](https://github.com/lionelsimai/claude-skills-collection/tree/main/resume-optimizer)

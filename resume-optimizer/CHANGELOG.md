@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 — 2026-11-08
+
+- Distribution: the repo is now also a Claude Code plugin marketplace
+  (`.claude-plugin/`), so Claude Code users install with two commands
+  and invoke the skill as `/resume-optimizer:resume-optimizer`.
+  The skill itself ships inside `skills/resume-optimizer/` for the
+  plugin; the root copy remains for clone-and-copy installs and for
+  Codex (`$skill-installer` or `~/.agents/skills`).
+- README: install routes for Claude Code (plugin + manual) and Codex.
+
 ## 1.1.0 — 2026-11-08
 
 - Scorer: synonym awareness (e.g. JS ↔ JavaScript, AWS ↔ Amazon Web
